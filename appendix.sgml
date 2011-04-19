@@ -1,0 +1,236 @@
+<chapter id='appendix'><title>Appendix</title>
+
+<section id='theFhsMailingList'><title>The FHS mailing list</title>
+
+<para>The FHS mailing list is located at
+&lt;freestandards-fhs-discuss@lists.sourceforge.net&gt;. You can
+subscribe to the mailing list at this page <ulink
+url="http://sourceforge.net/projects/freestandards/">http://sourceforge.net/projects/freestandards/</ulink>.</para>
+
+<para>Thanks to Network Operations at the University of California at
+San Diego who allowed us to use their excellent mailing list
+server.</para>
+
+<para>As noted in the introduction, please do not send mail to the mailing
+list without first contacting the FHS editor or a listed contributor.</para>
+
+</section>
+
+<section id='backgroundOfTheFhs'><title>Background of the FHS</title>
+
+<para>The process of developing a standard filesystem hierarchy began
+in August 1993 with an effort to restructure the file and directory
+structure of Linux.  The FSSTND, a filesystem hierarchy standard
+specific to the Linux operating system, was released on February 14,
+1994.  Subsequent revisions were released on October 9, 1994 and March
+28, 1995.</para>
+
+<para>In early 1995, the goal of developing a more comprehensive
+version of FSSTND to address not only Linux, but other UNIX-like
+systems was adopted with the help of members of the BSD development
+community.  As a result, a concerted effort was made to focus on
+issues that were general to UNIX-like systems.  In recognition of this
+widening of scope, the name of the standard was changed to Filesystem
+Hierarchy Standard or FHS for short.</para>
+
+<para>Volunteers who have contributed extensively to this standard are
+listed at the end of this document.  This standard represents a
+consensus view of those and other contributors.</para>
+
+</section>
+
+<section id='generalGuidelines'><title>General Guidelines</title>
+
+<para>Here are some of the guidelines that have been used in the development
+of this standard:</para>
+<itemizedlist normal mark='bullet'>
+<listitem>
+<para>Solve technical problems while limiting transitional difficulties.</para>
+</listitem>
+<listitem>
+<para>Make the specification reasonably stable.</para>
+</listitem>
+<listitem>
+<para>Gain the approval of distributors, developers, and other decision-makers
+in relevant development groups and encourage their participation.</para>
+</listitem>
+<listitem>
+<para>Provide a standard that is attractive to the implementors of different
+UNIX-like systems.</para>
+</listitem>
+</itemizedlist>
+
+</section>
+
+<section id='scope'><title>Scope</title>
+
+<para>This document specifies a standard filesystem hierarchy for FHS
+filesystems by specifying the location of files and directories, and
+the contents of some system files.</para>
+
+<para>This standard has been designed to be used by system
+integrators, package developers, and system administrators in the
+construction and maintenance of FHS compliant filesystems.  It is
+primarily intended to be a reference and is not a tutorial on how to
+manage a conforming filesystem hierarchy.</para>
+
+<para>The FHS grew out of earlier work on FSSTND, a filesystem
+organization standard for the Linux operating system.  It builds on
+FSSTND to address interoperability issues not just in the Linux
+community but in a wider arena including 4.4BSD-based operating
+systems.  It incorporates lessons learned in the BSD world and
+elsewhere about multi-architecture support and the demands of
+heterogeneous networking.</para>
+
+<para>Although this standard is more comprehensive than previous
+attempts at filesystem hierarchy standardization, periodic updates may
+become necessary as requirements change in relation to emerging
+technology.  It is also possible that better solutions to the problems
+addressed here will be discovered so that our solutions will no longer
+be the best possible solutions.  Supplementary drafts may be released
+in addition to periodic updates to this document.  However, a specific
+goal is backwards compatibility from one release of this document to
+the next.</para>
+
+<para>Comments related to this standard are welcome.  Any comments or
+suggestions for changes may be directed to the FHS editor (Daniel
+Quinlan &lt;quinlan@pathname.com&gt;) or the FHS mailing list.
+Typographical or grammatical comments should be directed to the FHS
+editor.</para>
+
+<para>Before sending mail to the mailing list it is requested that you
+first contact the FHS editor in order to avoid excessive re-discussion
+of old topics.</para>
+
+<para>Questions about how to interpret items in this document may
+occasionally arise.  If you have need for a clarification, please
+contact the FHS editor.  Since this standard represents a consensus of
+many participants, it is important to make certain that any
+interpretation also represents their collective opinion.  For this
+reason it may not be possible to provide an immediate response unless
+the inquiry has been the subject of previous discussion.</para>
+
+</section>
+
+<section id='acknowledgments'><title>Acknowledgments</title>
+
+<para>The developers of the FHS wish to thank the developers, system
+administrators, and users whose input was essential to this standard.
+We wish to thank each of the contributors who helped to write,
+compile, and compose this standard.</para>
+
+<para>The FHS Group also wishes to thank those Linux developers who
+supported the FSSTND, the predecessor to this standard.  If they
+hadn't demonstrated that the FSSTND was beneficial, the FHS could
+never have evolved.</para>
+
+</section>
+
+<section id='contributors'><title>Contributors</title>
+
+
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='center'>
+    <colspec colname='c1'>
+    <colspec colname='c2'>
+    <tbody>
+      <row>
+        <entry align='left'>Brandon S. Allbery</entry>
+        <entry align='left'>&lt;bsa@kf8nh.wariat.org&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Keith Bostic</entry>
+        <entry align='left'>&lt;bostic@cs.berkeley.edu&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Drew Eckhardt</entry>
+        <entry align='left'>&lt;drew@colorado.edu&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Rik Faith</entry>
+        <entry align='left'>&lt;faith@cs.unc.edu&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Stephen Harris</entry>
+        <entry align='left'>&lt;sweh@spuddy.mew.co.uk&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Ian Jackson</entry>
+        <entry align='left'>&lt;ijackson@cus.cam.ac.uk&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Andreas Jaeger</entry>
+        <entry align='left'>&lt;aj@suse.de&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>John A. Martin</entry>
+        <entry align='left'>&lt;jmartin@acm.org&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Ian McCloghrie</entry>
+        <entry align='left'>&lt;ian@ucsd.edu&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Chris Metcalf</entry>
+        <entry align='left'>&lt;metcalf@lcs.mit.edu&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Ian Murdock</entry>
+        <entry align='left'>&lt;imurdock@debian.org&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>David C. Niemi</entry>
+        <entry align='left'>&lt;niemidc@clark.net&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Daniel Quinlan</entry>
+        <entry align='left'>&lt;quinlan@pathname.com&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Eric S. Raymond</entry>
+        <entry align='left'>&lt;esr@thyrsus.com&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Rusty Russell</entry>
+        <entry align='left'>&lt;rusty@rustcorp.com.au&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Mike Sangrey</entry>
+        <entry align='left'>&lt;mike@sojurn.lns.pa.us&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>David H. Silber</entry>
+        <entry align='left'>&lt;dhs@glowworm.firefly.com&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Thomas Sippel-Dau</entry>
+        <entry align='left'>&lt;t.sippel-dau@ic.ac.uk&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Theodore Ts'o</entry>
+        <entry align='left'>&lt;tytso@athena.mit.edu&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Stephen Tweedie</entry>
+        <entry align='left'>&lt;sct@dcs.ed.ac.uk&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Fred N. van Kempen</entry>
+        <entry align='left'>&lt;waltje@infomagic.com&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Bernd Warken</entry>
+        <entry align='left'>&lt;bwarken@mayn.de&gt;</entry>
+      </row>
+      <row>
+        <entry align='left'>Christopher Yeoh</entry>
+        <entry align='left'>&lt;cyeoh@samba.org&gt;</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+</chapter>

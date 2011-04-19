@@ -1,0 +1,91 @@
+<chapter id='introduction'><title>Introduction</title>
+
+<section id='purpose'><title>Purpose</title>
+
+<para>This standard enables:</para>
+<itemizedlist>
+<listitem>
+<para>Software to predict the location of installed files and
+directories, and</para>
+</listitem>
+<listitem>
+<para>Users to predict the location of installed files and
+directories.</para>
+</listitem>
+</itemizedlist>
+
+<para>We do this by:</para>
+<itemizedlist>
+<listitem>
+<para>Specifying guiding principles for each area of the filesystem,</para>
+</listitem>
+<listitem>
+<para>Specifying the minimum files and directories required,</para>
+</listitem>
+<listitem>
+<para>Enumerating exceptions to the principles, and</para>
+</listitem>
+<listitem>
+<para>Enumerating specific cases where there has been historical conflict.</para>
+</listitem>
+</itemizedlist>
+
+<para>The FHS document is used by:</para>
+<itemizedlist>
+<listitem>
+<para>Independent software suppliers to create applications which are FHS
+compliant, and work with distributions which are FHS complaint,</para>
+</listitem>
+<listitem>
+<para>OS creators to provide systems which are FHS compliant, and</para>
+</listitem>
+<listitem>
+<para>Users to understand and maintain the FHS compliance of a system.</para>
+</listitem>
+</itemizedlist>
+
+<para>The FHS document has a limited scope:</para>
+<itemizedlist>
+<listitem>
+<para>Local placement of local files is a local issue, so FHS does not
+attempt to usurp system administrators.</para>
+</listitem>
+<listitem>
+<para>FHS addresses issues where file placements need to be coordinated
+between multiple parties such as local sites, distributions,
+applications, documentation, etc.</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section id='conventions'><title>Conventions</title>
+
+<para>We recommend that you read a typeset version of this document rather
+than the plain text version.  In the typeset version, the names of files
+and directories are displayed in a constant-width font.</para>
+
+<para>Components of filenames that vary are represented by a description
+of the contents enclosed in "<emphasis remap='CW'>&lt;</emphasis>" and
+"<emphasis remap='CW'>&gt;</emphasis>" characters, <emphasis
+remap='CW'>&lt;thus&gt;</emphasis>.  Electronic mail addresses are also
+enclosed in "&lt;" and "&gt;" but are shown in the usual
+typeface.</para>
+
+<para>Optional components of filenames are enclosed in
+"<emphasis>[</emphasis>" and "<emphasis>]</emphasis>" characters and may
+be combined with the "<emphasis>&lt;</emphasis>" and
+"<emphasis>&gt;</emphasis>" convention.  For example, if a filename is
+allowed to occur either with or without an extension, it might be
+represented by
+<emphasis>&lt;filename&gt;[.&lt;extension&gt;]</emphasis>.</para>
+
+<para>Variable substrings of directory names and filenames are indicated
+by "<emphasis>*</emphasis>".</para>
+
+<para>The sections of the text marked as
+<emphasis>Rationale</emphasis> are explanatory and are
+non-normative.</para>
+
+</section>
+
+</chapter>

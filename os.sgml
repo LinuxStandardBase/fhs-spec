@@ -1,0 +1,332 @@
+<chapter id='operatingSystemSpecificAnnex'>
+<title>Operating System Specific Annex</title>
+
+<para>This section is for additional requirements and recommendations
+that only apply to a specific operating system.  The material in this
+section should never conflict with the base standard.</para>
+
+<section id='linux'><title>Linux</title>
+
+<para>This is the annex for the Linux operating system.</para>
+
+<section id='rootDirectory'><title>/ : Root directory</title>
+
+<para>On Linux systems, if the kernel is located in
+<filename>/</filename>, we recommend using the names
+<filename>vmlinux</filename> or <filename>vmlinuz</filename>, which
+have been used in recent Linux kernel source packages.</para>
+
+</section>
+
+
+<section id='binEssentialUserCommandBinaries2'>
+<title>/bin : Essential user command binaries (for use by all users)</title>
+
+<para>Linux systems which require them place these additional files into
+<filename>/bin</filename>:</para>
+<itemizedlist>
+
+<listitem><para><command>setserial</command></para>
+</listitem>
+
+</itemizedlist>
+
+</section>
+
+<section id='devDevicesAndSpecialFiles'>
+<title>/dev : Devices and special files</title>
+
+
+<para>The following devices must exist under /dev. 
+
+<variablelist>
+
+<varlistentry><term><filename>/dev/null</filename></term>
+<listitem>
+<para>
+All data written to this device is discarded. A read from this device
+will return an EOF condition.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><filename>/dev/zero</filename></term>
+<listitem>
+<para>
+This device is a source of zeroed out data. All data written to this
+device is discarded. A read from this device will return as many bytes
+containing the value zero as was requested.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><filename>/dev/tty</filename></term>
+<listitem>
+<para>
+This device is a synonym for the controlling terminal of a
+process. Once this device is opened, all reads and writes will behave
+as if the actual controlling terminal device had been opened.
+</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<tip><title>Rationale</title>
+
+<para>Previous versions of the FHS had stricter requirements for
+<filename>/dev</filename>. Other devices may also exist in
+/dev. Device names may exist as symbolic links to other device nodes
+located in /dev or subdirectories of /dev. There is no requirement
+concerning major/minor number values.</para>
+</tip>
+
+</section>
+
+<section id='etcHostspecificSystemConfiguration2'>
+<title>/etc : Host-specific system configuration</title>
+
+<para>Linux systems which require them place these additional files into
+<filename>/etc</filename>.</para>
+
+<itemizedlist>
+
+<listitem><para><filename>lilo.conf</filename></para>
+</listitem>
+
+</itemizedlist>
+
+</section>
+
+<section id='lib64'>
+<title>/lib64 and /lib32 : 64/32-bit libraries (architecture dependent)</title>
+
+<para>
+
+The 64-bit architectures PPC64, s390x, sparc64 and AMD64 must place
+64-bit libraries in <filename>/lib64</filename>, and 32-bit
+(or 31-bit on s390) libraries in <filename>/lib</filename>.
+</para>
+<para>
+The 64-bit architecture IA64 must place 64-bit libraries in
+<filename>/lib</filename>. 
+
+<tip><title>Rationale</title>
+<para>
+This is a refinement of the general rules for
+<filename>/lib&lt;qual&gt;</filename> and
+<filename>/usr/lib&lt;qual&gt;</filename>.  The architectures PPC64,
+s390x, sparc64 and AMD64 support support both 32-bit (for s390 more
+precise 31-bit) and 64-bit programs.  Using <filename>lib</filename>
+for 32-bit binaries allows existing binaries from the 32-bit systems
+to work without any changes: such binaries are expected to be numerous.
+IA-64 uses a different scheme, reflecting the deprecation of 32-bit
+binaries (and hence libraries) on that architecture.
+</para>
+</tip>
+</para>
+</section>
+
+<section id='procKernelAndProcessInformationVir'>
+<title>/proc : Kernel and process information virtual filesystem</title>
+
+<para>The <filename>proc</filename> filesystem is the de-facto
+standard Linux method for handling process and system information,
+rather than <filename>/dev/kmem</filename> and other similar methods.
+We strongly encourage this for the storage and retrieval of process
+information as well as other kernel and memory information.</para>
+
+</section>
+
+<section id='sbinEssentialSystemBinaries'>
+<title>/sbin : Essential system binaries</title>
+
+<para>Linux systems place these additional files into <filename>/sbin</filename>.</para>
+<itemizedlist normal mark='bullet'>
+<listitem>
+<para>Second extended filesystem commands (optional):</para>
+
+<itemizedlist>
+
+<listitem><para><command>badblocks</command></para>
+</listitem>
+
+<listitem><para><command>dumpe2fs</command></para>
+</listitem>
+
+<listitem><para><command>e2fsck</command></para>
+</listitem>
+
+<listitem><para><command>mke2fs</command></para>
+</listitem>
+
+<listitem><para><command>mklost+found</command></para>
+</listitem>
+
+<listitem><para><command>tune2fs</command></para>
+</listitem>
+
+</itemizedlist>
+
+</listitem>
+
+<listitem>
+<para>Boot-loader map installer (optional):</para>
+
+<itemizedlist>
+
+<listitem><para><command>lilo</command></para>
+</listitem>
+
+</itemizedlist>
+
+</listitem>
+</itemizedlist>
+
+
+<para>Optional files for /sbin:</para>
+<itemizedlist normal mark='bullet'>
+<listitem>
+<para>Static binaries:</para>
+
+<itemizedlist>
+
+<listitem><para><command>ldconfig</command></para>
+</listitem>
+
+<listitem><para><command>sln</command></para>
+</listitem>
+
+<listitem><para><command>ssync</command></para>
+</listitem>
+
+</itemizedlist>
+
+<para>Static <command>ln</command> (<command>sln</command>) and
+static <command>sync</command> (<command>ssync</command>) are
+useful when things go wrong.  The primary use of
+<command>sln</command> (to repair incorrect symlinks in
+<filename>/lib</filename> after a poorly orchestrated upgrade) is no
+longer a major concern now that the <command>ldconfig</command>
+program (usually located in <filename>/usr/sbin</filename>) exists and
+can act as a guiding hand in upgrading the dynamic libraries.  Static
+<command>sync</command> is useful in some emergency situations.
+Note that these need not be statically linked versions of the standard
+<command>ln</command> and <command>sync</command>, but may
+be.</para>
+
+<para>The <command>ldconfig</command> binary is optional for
+<filename>/sbin</filename> since a site may choose to run
+<command>ldconfig</command> at boot time, rather than only when
+upgrading the shared libraries.  (It's not clear whether or not it is
+advantageous to run <command>ldconfig</command> on each boot.)  Even
+so, some people like <command>ldconfig</command> around for the
+following (all too common) situation:</para>
+
+<orderedlist numeration='arabic'>
+<listitem>
+<para>I've just removed <filename>/lib/&lt;file&gt;</filename>.</para>
+</listitem>
+<listitem>
+<para>I can't find out the name of the library because <command>ls</command> is
+dynamically linked, I'm using a shell that doesn't have <command>ls</command>
+built-in, and I don't know about using "<command>echo *</command>" as a
+replacement.</para>
+</listitem>
+<listitem>
+<para>I have a static <command>sln</command>, but I don't know what to call the link.</para>
+</listitem>
+</orderedlist>
+</listitem>
+<listitem>
+<para>Miscellaneous:</para>
+
+<itemizedlist>
+
+<listitem><para><command>ctrlaltdel</command></para>
+</listitem>
+
+<listitem><para><command>kbdrate</command></para>
+</listitem>
+
+</itemizedlist>
+
+<para>So as to cope with the fact that some keyboards come up with
+such a high repeat rate as to be unusable,
+<command>kbdrate</command> may be installed in
+<filename>/sbin</filename> on some systems.</para>
+
+<para>Since the default action in the kernel for the Ctrl-Alt-Del key
+combination is an instant hard reboot, it is generally advisable to
+disable the behavior before mounting the root filesystem in read-write
+mode.  Some <command>init</command> suites are able to disable
+Ctrl-Alt-Del, but others may require the
+<command>ctrlaltdel</command> program, which may be installed in
+<filename>/sbin</filename> on those systems.</para>
+
+</listitem>
+</itemizedlist>
+
+</section>
+
+<section id='usrincludeHeaderFilesIncludedByCP'>
+
+<title>/usr/include : Header files included by C programs</title>
+
+<para>These symbolic links are required if a C or C++ compiler is
+installed and only for systems not based on glibc.</para>
+
+<screen>
+    /usr/include/asm -&gt; /usr/src/linux/include/asm-&lt;arch&gt;
+    /usr/include/linux -&gt; /usr/src/linux/include/linux
+</screen>
+
+</section>
+
+<section id='usrsrcSourceCode2'>
+
+<title>/usr/src : Source code</title>
+
+<para>For systems based on glibc, there are no specific guidelines for
+this directory.  For systems based on Linux libc revisions prior to
+glibc, the following guidelines and rationale apply:</para>
+
+<para>The only source code that should be placed in a specific
+location is the Linux kernel source code.  It is located in
+<filename>/usr/src/linux</filename>.</para>
+
+<para>If a C or C++ compiler is installed, but the complete Linux
+kernel source code is not installed, then the include files from the
+kernel source code must be located in these directories:</para>
+
+<screen>
+    /usr/src/linux/include/asm-&lt;arch&gt;
+    /usr/src/linux/include/linux
+</screen> 
+
+<para><filename>&lt;arch&gt;</filename> is the name of the system
+architecture.</para>
+
+<note><title>Note</title><para> <filename>/usr/src/linux</filename>
+may be a symbolic link to a kernel source code tree.</para></note>
+
+<tip><title>Rationale</title>
+
+
+<para>It is important that the kernel include files be located in
+<filename>/usr/src/linux</filename> and not in
+<filename>/usr/include</filename> so there are no problems when system
+administrators upgrade their kernel version for the first time.
+
+</tip>
+</section>
+
+<section id='varspoolcronCronAndAtJobs'>
+
+<title>/var/spool/cron : cron and at jobs</title>
+
+<para>This directory contains the variable data for the
+<command>cron</command> and <command>at</command> programs.</para>
+
+</section>
+</section>
+</chapter>

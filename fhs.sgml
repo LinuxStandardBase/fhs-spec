@@ -1,0 +1,72 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN"[
+
+<!entity specversion "2.3-draft">
+<!entity INTRO SYSTEM "intro.sgml">
+<!entity FILESYSTEM SYSTEM "filesystem.sgml">
+<!entity ROOT-FILESYSTEM SYSTEM "root-filesystem.sgml">
+<!entity USR SYSTEM "usr.sgml">
+<!entity VAR SYSTEM "var.sgml">
+<!entity OS SYSTEM "os.sgml">
+<!entity APPENDIX SYSTEM "appendix.sgml">
+
+]>
+
+<book>
+<bookinfo>
+<title>Filesystem Hierarchy Standard</title>
+<pubdate>January 28 2004</pubdate>
+<corpauthor>Filesystem Hierarchy Standard Group</corpauthor>
+<authorgroup>
+<editor><firstname>Rusty</firstname><surname>Russell</surname></editor>
+<editor><firstname>Daniel</firstname><surname>Quinlan</surname></editor>
+<editor><firstname>Christopher</firstname><surname>Yeoh</surname></editor>
+</authorgroup>
+<copyright><year>1994-2004</year><holder>Daniel Quinlan</holder></copyright>
+<copyright><year>2001-2004</year><holder>Paul 'Rusty' Russell</holder></copyright>
+<copyright><year>2003-2004</year><holder>Christopher Yeoh</holder></copyright>
+
+<legalnotice>
+
+<para>All trademarks and copyrights are owned by their owners, unless
+specifically noted otherwise.  Use of a term in this document should not
+be regarded as affecting the validity of any trademark or service
+mark.</para>
+
+<para>Permission is granted to make and distribute verbatim copies of
+this standard provided the copyright and this permission notice are
+preserved on all copies.</para> 
+
+<para>Permission is granted to copy and distribute modified versions of this
+standard under the conditions for verbatim copying, provided also that
+the title page is labeled as modified including a reference to the
+original standard, provided that information on retrieving the original
+standard is included, and provided that the entire resulting derived
+work is distributed under the terms of a permission notice identical to
+this one.</para>
+
+<para>Permission is granted to copy and distribute translations of this
+standard into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the copyright holder.</para>
+
+</legalnotice>
+
+<abstract>
+<para>This standard consists of a set of requirements and guidelines for file
+and directory placement under UNIX-like operating systems.  The
+guidelines are intended to support interoperability of applications,
+system administration tools, development tools, and scripts as well as
+greater uniformity of documentation for these systems.</para>
+</abstract>
+
+</bookinfo>
+
+&INTRO;
+&FILESYSTEM;
+&ROOT-FILESYSTEM;
+&USR;
+&VAR;
+&OS;
+&APPENDIX;
+
+</book>

@@ -1,0 +1,1354 @@
+<chapter id='theUsrHierarchy'>
+<title>The /usr Hierarchy</title>
+
+<section id='purpose18'><title>Purpose</title>
+
+<para><filename>/usr</filename> is the second major section of the
+filesystem.  <filename>/usr</filename> is shareable, read-only data.
+That means that <filename>/usr</filename> should be shareable between
+various FHS-compliant hosts and must not be written to.  Any
+information that is host-specific or varies with time is stored
+elsewhere.</para>
+
+<para>Large software packages must not use a direct subdirectory under
+the <filename>/usr</filename> hierarchy.</para>
+
+</section>
+
+<section id='requirements9'><title>Requirements</title>
+
+<para>The following directories, or symbolic links to directories, are
+required in <filename>/usr</filename>.</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>bin</filename></entry>
+       <entry>Most user commands</entry>
+     </row>
+
+     <row>
+       <entry><filename>include</filename></entry>
+       <entry>Header files included by C programs</entry>
+     </row>
+
+     <row>
+       <entry><filename>lib</filename></entry>
+       <entry>Libraries</entry>
+     </row>
+
+     <row>
+       <entry><filename>local</filename></entry>
+       <entry>Local hierarchy (empty after main installation)</entry>
+     </row>
+
+     <row>
+       <entry><filename>sbin</filename></entry>
+       <entry>Non-vital system binaries</entry>
+     </row>
+
+     <row>
+       <entry><filename>share</filename></entry>
+       <entry>Architecture-independent data</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+
+<section id='specificOptions9'><title>Specific Options</title>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry><entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>X11R6</filename></entry>
+       <entry>XWindow System, version 11 release 6 (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>games</filename></entry>
+       <entry>Games and educational binaries (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>lib&lt;qual&gt;</filename></entry>
+       <entry>Alternate Format Libraries (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>src</filename></entry>
+       <entry>Source code (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+<para>An exception is made for the X Window System because of
+considerable precedent and widely-accepted practice.</para>
+
+<para>The following symbolic links to directories may be present. This
+possibility is based on the need to preserve compatibility with older
+systems until all implementations can be assumed to use the
+<filename>/var</filename> hierarchy.</para>
+
+<screen>
+    /usr/spool -&gt; /var/spool
+    /usr/tmp -&gt; /var/tmp
+    /usr/spool/locks -&gt; /var/lock
+</screen>
+
+<para>Once a system no longer requires any one of the above symbolic links,
+the link may be removed, if desired.</para>
+
+</section>
+
+<section id='usrx11r6XWindowSystemVersion11Rel'>
+<title>/usr/X11R6 : X Window System, Version 11 Release 6 (optional)</title>
+
+<section id='purpose19'><title>Purpose</title>
+
+<para>This hierarchy is reserved for the X Window System, version 11
+release 6, and related files.</para>
+
+<para>To simplify matters and make XFree86 more compatible with the X
+Window System on other systems, the following symbolic links must be
+present if <filename>/usr/X11R6</filename> exists:</para>
+
+<screen>
+    /usr/bin/X11 -&gt; /usr/X11R6/bin
+    /usr/lib/X11 -&gt; /usr/X11R6/lib/X11
+    /usr/include/X11 -&gt; /usr/X11R6/include/X11
+</screen>
+
+<para>In general, software must not be installed or managed via the above
+symbolic links.  They are intended for utilization by users only.  The
+difficulty is related to the release version of the X Window System &mdash;
+in transitional periods, it is impossible to know what release of X11 is
+in use.</para>
+
+</section>
+
+<section id='specificOptions10'><title>Specific Options</title>
+
+<para>Host-specific data in <filename>/usr/X11R6/lib/X11</filename> should be interpreted
+as a demonstration file.  Applications requiring information about the
+current host must reference a configuration file in <filename>/etc/X11</filename>,
+which may be linked to a file in <filename>/usr/X11R6/lib</filename>.
+
+<footnote>
+<para>
+Examples of such configuration files include
+<filename>Xconfig</filename>, <filename>XF86Config</filename>, or
+<filename>system.twmrc</filename>)
+</para>
+</footnote>
+</para>
+
+</section>
+</section>
+
+<section id='usrbinMostUserCommands'>
+<title>/usr/bin : Most user commands</title>
+
+<section id='purpose20'><title>Purpose</title>
+
+<para>This is the primary directory of executable commands on the
+system.</para>
+
+</section>
+
+<section id='specificOptions11'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/usr/bin</filename>, if the corresponding
+subsystem is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>mh</filename></entry>
+       <entry>Commands for the MH mail handling system (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para><filename>/usr/bin/X11</filename> must be a symlink to
+<filename>/usr/X11R6/bin</filename> if the latter exists.</para>
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/usr/bin</filename>, if the corresponding subsystem is
+installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+       <row><entry>Command</entry><entry>Description</entry></row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><command>perl</command></entry>
+        <entry>The Practical Extraction and Report Language (optional)</entry>
+      </row>
+      <row>
+        <entry><command>python</command></entry>
+        <entry>The Python interpreted language (optional)</entry>
+      </row>
+      <row>
+        <entry><command>tclsh</command></entry>
+        <entry>Simple shell containing Tcl interpreter (optional)</entry>
+      </row>
+      <row>
+        <entry><command>wish</command></entry>
+        <entry>Simple Tcl/Tk windowing shell (optional)</entry>
+      </row>
+      <row>
+        <entry><command>expect</command></entry>
+        <entry>Program for interactive dialog (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+<tip><title>Rationale</title>
+
+<para>Because shell script interpreters (invoked with
+<filename>#!&lt;path&gt;</filename> on the first line of a shell
+script) cannot rely on a path, it is advantageous to standardize their
+locations.  The Bourne shell and C-shell interpreters are already
+fixed in <filename>/bin</filename>, but Perl, Python, and Tcl are
+often found in many different places.  They may be symlinks to the
+physical location of the shell interpreters.
+
+</tip>
+</section>
+</section>
+
+<section id='usrincludeDirectoryForStandardInclu'>
+<title>/usr/include : Directory for standard include files.</title>
+
+<section id='purpose21'><title>Purpose</title>
+
+<para>This is where all of the system's general-use include files for the C
+programming language should be placed.</para>
+
+</section>
+
+<section id='specificOptions12'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/usr/include</filename>, if the corresponding
+subsystem is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry>bsd</entry>
+       <entry>BSD compatibility include files (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+<para>The symbolic link <filename>/usr/include/X11</filename> must
+link to <filename>/usr/X11R6/include/X11</filename> if the latter
+exists.</para>
+
+</section>
+</section>
+
+<section id='usrlibLibrariesForProgrammingAndPa'>
+<title>/usr/lib : Libraries for programming and packages</title>
+
+<section id='purpose22'><title>Purpose</title>
+
+<para><filename>/usr/lib</filename> includes object files, libraries,
+and internal binaries that are not intended to be executed directly by
+users or shell scripts.
+<footnote><para> Miscellaneous
+architecture-independent application-specific static files and
+subdirectories must be placed in <filename>/usr/share</filename>.
+</para>
+</footnote></para>
+
+<para>Applications may use a single subdirectory under
+<filename>/usr/lib</filename>.  If an application uses a subdirectory,
+all architecture-dependent data exclusively used by the application
+must be placed within that subdirectory.  
+
+<footnote>
+<para> For example, the <filename>perl5</filename> subdirectory for
+Perl 5 modules and libraries.</para>  </footnote></para>
+
+</section>
+
+<section id='specificOptions13'><title>Specific Options</title>
+
+<para>For historical reasons, <command>/usr/lib/sendmail</command>
+must be a symbolic link to <command>/usr/sbin/sendmail</command> if
+the latter exists.
+
+<footnote>
+<para>
+Some executable commands such as <command>makewhatis</command> and
+<command>sendmail</command> have also been traditionally placed in
+<filename>/usr/lib</filename>.  <command>makewhatis</command> is an
+internal binary and must be placed in a binary directory; users access
+only <command>catman</command>.  Newer <command>sendmail</command>
+binaries are now placed by default in <filename>/usr/sbin</filename>.
+Additionally, systems using a <emphasis>sendmail</emphasis>-compatible
+mail transfer agent must provide
+<command>/usr/sbin/sendmail</command> as a symbolic link to the
+appropriate executable. </para>
+</footnote></para>
+
+<para>If <filename>/lib/X11</filename> exists,
+<filename>/usr/lib/X11</filename> must be a symbolic link to
+<filename>/lib/X11</filename>, or to whatever
+<filename>/lib/X11</filename> is a symbolic link to.
+
+<footnote>
+<para>
+Host-specific data for the X Window System must not be stored in
+<filename>/usr/lib/X11</filename>.  Host-specific configuration files
+such as <filename>Xconfig</filename> or
+<filename>XF86Config</filename> must be stored in
+<filename>/etc/X11</filename>.  This includes configuration data such
+as <filename>system.twmrc</filename> even if it is only made a
+symbolic link to a more global configuration file (probably in
+<filename>/usr/X11R6/lib/X11</filename>).
+</para>
+</footnote></para>
+</section>
+</section>
+
+<section id='usrlibltqualgtAlternateFormatLibrari'>
+<title>/usr/lib&lt;qual&gt; : Alternate format libraries (optional)</title>
+
+<section id='purpose23'><title>Purpose</title>
+
+<para><filename>/usr/lib&lt;qual&gt;</filename> performs the same role as <filename>/usr/lib</filename> for an
+alternate binary format, except that the symbolic links
+<filename>/usr/lib&lt;qual&gt;/sendmail</filename> and <filename>/usr/lib&lt;qual&gt;/X11</filename> are not required.
+
+<footnote>
+<para>
+The case where <filename>/usr/lib</filename> and <filename>/usr/lib&lt;qual&gt;</filename> are the
+same (one is a symbolic link to the other) these files and the
+per-application subdirectories will exist.
+</para>
+</footnote></para>
+
+</section>
+
+<section id='usrlocalLocalHierarchy'>
+<title>/usr/local : Local hierarchy</title>
+
+<section id='purpose24'><title>Purpose</title>
+
+<para>The <filename>/usr/local</filename> hierarchy is for use by the
+system administrator when installing software locally.  It needs to be
+safe from being overwritten when the system software is updated.  It
+may be used for programs and data that are shareable amongst a group
+of hosts, but not found in <filename>/usr</filename>.</para>
+
+<para>Locally installed software must be placed within
+<filename>/usr/local</filename> rather than <filename>/usr</filename>
+unless it is being installed to replace or upgrade software in
+<filename>/usr</filename>.
+
+<footnote>
+<para>
+Software placed in <filename>/</filename> or
+<filename>/usr</filename> may be overwritten by system upgrades
+(though we recommend that distributions do not overwrite data in
+<filename>/etc</filename> under these circumstances).  For this
+reason, local software must not be placed outside of
+<filename>/usr/local</filename> without good reason.
+</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='requirements10'><title>Requirements</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/usr/local</filename></para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>bin</filename></entry>
+       <entry>Local binaries</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>etc</filename></entry>
+       <entry>Host-specific system configuration for local binaries</entry>
+     </row>
+
+     <row>
+       <entry><filename>games</filename></entry>
+       <entry>Local game binaries</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>include</filename></entry>
+       <entry>Local C header files</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>lib</filename></entry>
+       <entry>Local libraries</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>man</filename></entry>
+       <entry>Local online manuals</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>sbin</filename></entry>
+       <entry>Local system binaries</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>share</filename></entry>
+       <entry>Local architecture-independent hierarchy</entry>
+     </row>
+
+
+     <row>
+       <entry><filename>src</filename></entry>
+       <entry>Local source code</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+<para>No other directories, except those listed below, may be in
+<filename>/usr/local</filename> after first installing a FHS-compliant
+system.</para>
+
+</section>
+
+<section id='specificOptions14'><title>Specific Options</title>
+
+<para>If directories <filename>/lib&lt;qual&gt;</filename> or
+<filename>/usr/lib&lt;qual&gt;</filename> exist, the equivalent
+directories must also exist in <filename>/usr/local</filename>.</para>
+
+<para><filename>/usr/local/etc</filename> may be a symbolic link to
+<filename>/etc/local</filename>.</para>
+
+<tip><title>Rationale</title>
+
+<para>The consistency of <filename>/usr/local/etc</filename> is
+beneficial to installers, and is already used in other systems.  As
+all of <filename>/usr/local</filename> needs to be backed up to
+reproduce a system, it introduces no additional maintenance overhead,
+but a symlink to <filename>/etc/local</filename> is suitable if
+systems want alltheir configuration under one hierarchy.
+</para>
+<para>
+Note that <filename>/usr/etc</filename> is still not allowed: programs
+in <filename>/usr</filename> should place configuration files in
+<filename>/etc</filename>.
+</para>
+
+</tip>
+</section>
+</section>
+
+
+</section>
+
+<section id='usrlocalshare1'><title>/usr/local/share</title>
+
+<para>The requirements for the contents of this directory are the same
+as <filename>/usr/share</filename>.  The only additional constraint is
+that <filename>/usr/local/share/man</filename> and
+<filename>/usr/local/man</filename> directories must be synonomous
+(usually this means that one of them must be a symbolic link).
+
+<footnote>
+<para>
+<filename>/usr/local/man</filename> may be deprecated in future FHS
+releases, so if all else is equal, making that one a symlink seems
+sensible.
+</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='usrsbinNonessentialStandardSystemBi'>
+<title>/usr/sbin : Non-essential standard system binaries</title>
+
+<section id='purpose25'><title>Purpose</title>
+
+<para>This directory contains any non-essential binaries used
+exclusively by the system administrator.  System administration
+programs that are required for system repair, system recovery,
+mounting <filename>/usr</filename>, or other essential functions must
+be placed in <filename>/sbin</filename> instead.
+
+<footnote>
+<para>
+Locally installed system administration programs should be placed in
+<filename>/usr/local/sbin</filename>.
+<para>
+</footnote></para>
+</section>
+</section>
+
+<section id='usrshareArchitectureindependentData'>
+<title>/usr/share : Architecture-independent data</title>
+
+<section id='purpose26'><title>Purpose</title>
+
+<para>The <filename>/usr/share</filename> hierarchy is for all
+read-only architecture independent data files.
+
+<footnote>
+<para>
+Much of this data originally lived in <filename>/usr</filename>
+(<filename>man</filename>, <filename>doc</filename>) or
+<filename>/usr/lib</filename> (<filename>dict</filename>,
+<filename>terminfo</filename>, <filename>zoneinfo</filename>).
+</para>
+</footnote>
+
+</para>
+
+<para>This hierarchy is intended to be shareable among all
+architecture platforms of a given OS; thus, for example, a site with
+i386, Alpha, and PPC platforms might maintain a single
+<filename>/usr/share</filename> directory that is centrally-mounted.
+Note, however, that <filename>/usr/share</filename> is generally not
+intended to be shared by different OSes or by different releases of
+the same OS.</para>
+
+<para>Any program or package which contains or requires data that
+doesn't need to be modified should store that data in
+<filename>/usr/share</filename> (or
+<filename>/usr/local/share</filename>, if installed locally).  It is
+recommended that a subdirectory be used in
+<filename>/usr/share</filename> for this purpose.</para>
+
+<para>Game data stored in <filename>/usr/share/games</filename> must
+be purely static data.  Any modifiable files, such as score files,
+game play logs, and so forth, should be placed in
+<filename>/var/games</filename>.</para>
+
+</section>
+
+<section id='requirements11'><title>Requirements</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/usr/share</filename></para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>man</filename></entry>
+       <entry>Online manuals</entry>
+     </row>
+
+     <row>
+       <entry><filename>misc</filename></entry>
+       <entry>Miscellaneous architecture-independent data</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+
+<section id='specificOptions15'><title>Specific Options</title>
+<para>The following directories, or symbolic links to directories, must be in <filename>/usr/share</filename>, if the corresponding
+subsystem is installed:</para>
+
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>dict</filename></entry>
+       <entry>Word lists (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>doc</filename></entry>
+       <entry>Miscellaneous documentation (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>games</filename></entry>
+       <entry>Static data files for /usr/games (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>info</filename></entry>
+       <entry>GNU Info system s primary directory (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>locale</filename></entry>
+       <entry>Locale information (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>nls</filename></entry>
+       <entry>Message catalogs for Native language support (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>sgml</filename></entry>
+       <entry>SGML data (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>terminfo</filename></entry>
+       <entry>Directories for terminfo database (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>tmac</filename></entry>
+       <entry>troff macros not distributed with groff (optional)</entry>
+     </row>
+     <row>
+       <entry><filename>xml</filename></entry>
+       <entry>XML data (optional)</entry>
+     </row>
+     <row>
+       <entry><filename>zoneinfo</filename></entry>
+       <entry>Timezone information and configuration (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>It is recommended that application-specific,
+architecture-independent directories be placed here.  Such directories
+include <command>groff</command>, <command>perl</command>,
+<command>ghostscript</command>, <command>texmf</command>, and
+<command>kbd</command> (Linux) or <command>syscons</command>
+(BSD).  They may, however, be placed in <filename>/usr/lib</filename>
+for backwards compatibility, at the distributor's discretion.
+Similarly, a <filename>/usr/lib/games</filename> hierarchy may be used
+in addition to the <filename>/usr/share/games</filename> hierarchy if
+the distributor wishes to place some game data there.</para>
+
+</section>
+
+<section id='usrsharedictWordLists'>
+<title>/usr/share/dict : Word lists (optional)</title>
+
+<section id='purpose27'><title>Purpose</title>
+
+<para>This directory is the home for word lists on the system;
+Traditionally this directory contains only the English
+<filename>words</filename> file, which is used by
+<command>look(1)</command> and various spelling programs.
+<filename>words</filename> may use either American or British
+spelling.</para>
+
+
+<tip><title>Rationale</title>
+
+<para>The reason that only word lists are located here is that they
+are the only files common to all spell checkers.</para>
+
+</tip>
+</section>
+
+<section id='specificOptions16'><title>Specific Options</title>
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/usr/share/dict</filename>, if the corresponding subsystem
+is installed:</para>
+
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+      <row>
+        <entry><filename>File</filename></entry>
+        <entry>Description</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>words</filename></entry>
+        <entry>List of English words (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>Sites that require both American and British spelling may link
+<filename>words</filename> to
+<filename>&shy;/usr/share/dict/american-english</filename> or
+<filename>&shy;/usr/share/dict/british-english</filename>.</para>
+
+<para>Word lists for other languages may be added using the English
+name for that language, e.g.,
+<filename>/usr/share/dict/french</filename>,
+<filename>/usr/share/dict/danish</filename>, etc.  These should, if
+possible, use an ISO 8859 character set which is appropriate for the
+language in question; if possible the Latin1 (ISO 8859-1) character
+set should be used (this is often not possible).</para>
+
+<para>Other word lists must be included here, if present.</para>
+
+</section>
+</section>
+
+<section id='usrsharemanManualPages'>
+<title>/usr/share/man : Manual pages</title>
+
+
+<section id='purpose28'><title>Purpose</title>
+
+<para>This section details the organization for manual pages
+throughout the system, including <filename>/usr/share/man</filename>.
+Also refer to the section on
+<filename>/var/cache/man</filename>.</para>
+
+<para>The primary <filename>&lt;mandir&gt;</filename> of the system is
+<filename>/usr/share/man</filename>.
+<filename>/usr/share/man</filename> contains manual information for
+commands and data under the <filename>/</filename> and
+<filename>/usr</filename> filesystems.
+
+<footnote>
+<para>Obviously, there are no manual pages in <filename>/</filename>
+because they are not required at boot time nor are they required in
+emergencies. Really.</para></footnote></para> 
+
+<para>Manual pages are stored in
+<filename>&lt;mandir&gt;/&lt;locale&gt;/man&lt;section&gt;/&lt;arch&gt;</filename>.
+An explanation of <filename>&lt;mandir&gt;</filename>,
+<filename>&lt;locale&gt;</filename>,
+<filename>&lt;section&gt;</filename>, and
+<filename>&lt;arch&gt;</filename> is given below.</para>
+
+<para>A description of each section follows:</para>
+<itemizedlist normal mark='bullet'>
+<listitem>
+<para><filename>man1</filename>: User programs
+<!-- .br -->
+Manual pages that describe publicly accessible commands are contained in
+this chapter.  Most program documentation that a user will need to use
+is located here.</para>
+</listitem>
+<listitem>
+<para><filename>man2</filename>: System calls
+<!-- .br -->
+This section describes all of the system calls (requests for the
+kernel to perform operations).</para>
+<!--  delete parenthesized remark?  assume technical background? -->
+</listitem>
+<listitem>
+<para><filename>man3</filename>: Library functions and subroutines
+<!-- .br -->
+Section 3 describes program library routines that are not direct calls
+to kernel services.  This and chapter 2 are only really of interest to
+programmers.</para>
+</listitem>
+<listitem>
+<para><filename>man4</filename>: Special files
+<!-- .br -->
+Section 4 describes the special files, related driver functions, and
+networking support available in the system.  Typically, this includes
+the device files found in <filename>/dev</filename> and the kernel interface to
+networking protocol support.</para>
+</listitem>
+<listitem>
+<para><filename>man5</filename>: File formats
+<!-- .br -->
+The formats for many data files are documented in the
+section 5.  This includes various include files, program output files,
+and system files.</para>
+</listitem>
+<listitem>
+<para><filename>man6</filename>: Games
+<!-- .br -->
+This chapter documents games, demos, and generally trivial programs.
+Different people have various notions about how essential this is.</para>
+</listitem>
+<listitem>
+<para><filename>man7</filename>: Miscellaneous
+<!-- .br -->
+Manual pages that are difficult to classify are designated as being
+section 7.  The troff and other text processing macro packages are found
+here.</para>
+</listitem>
+<listitem>
+<para><filename>man8</filename>: System administration
+<!-- .br -->
+Programs used by system administrators for system operation and
+maintenance are documented here.  Some of these programs are also
+occasionally useful for normal users.</para>
+</listitem>
+</itemizedlist>
+</section>
+
+<section id='specificOptions17'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in
+<filename>/usr/share/&lt;mandir&gt;/&lt;locale&gt;</filename>, unless
+they are empty:
+
+<footnote><para>For example, if <filename>/usr/local/man</filename>
+has no manual pages in section 4 (Devices), then
+<filename>/usr/local/man/man4</filename> may be omitted.</para>
+</footnote></para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>man1</filename></entry>
+       <entry>User programs (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man2</filename></entry>
+       <entry>System calls (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man3</filename></entry>
+       <entry>Library calls (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man4</filename></entry>
+       <entry>Special files (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man5</filename></entry>
+       <entry>File formats (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man6</filename></entry>
+       <entry>Games (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man7</filename></entry>
+       <entry>Miscellaneous (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man8</filename></entry>
+       <entry>System administration (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+
+<para>The component <filename>&lt;section&gt;</filename> describes the
+manual section.</para>
+
+<para>Provisions must be made in the structure of
+<filename>/usr/share/man</filename> to support manual pages which are
+written in different (or multiple) languages.  These provisions must
+take into account the storage and reference of these manual pages.
+Relevant factors include language (including geographical-based
+differences), and character code set.</para>
+
+<para>This naming of language subdirectories of
+<filename>/usr/share/man</filename> is based on Appendix E of the
+POSIX 1003.1 standard which describes the locale identification string
+&mdash; the most well-accepted method to describe a cultural
+environment.  The <filename>&lt;locale&gt;</filename> string
+is:</para>
+
+<para><filename>&lt;language&gt;[_&lt;territory&gt;][.&lt;character-set&gt;][,&lt;version&gt;]</filename></para>
+
+<para>The <filename>&lt;language&gt;</filename> field must be taken
+from ISO 639 (a code for the representation of names of languages).
+It must be two characters wide and specified with lowercase letters
+only.</para>
+
+<para>The <filename>&lt;territory&gt;</filename> field must be the
+two-letter code of ISO 3166 (a specification of representations of
+countries), if possible.  (Most people are familiar with the
+two-letter codes used for the country codes in email addresses.) It
+must be two characters wide and specified with uppercase letters
+only.
+<footnote><para> A major exception to this rule is the
+United Kingdom, which is `GB' in the ISO 3166, but `UK' for most email
+addresses.</para>  </footnote></para>
+
+<para>The <filename>&lt;character-set&gt;</filename> field must
+represent the standard describing the character set.  If the
+<filename>&shy;&lt;character-set&gt;</filename> field is just a
+numeric specification, the number represents the number of the
+international standard describing the character set.  It is
+recommended that this be a numeric representation if possible (ISO
+standards, especially), not include additional punctuation symbols,
+and that any letters be in lowercase.</para>
+
+<para>A parameter specifying a <filename>&lt;version&gt;</filename> of
+the profile may be placed after the
+<filename>&shy;&lt;character-set&gt;</filename> field, delimited by a
+comma.  This may be used to discriminate between different cultural
+needs; for instance, dictionary order versus a more systems-oriented
+collating order.  This standard recommends not using the
+<filename>&lt;version&gt;</filename> field, unless it is
+necessary.</para>
+
+<para>Systems which use a unique language and code set for all manual
+pages may omit the <filename>&lt;locale&gt;</filename> substring and
+store all manual pages in <filename>&lt;mandir&gt;</filename>.  For
+example, systems which only have English manual pages coded with
+ASCII, may store manual pages (the
+<filename>man&lt;section&gt;</filename> directories) directly in
+<filename>/usr/share/man</filename>.  (That is the traditional
+circumstance and arrangement, in fact.)</para>
+
+<para>Countries for which there is a well-accepted standard character
+code set may omit the <filename>&shy;&lt;character-set&gt;</filename>
+field, but it is strongly recommended that it be included, especially
+for countries with several competing standards.</para>
+
+<para>Various examples:</para>
+
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='4' align='center'>
+    <colspec colname='c1'>
+    <colspec colname='c2'>
+    <colspec colname='c3'>
+    <colspec colname='c4'>
+    <thead>
+      <row rowsep='1'>
+        <entry align='left'>Language</entry>
+        <entry align='left'>Territory</entry>
+        <entry align='left'>Character Set</entry>
+        <entry align='left'>Directory</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry align='left'>English</entry>
+        <entry align='left'>&mdash;</entry>
+        <entry align='left'>ASCII</entry>
+        <entry align='left'>/usr/share/man/en</entry>
+      </row>
+      <row>
+        <entry align='left'>English</entry>
+        <entry align='left'>United Kingdom</entry>
+        <entry align='left'>ISO 8859-15</entry>
+        <entry align='left'>/usr/share/man/en_GB</entry>
+      </row>
+      <row>
+        <entry align='left'>English</entry>
+        <entry align='left'>United States</entry>
+        <entry align='left'>ASCII</entry>
+        <entry align='left'>/usr/share/man/en_US</entry>
+      </row>
+      <row>
+        <entry align='left'>French</entry>
+        <entry align='left'>Canada</entry>
+        <entry align='left'>ISO 8859-1</entry>
+        <entry align='left'>/usr/share/man/fr_CA</entry>
+      </row>
+      <row>
+        <entry align='left'>French</entry>
+        <entry align='left'>France</entry>
+        <entry align='left'>ISO 8859-1</entry>
+        <entry align='left'>/usr/share/man/fr_FR</entry>
+      </row>
+      <row>
+        <entry align='left'>German</entry>
+        <entry align='left'>Germany</entry>
+        <entry align='left'>ISO 646</entry>
+        <entry align='left'>/usr/share/man/de_DE.646</entry>
+      </row>
+      <row>
+        <entry align='left'>German</entry>
+        <entry align='left'>Germany</entry>
+        <entry align='left'>ISO 6937</entry>
+        <entry align='left'>/usr/share/man/de_DE.6937</entry>
+      </row>
+      <row>
+        <entry align='left'>German</entry>
+        <entry align='left'>Germany</entry>
+        <entry align='left'>ISO 8859-1</entry>
+        <entry align='left'>/usr/share/man/de_DE.88591</entry>
+      </row>
+      <row>
+        <entry align='left'>German</entry>
+        <entry align='left'>Switzerland</entry>
+        <entry align='left'>ISO 646</entry>
+        <entry align='left'>/usr/share/man/de_CH.646</entry>
+      </row>
+      <row>
+        <entry align='left'>Japanese</entry>
+        <entry align='left'>Japan</entry>
+        <entry align='left'>JIS</entry>
+        <entry align='left'>/usr/share/man/ja_JP.jis</entry>
+      </row>
+      <row>
+        <entry align='left'>Japanese</entry>
+        <entry align='left'>Japan</entry>
+        <entry align='left'>SJIS</entry>
+        <entry align='left'>/usr/share/man/ja_JP.sjis</entry>
+      </row>
+      <row>
+        <entry align='left'>Japanese</entry>
+        <entry align='left'>Japan</entry>
+        <entry align='left'>UJIS (or EUC-J)</entry>
+        <entry align='left'>/usr/share/man/ja_JP.ujis</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>Similarly, provision must be made for manual pages which are
+architecture-dependent, such as documentation on device-drivers or
+low-level system administration commands.  These must be placed under
+an <filename>&lt;arch&gt;</filename> directory in the appropriate
+<filename>man&lt;section&gt;</filename> directory; for example, a man
+page for the i386 ctrlaltdel(8) command might be placed in
+<filename>/usr/share/man/&lt;locale&gt;/man8/i386/ctrlaltdel.8</filename>.
+</para>
+
+<para>Manual pages for commands and data under
+<filename>/usr/local</filename> are stored in
+<filename>/usr/local/man</filename>.  Manual pages for X11R6 are
+stored in <filename>/usr/X11R6/man</filename>.  It follows that all
+manual page hierarchies in the system must have the same structure as
+<filename>/usr/share/man</filename>.</para>
+
+<para>The cat page sections (<filename>cat&lt;section&gt;</filename>)
+containing formatted manual page entries are also found within
+subdirectories of <filename>&lt;mandir&gt;/&lt;locale&gt;</filename>,
+but are not required nor may they be distributed in lieu of nroff
+source manual pages.</para>
+
+<para>The numbered sections "1" through "8" are traditionally defined.
+In general, the file name for manual pages located within a particular
+section end with <filename>.&lt;section&gt;</filename>.</para>
+
+<para>In addition, some large sets of application-specific manual
+pages have an additional suffix appended to the manual page filename.
+For example, the MH mail handling system manual pages must have
+<filename>mh</filename> appended to all MH manuals.  All X Window
+System manual pages must have an <filename>x</filename> appended to
+the filename.</para>
+
+<para>The practice of placing various language manual pages in
+appropriate subdirectories of <filename>/usr/share/man</filename> also
+applies to the other manual page hierarchies, such as
+<filename>/usr/local/man</filename> and
+<filename>/usr/X11R6/man</filename>.  (This portion of the standard
+also applies later in the section on the optional
+<filename>/var/cache/man</filename> structure.)</para>
+
+</section>
+</section>
+
+<section id='usrsharemiscMiscellaneousArchitecture'>
+<title>/usr/share/misc : Miscellaneous architecture-independent data</title>
+
+<para>This directory contains miscellaneous architecture-independent
+files which don't require a separate subdirectory under
+<filename>/usr/share</filename>.</para>
+
+<section id='specificOptions18'><title>Specific Options</title>
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/usr/share/misc</filename>, if the corresponding subsystem
+is installed:</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <colspec colname='c1'>
+    <colspec colname='c2'>
+    <thead>
+     <row>
+       <entry>File</entry>
+       <entry>Description</entry>
+     </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>ascii</filename></entry>
+        <entry>ASCII character set table (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>magic</filename></entry>
+        <entry>Default list of magic numbers for the file command (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>termcap</filename></entry>
+        <entry>Terminal capability database (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>termcap.db</filename></entry>
+        <entry>Terminal capability database (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+<para>Other (application-specific) files may appear here, but a distributor
+may place them in <filename>/usr/lib</filename> at their discretion.
+<footnote><para>
+Some such files include:
+
+<filename>airport</filename>, <filename> birthtoken</filename>, <filename>
+eqnchar</filename>, <filename> getopt</filename>, <filename>
+gprof.callg</filename>, <filename> gprof.flat</filename>, <filename>
+inter.phone</filename>, <filename> ipfw.samp.filters</filename>,
+<filename> ipfw.samp.scripts</filename>, <filename>
+keycap.pcvt</filename>, <filename> mail.help</filename>, <filename>
+mail.tildehelp</filename>, <filename> man.template</filename>,
+<filename>map3270</filename>, <filename> mdoc.template</filename>,
+<filename>more.help</filename>, <filename> na.phone</filename>,
+<filename>nslookup.help</filename>, <filename> operator</filename>,
+<filename>scsi_modes</filename>, <filename> sendmail.hf</filename>,
+<filename>style</filename>, <filename> units.lib</filename>,
+<filename>vgrindefs</filename>, <filename> vgrindefs.db</filename>,
+<filename>zipcodes</filename>
+
+</para>
+</footnote>
+</para>
+
+</section>
+</section>
+
+<section id='usrsharesgmlSgmlAndXmlData'>
+<title>/usr/share/sgml : SGML data (optional)</title>
+
+<section id='purpose29'><title>Purpose</title>
+
+<para><filename>/usr/share/sgml</filename> contains
+architecture-independent files used by SGML applications, such
+as ordinary catalogs (not the centralized ones, see
+<filename>/etc/sgml</filename>), DTDs, entities, or style
+sheets.</para>
+
+</section>
+
+<section id='specificOptions19'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/usr/share/sgml</filename>, if the corresponding
+subsystem is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>docbook</filename></entry>
+       <entry>docbook DTD (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>tei</filename></entry>
+       <entry>tei DTD (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>html</filename></entry>
+       <entry>html DTD (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>mathml</filename></entry>
+       <entry>mathml DTD (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>Other files that are not specific to a given DTD may reside in
+their own subdirectory.</para>
+
+</section>
+</section>
+
+<section>
+<title>/usr/share/xml : XML data (optional)</title>
+
+<section><title>Purpose</title>
+
+<para><filename>/usr/share/xml</filename> contains
+architecture-independent files used by XML applications, such
+as ordinary catalogs (not the centralized ones, see
+<filename>/etc/sgml</filename>), DTDs, entities, or style
+sheets.</para>
+
+</section>
+
+<section><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/usr/share/xml</filename>, if the corresponding
+subsystem is installed:</para>
+
+<informaltable frame="NONE">
+  <tgroup align="LEFT" cols="2">
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>docbook</filename></entry>
+       <entry>docbook XML DTD (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>xhtml</filename></entry>
+       <entry>XHTML DTD (optional)</entry>
+     </row>
+
+<row>
+       <entry><filename>mathml</filename></entry>
+       <entry>MathML DTD (optional)</entry>
+     </row>
+
+     </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+</section>
+</section>
+
+<section id='usrsrcSourceCode'>
+<title>/usr/src : Source code (optional)</title>
+
+<section id='purpose30'><title>Purpose</title>
+
+<para>Source code may be place placed in this
+subdirectory, only for reference purposes.
+
+<footnote><para>
+Generally, source should not be built within this hierarchy.
+</para></footnote>
+</para>
+</section>
+</section>
+</chapter>

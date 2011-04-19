@@ -1,0 +1,1697 @@
+<chapter id='theRootFilesystem'><title>The Root Filesystem</title>
+
+<section id='purpose2'>
+
+<title>Purpose</title>
+
+<para>The contents of the root filesystem must be adequate to boot,
+restore, recover, and/or repair the system.</para>
+
+<itemizedlist normal mark='bullet'>
+
+<listitem>
+<para>To boot a system, enough must be present on the root partition
+to mount other filesystems.  This includes utilities, configuration,
+boot loader information, and other essential start-up data.
+<filename>/usr</filename>, <filename>/opt</filename>, and
+<filename>/var</filename> are designed such that they may be located
+on other partitions or filesystems.</para>
+</listitem>
+
+<listitem>
+<para>To enable recovery and/or repair of a system, those utilities
+needed by an experienced maintainer to diagnose and reconstruct a
+damaged system must be present on the root filesystem.</para>
+</listitem>
+
+<listitem>
+<para>To restore a system, those utilities needed to restore from
+system backups (on floppy, tape, etc.) must be present on the root
+filesystem.</para>
+</listitem>
+
+</itemizedlist>
+
+<tip><title>Rationale</title>
+
+<para>The primary concern used to balance these considerations, which
+favor placing many things on the root filesystem, is the goal of
+keeping root as small as reasonably possible.  For several reasons, it
+is desirable to keep the root filesystem small:</para>
+
+<itemizedlist>
+
+<listitem>
+<para>It is occasionally mounted from very small media.</para>
+</listitem>
+
+<listitem>
+<para>The root filesystem contains many system-specific configuration
+files.  Possible examples include a kernel that is specific to the
+system, a specific hostname, etc.  This means that the root filesystem
+isn't always shareable between networked systems.  Keeping it small on
+servers in networked systems minimizes the amount of lost space for
+areas of unshareable files.  It also allows workstations with smaller
+local hard drives.</para>
+</listitem>
+
+<listitem>
+<para>While you may have the root filesystem on a large partition, and
+may be able to fill it to your heart's content, there will be people
+with smaller partitions.  If you have more files installed, you may
+find incompatibilities with other systems using root filesystems on
+smaller partitions.  If you are a developer then you may be turning
+your assumption into a problem for a large number of users.</para>
+</listitem>
+
+<listitem>
+<para>Disk errors that corrupt data on the root filesystem are a
+greater problem than errors on any other partition.  A small root
+filesystem is less prone to corruption as the result of a system
+crash.</para>
+</listitem>
+
+</itemizedlist>
+</tip>
+
+<para>Applications must never create or require special files or
+subdirectories in the root directory.  Other locations in the FHS
+hierarchy provide more than enough flexibility for any package.</para>
+
+<tip><title>Rationale</title>
+
+<para>There are several reasons why creating a new subdirectory of
+the root filesystem is prohibited:</para>
+
+<itemizedlist normal mark='bullet'>
+
+<listitem>
+<para>It demands space on a root partition which the system
+administrator may want kept small and simple for either performance or
+security reasons.</para>
+</listitem>
+
+<listitem>
+<para>It evades whatever discipline the system administrator may have
+set up for distributing standard file hierarchies across mountable
+volumes.</para>
+</listitem>
+
+</itemizedlist>
+
+<para>Distributions should not create new directories in the root
+hierarchy without extremely careful consideration of the consequences
+including for application portability.</para>
+
+</tip>
+</section>
+
+<section id='requirements'><title>Requirements</title>
+
+<para>The following directories, or symbolic links to directories, are
+required in <filename>/</filename>.</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+     <row>
+       <entry><filename>bin</filename></entry>
+       <entry>Essential command binaries</entry>
+     </row>
+
+     <row>
+       <entry><filename>boot</filename></entry>
+       <entry>Static files of the boot loader</entry>
+     </row>
+
+     <row>
+       <entry><filename>dev</filename></entry>
+       <entry>Device files</entry>
+     </row>
+
+     <row>
+       <entry><filename>etc</filename></entry>
+       <entry>Host-specific system configuration</entry>
+     </row>
+
+     <row>
+       <entry><filename>lib</filename></entry>
+       <entry>Essential shared libraries and kernel modules</entry>
+     </row>
+
+     <row>
+       <entry><filename>media</filename></entry>
+       <entry>Mount point for removeable media</entry>
+     </row>
+
+     <row>
+       <entry><filename>mnt</filename></entry>
+       <entry>Mount point for mounting a filesystem temporarily</entry>
+     </row>
+
+     <row>
+       <entry><filename>opt</filename></entry>
+       <entry>Add-on application software packages</entry>
+     </row>
+
+     <row>
+       <entry><filename>sbin</filename></entry>
+       <entry>Essential system binaries</entry>
+     </row>
+
+     <row>
+       <entry><filename>srv</filename></entry>
+       <entry>Data for services provided by this system</entry>
+     </row>
+
+     <row>
+       <entry><filename>tmp</filename></entry>
+       <entry>Temporary files</entry>
+     </row>
+
+     <row>
+       <entry><filename>usr</filename></entry>
+       <entry>Secondary hierarchy</entry>
+     </row>
+
+     <row>
+       <entry><filename>var</filename></entry>
+       <entry>Variable data</entry>
+     </row>
+   </tbody>
+  </tgroup>
+</informaltable>
+
+<para>Each directory listed above is specified in detail in separate
+subsections below.  <filename>/usr</filename> and
+<filename>/var</filename> each have a complete section in this
+document due to the complexity of those directories.</para>
+
+</section>
+
+<section id='specificOptions'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/</filename>, if the corresponding subsystem is
+installed:</para>
+
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>home</filename></entry>
+       <entry>User home directories (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>lib&lt;qual&gt;</filename></entry>
+       <entry>Alternate format essential shared libraries (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>root</filename></entry>
+       <entry>Home directory for the root user (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+<para>Each directory listed above is specified in detail in separate
+subsections below.</para>
+
+</section>
+
+<section id='binEssentialUserCommandBinaries'>
+<title>/bin : Essential user command binaries (for use by all users)</title>
+
+<section id='purpose3'><title>Purpose</title>
+
+<para><filename>/bin</filename> contains commands that may be used by
+both the system administrator and by users, but which are required
+when no other filesystems are mounted (e.g. in single user mode).  It
+may also contain commands which are used indirectly by scripts.
+
+<footnote>
+<para>
+Command binaries that are not essential enough to place into
+<filename>/bin</filename> must be placed in
+<filename>/usr/bin</filename>, instead.  Items that are required only
+by non-root users (the X Window System, <filename>chsh</filename>,
+etc.) are generally not essential enough to be placed into the root
+partition.
+</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='requirements2'><title>Requirements</title>
+
+<para>There must be no subdirectories in
+<filename>/bin</filename>.</para>
+
+<para>The following commands, or symbolic links to commands, are
+required in <filename>/bin</filename>.</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+      <row><entry>Command</entry><entry>Description</entry></row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><command>cat</command></entry>
+        <entry>Utility to concatenate files to standard output</entry>
+      </row>
+      <row>
+        <entry><command>chgrp</command></entry>
+        <entry>Utility to change file group ownership</entry>
+      </row>
+      <row>
+        <entry><command>chmod</command></entry>
+        <entry>Utility to change file access permissions</entry>
+      </row>
+      <row>
+        <entry><command>chown</command></entry>
+        <entry>Utility to change file owner and group</entry>
+      </row>
+      <row>
+        <entry><command>cp</command></entry>
+        <entry>Utility to copy files and directories</entry>
+      </row>
+      <row>
+        <entry><command>date</command></entry>
+        <entry>Utility to print or set the system data and time</entry>
+      </row>
+      <row>
+        <entry><command>dd</command></entry>
+        <entry>Utility to convert and copy a file</entry>
+      </row>
+      <row>
+        <entry><command>df</command></entry>
+        <entry>Utility to report filesystem disk space usage</entry>
+      </row>
+      <row>
+        <entry><command>dmesg</command></entry>
+        <entry>Utility to print or control the kernel message buffer</entry>
+      </row>
+      <row>
+        <entry><command>echo</command></entry>
+        <entry>Utility to display a line of text</entry>
+      </row>
+      <row>
+        <entry><command>false</command></entry>
+        <entry>Utility to do nothing, unsuccessfully</entry>
+      </row>
+      <row>
+        <entry><command>hostname</command></entry>
+        <entry>Utility to show or set the system's host name</entry>
+      </row>
+      <row>
+        <entry><command>kill</command></entry>
+        <entry>Utility to send signals to processes</entry>
+      </row>
+      <row>
+        <entry><command>ln</command></entry>
+        <entry>Utility to make links between files</entry>
+      </row>
+      <row>
+        <entry><command>login</command></entry>
+        <entry>Utility to begin a session on the system</entry>
+      </row>
+      <row>
+        <entry><command>ls</command></entry>
+        <entry>Utility to list directory contents</entry>
+      </row>
+      <row>
+        <entry><command>mkdir</command></entry>
+        <entry>Utility to make directories</entry>
+      </row>
+      <row>
+        <entry><command>mknod</command></entry>
+        <entry>Utility to make block or character special files</entry>
+      </row>
+      <row>
+        <entry><command>more</command></entry>
+        <entry>Utility to page through text</entry>
+      </row>
+      <row>
+        <entry><command>mount</command></entry>
+        <entry>Utility to mount a filesystem</entry>
+      </row>
+      <row>
+        <entry><command>mv</command></entry>
+        <entry>Utility to move/rename files</entry>
+      </row>
+      <row>
+        <entry><command>ps</command></entry>
+        <entry>Utility to report process status</entry>
+      </row>
+      <row>
+        <entry><command>pwd</command></entry>
+        <entry>Utility to print name of current working directory</entry>
+      </row>
+      <row>
+        <entry><command>rm</command></entry>
+        <entry>Utility to remove files or directories</entry>
+      </row>
+      <row>
+        <entry><command>rmdir</command></entry>
+        <entry>Utility to remove empty directories</entry>
+      </row>
+      <row>
+        <entry><command>sed</command></entry>
+        <entry>The `sed' stream editor</entry>
+      </row>
+      <row>
+        <entry><command>sh</command></entry>
+        <entry>The Bourne command shell</entry>
+      </row>
+      <row>
+        <entry><command>stty</command></entry>
+        <entry>Utility to change and print terminal line settings</entry>
+      </row>
+      <row>
+        <entry><command>su</command></entry>
+        <entry>Utility to change user ID</entry>
+      </row>
+      <row>
+        <entry><command>sync</command></entry>
+        <entry>Utility to flush filesystem buffers</entry>
+      </row>
+      <row>
+        <entry><command>true</command></entry>
+        <entry>Utility to do nothing, successfully</entry>
+      </row>
+      <row>
+        <entry><command>umount</command></entry>
+        <entry>Utility to unmount file systems</entry>
+      </row>
+      <row>
+        <entry><command>uname</command></entry>
+        <entry>Utility to print system information</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>If <command>/bin/sh</command> is not a true Bourne shell, it
+must be a hard or symbolic link to the real shell command.</para>
+
+<para>The <command>[</command> and <command>test</command>
+commands must be placed together in either <filename>/bin</filename>
+or <filename>/usr/bin</filename>.</para>
+
+
+<tip><title>Rationale</title>
+
+<para>For example bash behaves differently when called as
+<command>sh</command> or <command>bash</command>.  The use of a
+symbolic link also allows users to easily see that
+<command>/bin/sh</command> is not a true Bourne shell.</para>
+
+<para>The requirement for the <command>[</command> and
+<command>test</command> commands to be included as binaries (even if
+implemented internally by the shell) is shared with the POSIX.2
+standard.
+
+</tip>
+
+</section>
+
+<section id='specificOptions2'><title>Specific Options</title>
+
+<para>The following programs, or symbolic links to programs, must be
+in <filename>/bin</filename> if the corresponding subsystem is
+installed:</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+      <row><entry>Command</entry><entry>Description</entry></row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><command>csh</command></entry>
+        <entry>The C shell (optional)</entry>
+      </row>
+      <row>
+        <entry><command>ed</command></entry>
+        <entry>The `ed' editor (optional)</entry>
+      </row>
+      <row>
+        <entry><command>tar</command></entry>
+        <entry>The tar archiving utility (optional)</entry>
+      </row>
+      <row>
+        <entry><command>cpio</command></entry>
+        <entry>The cpio archiving utility (optional)</entry>
+      </row>
+      <row>
+        <entry><command>gzip</command></entry>
+        <entry>The GNU compression utility (optional)</entry>
+      </row>
+      <row>
+        <entry><command>gunzip</command></entry>
+        <entry>The GNU uncompression utility (optional)</entry>
+      </row>
+      <row>
+        <entry><command>zcat</command></entry>
+        <entry>The GNU uncompression utility (optional)</entry>
+      </row>
+      <row>
+        <entry><command>netstat</command></entry>
+        <entry>The network statistics utility (optional)</entry>
+      </row>
+      <row>
+        <entry><command>ping</command></entry>
+        <entry>The ICMP network test utility (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+<para>If the <command>gunzip</command> and <command>zcat</command>
+programs exist, they must be symbolic or hard links to
+gzip. <command>/bin/csh</command> may be a symbolic link to
+<command>/bin/tcsh</command> or
+<command>/usr/bin/tcsh</command>.</para>
+
+<tip><title>Rationale</title>
+
+<para>The tar, gzip and cpio commands have been added to make restoration of a
+system possible (provided that <filename>/</filename> is intact).</para>
+
+<para>Conversely, if no restoration from the root partition is ever
+expected, then these binaries might be omitted (e.g., a ROM chip root,
+mounting <filename>/usr</filename> through NFS).  If restoration of a
+system is planned through the network, then <command>ftp</command>
+or <command>tftp</command> (along with everything necessary to get
+an ftp connection) must be available on the root partition.
+
+</tip>
+</section>
+</section>
+
+
+<section id='bootStaticFilesOfTheBootLoader'>
+<title>/boot : Static files of the boot loader</title>
+
+<section id='purpose4'><title>Purpose</title>
+
+<para>This directory contains everything required for the boot process
+except configuration files not needed at boot time and the map
+installer. Thus /boot stores data that is used before the kernel
+begins executing user-mode programs.  This may include saved master
+boot sectors and sector map files.
+
+<footnote>
+
+<para> Programs necessary to arrange for the boot loader to be
+able to boot a file must be placed in <filename>/sbin</filename>.
+Configuration files for boot loaders must be placed in
+<filename>/etc</filename>.</para>
+
+<para>The GRUB bootloader reads its configurations file before
+booting, so that must be placed in <filename>/boot</filename>.  However, it is a
+configuration file, so should be in <filename>/etc</filename>.  The answer here is a
+symbolic link such as <filename>/etc/grub/menu.lst</filename> -> <filename>/boot/menu.lst</filename>.</para>
+
+</footnote>
+
+</para>
+
+</section>
+
+<section id='specificOptions3'><title>Specific Options</title>
+
+<para>The operating system kernel must be located in either
+<filename>/</filename> or <filename>/boot</filename>.
+
+<footnote><para>On some i386 machines, it may be necessary for
+<filename>/boot</filename> to be located on a separate partition
+located completely below cylinder 1024 of the boot device due to
+hardware constraints.</para>
+
+<para>Certain MIPS systems require a <filename>/boot</filename>
+partition that is a mounted MS-DOS filesystem or whatever other
+filesystem type is accessible for the firmware.  This may result in
+restrictions with respect to usable filenames within
+<filename>/boot</filename> (only for affected systems).
+</para>
+</footnote>
+</para>
+
+</section>
+</section>
+
+<section id='devDeviceFiles'><title>/dev : Device files</title>
+
+<section id='purpose5'><title>Purpose</title>
+
+<para>The <filename>/dev</filename> directory is the location of
+special or device files.</para>
+
+</section>
+
+<section id='specificOptions4'><title>Specific Options</title>
+
+<para>If it is possible that devices in <filename>/dev</filename> will
+need to be manually created, <filename>/dev</filename> must contain a
+command named <filename>MAKEDEV</filename>, which can create devices
+as needed.  It may also contain a <filename>MAKEDEV.local</filename>
+for any local devices.</para>
+
+<para>If required, <filename>MAKEDEV</filename> must have provisions
+for creating any device that may be found on the system, not just
+those that a particular implementation installs.</para>
+
+</section>
+</section>
+
+<section id='etcHostspecificSystemConfiguration'>
+<title>/etc : Host-specific system configuration</title>
+
+<section id='purpose6'>
+<title>Purpose</title>
+
+<para>The <filename>/etc</filename> hierarchy contains configuration
+files.  A "configuration file" is a local file used to control the
+operation of a program; it must be static and cannot be an executable
+binary.
+
+<footnote>
+<para>
+The setup of command scripts invoked at boot time may resemble System
+V, BSD or other models.  Further specification in this area may be
+added to a future version of this standard.</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='requirements3'><title>Requirements</title>
+
+<para>No binaries may be located under <filename>/etc</filename>.
+
+<footnote>
+<para>
+It is recommended that files be stored in subdirectories of
+<filename>/etc</filename> rather than directly in
+<filename>/etc</filename>.
+</para>
+</footnote>
+</para>
+
+<para>The following directories, or symbolic links to directories are
+required in <filename>/etc</filename>:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry>opt</entry>
+       <entry>Configuration for /opt</entry>
+     </row>
+     <row>
+       <entry>X11</entry>
+       <entry>Configuration for the X Window system (optional)</entry>
+     </row>
+     <row>
+       <entry>sgml</entry>
+       <entry>Configuration for SGML (optional)</entry>
+     </row>
+     <row>
+       <entry>xml</entry>
+       <entry>Configuration for XML (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+</section>
+
+<section id='specificOptions5'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories must
+be in <filename>/etc</filename>, if the corresponding subsystem is
+installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry>opt</entry>
+       <entry>Configuration for /opt</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/etc</filename> if the corresponding subsystem is
+installed:
+
+<footnote>
+<para>
+Systems that use the shadow password suite will have additional
+configuration files in <filename>/etc</filename>
+(<filename>/etc/shadow</filename> and others) and programs in
+<filename>/usr/sbin</filename> (<command>useradd</command>,
+<command>usermod</command>, and others).
+</para>
+</footnote>
+</para>
+
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+      <row><entry>File</entry><entry>Description</entry></row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>csh.login</filename></entry>
+        <entry>Systemwide initialization file for C shell logins (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>exports</filename></entry>
+        <entry>NFS filesystem access control list (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>fstab</filename></entry>
+        <entry>Static information about filesystems (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>ftpusers</filename></entry>
+        <entry>FTP daemon user access control list (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>gateways</filename></entry>
+        <entry>File which lists gateways for routed (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>gettydefs</filename></entry>
+        <entry>Speed and terminal settings used by getty (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>group</filename></entry>
+        <entry>User group file (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>host.conf</filename></entry>
+        <entry>Resolver configuration file (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>hosts</filename></entry>
+        <entry>Static information about host names (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>hosts.allow</filename></entry>
+        <entry>Host access file for TCP wrappers (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>hosts.deny</filename></entry>
+        <entry>Host access file for TCP wrappers (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>hosts.equiv</filename></entry>
+        <entry>List of trusted hosts for rlogin, rsh, rcp (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>hosts.lpd</filename></entry>
+        <entry>List of trusted hosts for lpd (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>inetd.conf</filename></entry>
+        <entry>Configuration file for inetd (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>inittab</filename></entry>
+        <entry>Configuration file for init (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>issue</filename></entry>
+        <entry>Pre-login message and identification file (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>ld.so.conf</filename></entry>
+        <entry>List of extra directories to search for shared libraries (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>motd</filename></entry>
+        <entry>Post-login message of the day file (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>mtab</filename></entry>
+        <entry>Dynamic information about filesystems (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>mtools.conf</filename></entry>
+        <entry>Configuration file for mtools (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>networks</filename></entry>
+        <entry>Static information about network names (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>passwd</filename></entry>
+        <entry>The password file (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>printcap</filename></entry>
+        <entry>The lpd printer capability database (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>profile</filename></entry>
+        <entry>Systemwide initialization file for sh shell logins (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>protocols</filename></entry>
+        <entry>IP protocol listing (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>resolv.conf</filename></entry>
+        <entry>Resolver configuration file (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>rpc</filename></entry>
+        <entry>RPC protocol listing (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>securetty</filename></entry>
+        <entry>TTY access control for root login (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>services</filename></entry>
+        <entry>Port names for network services (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>shells</filename></entry>
+        <entry>Pathnames of valid login shells (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>syslog.conf</filename></entry>
+        <entry>Configuration file for syslogd (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+
+<para><filename>mtab</filename> does not fit the static nature of
+<filename>/etc</filename>: it is excepted for historical reasons.
+
+<footnote>
+<para>
+On some Linux systems, this may be a symbolic link to
+<filename>/proc/mounts</filename>, in which case this exception is not
+required.
+</para>
+</footnote>
+
+</para>
+</section>
+
+<section id='etcoptConfigurationFilesForOpt'>
+<title>/etc/opt : Configuration files for /opt</title>
+
+
+<section id='purpose7'><title>Purpose</title>
+
+<para>Host-specific configuration files for add-on application
+software packages must be installed within the directory
+<filename>/etc/opt/&lt;subdir&gt;</filename>, where
+<filename>&lt;subdir&gt;</filename> is the name of the subtree in
+<filename>/opt</filename> where the static data from that package is
+stored.</para>
+
+</section>
+
+<section id='requirements4'><title>Requirements</title>
+
+<para>No structure is imposed on the internal arrangement of
+<filename>/etc/opt/&lt;subdir&gt;</filename>.</para>
+
+<para>If a configuration file must reside in a different location in
+order for the package or system to function properly, it may be placed
+in a location other than
+<filename>/etc/opt/&lt;subdir&gt;</filename>.</para>
+
+
+<tip><title>Rationale</title>
+
+<para>Refer to the rationale for <filename>/opt</filename>.</para>
+
+</tip>
+</section>
+</section>
+
+<section id='etcx11ConfigurationForTheXWindowS'>
+<title>/etc/X11 : Configuration for the X Window System (optional)</title>
+
+<section id='purpose8'><title>Purpose</title>
+
+<para><emphasis>/etc/X11</emphasis> is the location for all X11
+host-specific configuration.  This directory is necessary to allow
+local control if <emphasis>/usr</emphasis> is mounted read
+only.</para>
+
+</section>
+
+<section id='specificOptions6'><title>Specific Options</title>
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/etc/X11</filename> if the corresponding subsystem is
+installed:</para>
+
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+    <colspec colname='c1'>
+    <colspec colname='c2'>
+    <thead>
+     <row>
+       <entry>File</entry>
+       <entry>Description</entry>
+     </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>Xconfig</filename></entry>
+        <entry>The configuration file for early versions of XFree86 (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>XF86Config</filename></entry>
+        <entry>The configuration file for XFree86 versions 3 and 4 (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>Xmodmap</filename></entry>
+        <entry>Global X11 keyboard modification file (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+<para>Subdirectories of <filename>/etc/X11</filename> may include
+those for <filename>xdm</filename> and for any other programs (some
+window managers, for example) that need them.
+
+<footnote>
+<para>
+<filename>/etc/X11/xdm</filename> holds the configuration files for
+<filename>xdm</filename>.  These are most of the files previously
+found in <filename>/usr/lib/X11/xdm</filename>.  Some local variable
+data for <filename>xdm</filename> is stored in
+<filename>/var/lib/xdm</filename>.
+</para>
+</footnote>
+
+We recommend that window managers with only one configuration file
+which is a default <filename>.*wmrc</filename> file must name it
+<filename>system.*wmrc</filename> (unless there is a widely-accepted
+alternative name) and not use a subdirectory.  Any window manager
+subdirectories must be identically named to the actual window manager
+binary.</para>
+
+</section>
+</section>
+
+<section id='etcsgmlConfigurationFilesForSgmlAn'>
+<title>/etc/sgml : Configuration files for SGML (optional)</title>
+
+
+<section id='purpose9'><title>Purpose</title>
+
+<para>Generic configuration files defining high-level parameters of
+the SGML systems are installed here.  Files with names
+<filename>*.conf</filename> indicate generic configuration files.
+File with names <filename>*.cat</filename> are the DTD-specific
+centralized catalogs, containing references to all other catalogs
+needed to use the given DTD.  The super catalog file
+<filename>catalog</filename> references all the centralized
+catalogs.</para>
+
+</section>
+</section>
+<section>
+<title>/etc/xml : Configuration files for XML (optional)</title>
+
+
+<section><title>Purpose</title>
+
+<para>Generic configuration files defining high-level parameters of
+the XML systems are installed here.  Files with names
+<filename>*.conf</filename> indicate generic configuration files.
+The super catalog file
+<filename>catalog</filename> references all the centralized
+catalogs.</para>
+
+</section>
+</section>
+
+
+</section>
+
+<section id='homeUserHomeDirectories'>
+
+<title>/home : User home directories (optional)</title>
+
+<section id='purpose10'><title>Purpose</title>
+
+<para><filename>/home</filename> is a fairly standard concept, but it
+is clearly a site-specific filesystem.
+
+<footnote>
+<para>
+Different people prefer to place user accounts in a variety of places.
+This section describes only a suggested placement for user home
+directories; nevertheless we recommend that all FHS-compliant
+distributions use this as the default location for home
+directories.</para>
+
+<para>On small systems, each user's directory is typically one of the
+many subdirectories of <filename>/home</filename> such as
+<filename>/home/smith</filename>, <filename>/home/torvalds</filename>,
+<filename>/home/operator</filename>, etc.  On large systems
+(especially when the <filename>/home</filename> directories are shared
+amongst many hosts using NFS) it is useful to subdivide user home
+directories.  Subdivision may be accomplished by using subdirectories
+such as <filename>/home/staff</filename>,
+<filename>/home/guests</filename>,
+<filename>/home/students</filename>, etc.
+</para>
+</footnote>
+
+The setup will differ from host to host.  Therefore, no program should
+rely on this location.
+
+<footnote>
+<para>
+If you want to find out a user's home directory, you should use the
+<filename>getpwent(3)</filename> library function rather than relying
+on <filename>/etc/passwd</filename> because user information may be
+stored remotely using systems such as NIS.
+</para>
+</footnote>
+
+</para>
+
+</section>
+
+<section id='requirements4a'><title>Requirements</title>
+<para>
+User specific configuration files for applications are stored in the
+user's home directory in a file that starts with the '.' character (a
+"dot file").  If an application needs to create more than one dot file
+then they should be placed in a subdirectory with a name starting with
+a '.' character, (a "dot directory").  In this case the configuration
+files should not start with the '.' character.
+<footnote>
+<para>
+It is recommended that apart from autosave and lock files programs
+should refrain from creating non dot files or directories in a home
+directory without user intervention.
+</para>
+</footnote>
+</para>
+
+</section>
+</section>
+
+<section id='libEssentialSharedLibrariesAndKern'>
+<title>/lib : Essential shared libraries and kernel modules</title>
+
+<section id='purpose11'><title>Purpose</title>
+
+<para>The <filename>/lib</filename> directory contains those shared
+library images needed to boot the system and run the commands in the
+root filesystem, ie. by binaries in <filename>/bin</filename> and
+<filename>/sbin</filename>.
+
+<footnote>
+<para>
+Shared libraries that are only necessary for binaries in
+<filename>/usr</filename> (such as any X Window binaries) must not be
+in <filename>/lib</filename>. Only the shared libraries required to
+run binaries in <filename>/bin</filename> and
+<filename>/sbin</filename> may be here.  In particular, the library
+<filename>libm.so.*</filename> may also be placed in
+<filename>/usr/lib</filename> if it is not required by anything in
+<filename>/bin</filename> or <filename>/sbin</filename>.
+</footnote></para>
+
+</section>
+
+<section id='requirements5'><title>Requirements</title>
+
+<para>At least one of each of the following filename patterns are
+required (they may be files, or symbolic links):</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+     <row>
+       <entry>File</entry>
+       <entry>Description</entry>
+     </row>
+     </thead>
+     <tbody>
+      <row>
+        <entry><filename>libc.so.*</filename></entry>
+        <entry>The dynamically-linked C library (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>ld*</filename></entry>
+        <entry>The execution time linker/loader (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+<para>If a C preprocessor is installed, <emphasis>/lib/cpp</emphasis>
+must be a reference to it, for historical reasons.
+
+<footnote>
+<para>
+The usual placement of this binary is <filename>/usr/bin/cpp</filename>.
+</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='specificOptions7'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/lib</filename>, if the corresponding subsystem
+is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>modules</filename></entry>
+       <entry>Loadable kernel modules (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+</section>
+
+<section id='libltqualgtAlternateFormatEssential'>
+<title>/lib&lt;qual&gt; : Alternate format essential shared libraries (optional)</title>
+
+<section id='purpose12'><title>Purpose</title>
+
+<para>There may be one or more variants of the
+<filename>/lib</filename> directory on systems which support more than
+one binary format requiring separate libraries.
+
+<footnote>
+<para>
+This is commonly used for 64-bit or 32-bit support on
+systems which support multiple binary formats, but require libraries
+of the same name.  In this case, <filename>/lib32</filename> and
+<filename>/lib64</filename> might be the library directories, and
+<filename>/lib</filename> a symlink to one of them.
+</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='requirements6'><title>Requirements</title>
+
+<para>If one or more of these directories exist, the requirements for
+their contents are the same as the normal <filename>/lib</filename>
+directory, except that <filename>/lib&lt;qual&gt;/cpp</filename> is
+not required.
+
+<footnote>
+<para>
+<filename>/lib&lt;qual&gt;/cpp</filename> is still permitted: this
+allows the case where <filename>/lib</filename> and
+<filename>/lib&lt;qual&gt;</filename> are the same (one is a symbolic
+link to the other). </para> </footnote></para>
+
+</section>
+</section>
+
+<section id='mediaMountPoint'>
+<title>/media : Mount point for removeable media</title>
+
+<section id='purposeMediaMountPoint'><title>Purpose</title>
+
+<para>This directory contains subdirectories which are used as mount
+points for removeable media such as floppy disks, cdroms and zip
+disks.</para>
+
+<tip><title>Rationale</title> 
+
+<para>Historically there have been a number of other different places
+used to mount removeable media such as <filename>/cdrom</filename>,
+<filename>/mnt</filename> or <filename>/mnt/cdrom</filename>. Placing
+the mount points for all removeable media directly in the root
+directory would potentially result in a large number of extra
+directories in <filename>/</filename>. Although the use of
+subdirectories in <filename>/mnt</filename> as a mount point has
+recently been common, it conflicts with a much older tradition of
+using <filename>/mnt</filename> directly as a temporary mount point.
+</para>
+</tip>
+
+</section>
+
+<section id='specificOptionsMediaMount'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/media</filename>, if the corresponding subsystem
+is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>floppy</filename></entry>
+       <entry>Floppy drive (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>cdrom</filename></entry>
+       <entry>CD-ROM drive (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>cdrecorder</filename></entry>
+       <entry>CD writer (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>zip</filename></entry>
+       <entry>Zip drive (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+<para>On systems where more than one device exists for mounting a
+certain type of media, mount directories can be created by appending a
+digit to the name of those available above starting with '0', but the
+unqualified name must also exist.
+
+<footnote>
+<para>
+A compliant implementation with two CDROM drives might have
+<filename>/media/cdrom0</filename> and
+<filename>/media/cdrom1</filename> with
+<filename>/media/cdrom</filename> a symlink to either of these.
+</para>
+
+</footnote>
+
+</para>
+
+</section>
+</section>
+
+<section id='mntMountPointForATemporarilyMount'>
+<title>/mnt : Mount point for a temporarily mounted filesystem</title>
+
+<section id='purpose13'><title>Purpose</title>
+
+<para>This directory is provided so that the system administrator may
+temporarily mount a filesystem as needed.  The content of this
+directory is a local issue and should not affect the manner in which
+any program is run.</para>
+
+<para>This directory must not be used by installation programs: a
+suitable temporary directory not in use by the system must be used
+instead.</para>
+
+</section>
+</section>
+
+<section id='optAddonApplicationSoftwarePackages'>
+<title>/opt : Add-on application software packages</title>
+
+<section id='purpose14'><title>Purpose</title>
+
+<para><filename>/opt</filename> is reserved for the installation of
+add-on application software packages.</para>
+
+<para>A package to be installed in <filename>/opt</filename> must
+locate its static files in a separate
+<filename>/opt/&lt;package&gt;</filename> or
+<filename>/opt/&lt;provider&gt;</filename> directory
+tree, where <filename>&lt;package&gt;</filename> is a name that
+describes the software package and
+<filename>&lt;provider&gt;</filename> is the provider's LANANA
+registered name.</para>
+
+</section>
+
+<section id='requirements7'><title>Requirements</title>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry>&lt;package&gt;</entry>
+       <entry>Static package objects</entry>
+     </row>
+
+     <row>
+       <entry>&lt;provider&gt;</entry>
+       <entry>LANANA registered provider name</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>The directories <filename>/opt/bin</filename>,
+<filename>/opt/doc</filename>, <filename>/opt/include</filename>,
+<filename>/opt/info</filename>, <filename>/opt/lib</filename>, and
+<filename>/opt/man</filename> are reserved for local system
+administrator use.  Packages may provide "front-end" files intended to
+be placed in (by linking or copying) these reserved directories by the
+local system administrator, but must function normally in the absence
+of these reserved directories.</para>
+
+<para>Programs to be invoked by users must be located in the directory
+<filename>/opt/&lt;package&gt;/bin</filename> or under the
+<filename>/opt/&lt;provider&gt;</filename> hierarchy. If the package
+includes UNIX manual pages, they must be located in
+<filename>/opt/&lt;package&gt;/share/man</filename> or under the
+<filename>/opt/&lt;provider&gt;</filename> hierarchy, and the same
+substructure as <filename>/usr/share/man</filename> must be
+used.</para>
+
+<para>Package files that are variable (change in normal operation)
+must be installed in <filename>/var/opt</filename>.  See the section
+on <filename>/var/opt</filename> for more information.</para>
+
+<para>Host-specific configuration files must be installed in
+<filename>/etc/opt</filename>.  See the section on
+<filename>/etc</filename> for more information.</para>
+
+<para>No other package files may exist outside the
+<filename>/opt</filename>, <filename>/var/opt</filename>, and
+<filename>/etc/opt</filename> hierarchies except for those package
+files that must reside in specific locations within the filesystem
+tree in order to function properly.  For example, device lock files
+must be placed in <filename>/var/lock</filename> and devices must be
+located in <filename>/dev</filename>.</para>
+
+<para>Distributions may install software in <filename>/opt</filename>,
+but must not modify or delete software installed by the local system
+administrator without the assent of the local system
+administrator.</para>
+
+<tip><title>Rationale</title>
+
+<para>The use of <filename>/opt</filename> for add-on software is a
+well-established practice in the UNIX community.  The System V
+Application Binary Interface [AT&amp;T 1990], based on the System V
+Interface Definition (Third Edition), provides for an
+<filename>/opt</filename> structure very similar to the one defined
+here.</para>
+
+<para>The Intel Binary Compatibility Standard v. 2 (iBCS2) also
+provides a similar structure for <filename>/opt</filename>.</para>
+
+<para>Generally, all data required to support a package on a system
+must be present within <filename>/opt/&lt;package&gt;</filename>,
+including files intended to be copied into
+<filename>/etc/opt/&lt;package&gt;</filename> and
+<filename>/var/opt/&lt;package&gt;</filename> as well as reserved
+directories in <filename>/opt</filename>.</para>
+
+<para>The minor restrictions on distributions using
+<filename>/opt</filename> are necessary because conflicts are possible
+between distribution-installed and locally-installed software,
+especially in the case of fixed pathnames found in some binary
+software.</para>
+
+<para>The structure of the directories below
+<filename>/opt/&lt;provider&gt;</filename> is left up to the packager
+of the software, though it is recommended that packages are installed
+in <filename>/opt/&lt;provider&gt;/&lt;package&gt;</filename> and
+follow a similar structure to the guidelines for
+<filename>/opt/package</filename>. A valid reason for diverging from
+this structure is for support packages which may have files installed
+in <filename>/opt/&lt;provider&gt;/lib</filename> or
+<filename>/opt/&lt;provider&gt;/bin</filename>.</para>
+
+</tip>
+</section>
+</section>
+
+<section id='rootHomeDirectoryForTheRootUser'>
+<title>/root : Home directory for the root user (optional)</title>
+
+<section id='purpose15'><title>Purpose</title>
+
+<para>The root account's home directory may be determined by developer
+or local preference, but this is the recommended default
+location.
+
+<footnote><para>If the home directory of the root account is not
+stored on the root partition it will be necessary to make certain it
+will default to <filename>/</filename> if it can not be
+located.</para>
+
+<para>We recommend against using the root account for tasks that can be
+performed as an unprivileged user, and that it be used solely for system
+administration.  For this reason, we recommend that subdirectories for
+mail and other applications not appear in the root account's home
+directory, and that mail for administration roles such as root,
+postmaster, and webmaster be forwarded to an appropriate user.
+</para>
+</footnote>
+</para>
+
+</section>
+</section>
+
+<section id='sbinSystemBinaries'><title>/sbin : System binaries</title>
+
+<section id='purpose16'><title>Purpose</title>
+
+<para>Utilities used for system administration (and other root-only
+commands) are stored in <filename>/sbin</filename>,
+<filename>/usr/sbin</filename>, and
+<filename>/usr/local/sbin</filename>.  <filename>/sbin</filename>
+contains binaries essential for booting, restoring, recovering, and/or
+repairing the system in addition to the binaries in
+<filename>/bin</filename>.
+
+<footnote>
+<para>
+Originally, <filename>/sbin</filename> binaries were kept in
+<filename>/etc</filename>.  </footnote> Programs executed after
+<filename>/usr</filename> is known to be mounted (when there are no
+problems) are generally placed into <filename>/usr/sbin</filename>.
+Locally-installed system administration programs should be placed into
+<filename>/usr/local/sbin</filename>.
+
+<footnote> <para>Deciding what things go into
+<emphasis>"sbin"</emphasis> directories is simple: if a normal (not a
+system administrator) user will ever run it directly, then it must be
+placed in one of the <emphasis>"bin"</emphasis> directories.  Ordinary
+users should not have to place any of the <filename>sbin</filename>
+directories in their path.</para>
+
+<para>For example, files such as <command>chfn</command> which users
+only occasionally use must still be placed in
+<filename>/usr/bin</filename>.  <command>ping</command>, although it
+is absolutely necessary for root (network recovery and diagnosis) is
+often used by users and must live in <filename>/bin</filename> for
+that reason.</para>
+
+<para>We recommend that users have read and execute permission for
+everything in <filename>/sbin</filename> except, perhaps, certain
+setuid and setgid programs.  The division between
+<filename>/bin</filename> and <filename>/sbin</filename> was not
+created for security reasons or to prevent users from seeing the
+operating system, but to provide a good partition between binaries
+that everyone uses and ones that are primarily used for administration
+tasks.  There is no inherent security advantage in making
+<filename>/sbin</filename> off-limits for users.
+
+</para>
+</footnote></para>
+
+</section>
+
+<section id='requirements8'><title>Requirements</title>
+
+<para>The following commands, or symbolic links to commands, are
+required in <filename>/sbin</filename>.</para>
+
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+      <row>
+        <entry>Command</entry>
+        <entry>Description</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><command>shutdown</command></entry>
+        <entry>Command to bring the system down.</entry>
+      </row>
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+
+<section id='specificOptions8'><title>Specific Options</title>
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/sbin</filename> if the corresponding subsystem is
+installed:</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <colspec colname='c1'>
+    <colspec colname='c2'>
+    <thead>
+      <row><entry>Command</entry><entry>Description</entry></row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>fastboot</filename></entry>
+        <entry>Reboot the system without checking the disks (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>fasthalt</filename></entry>
+        <entry>Stop the system without checking the disks (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>fdisk</filename></entry>
+        <entry>Partition table manipulator (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>fsck</filename></entry>
+        <entry>File system check and repair utility (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>fsck.*</filename></entry>
+        <entry>File system check and repair utility for a specific filesystem (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>getty</filename></entry>
+        <entry>The getty program (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>halt</filename></entry>
+        <entry>Command to stop the system (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>ifconfig</filename></entry>
+        <entry>Configure a network interface (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>init</filename></entry>
+        <entry>Initial process (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>mkfs</filename></entry>
+        <entry>Command to build a filesystem (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>mkfs.*</filename></entry>
+        <entry>Command to build a specific filesystem (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>mkswap</filename></entry>
+        <entry>Command to set up a swap area (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>reboot</filename></entry>
+        <entry>Command to reboot the system (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>route</filename></entry>
+        <entry>IP routing table utility (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>swapon</filename></entry>
+        <entry>Enable paging and swapping (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>swapoff</filename></entry>
+        <entry>Disable paging and swapping (optional)</entry>
+      </row>
+      <row>
+        <entry><filename>update</filename></entry>
+        <entry>Daemon to periodically flush filesystem buffers (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+
+
+</section>
+</section>
+
+<section id='srvDataForServicesProvidedBySystem'>
+<title>/srv : Data for services provided by this system</title>
+
+<section id='purpose16a'>
+<title>Purpose</title>
+
+<para><filename>/srv</filename> contains site-specific data which is
+served by this system.
+
+<tip><title>Rationale</title>
+<para>
+This main purpose of specifying this is so that users may find the
+location of the data files for particular service, and so that
+services which require a single tree for readonly data, writable data
+and scripts (such as cgi scripts) can be reasonably placed. Data that
+is only of interest to a specific user should go in that users' home
+directory.
+</para>
+
+<para>
+The methodology used to name subdirectories of
+<filename>/srv</filename> is unspecified as there is currently no
+consensus on how this should be done.  One method for structuring data
+under <filename>/srv</filename> is by protocol,
+eg. <filename>ftp</filename>, <filename>rsync</filename>,
+<filename>www</filename>, and <filename>cvs</filename>. On large
+systems it can be useful to structure <filename>/srv</filename> by
+administrative context, such as <filename>/srv/physics/www</filename>,
+<filename>/srv/compsci/cvs</filename>, etc. This setup will differ
+from host to host. Therefore, no program should rely on a specific
+subdirectory structure of <filename>/srv</filename> existing or data
+necessarily being stored in <filename>/srv</filename>.  However
+<filename>/srv</filename> should always exist on FHS compliant systems
+and should be used as the default location for such data.
+</para>
+
+<para>
+Distributions must take care not to remove locally placed files in
+these directories without administrator permission.
+<footnote>
+<para>
+This is particularly important as these areas will often contain both
+files initially installed by the distributor, and those added by the
+administrator.
+</para>
+</footnote>
+</para>
+
+</tip>
+
+</section>
+</section>
+
+<section id='tmpTemporaryFiles'><title>/tmp : Temporary files</title>
+
+
+<section id='purpose17'><title>Purpose</title>
+
+<para>The <filename>/tmp</filename> directory must be made available
+for programs that require temporary files.</para>
+
+<para>Programs must not assume that any files or directories in
+<filename>/tmp</filename> are preserved between invocations of the
+program.</para>
+
+<tip><title>Rationale</title>
+
+<para>IEEE standard P1003.2 (POSIX, part 2) makes requirements that
+are similar to the above section.</para>
+
+<para>Although data stored in <filename>/tmp</filename> may be deleted
+in a site-specific manner, it is recommended that files and
+directories located in <filename>/tmp</filename> be deleted whenever
+the system is booted.</para>
+
+<para>FHS added this recommendation on the basis of historical
+precedent and common practice, but did not make it a requirement
+because system administration is not within the scope of this
+standard.
+
+</tip>
+</section>
+
+</section>
+</chapter>

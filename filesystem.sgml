@@ -1,0 +1,87 @@
+<chapter id='thefilesystem'><title>The Filesystem</title>
+
+<para>This standard assumes that the operating system underlying an
+FHS-compliant file system supports the same basic security features
+found in most UNIX filesystems.</para>
+
+<para>It is possible to define two independent distinctions among
+files: shareable vs. unshareable and variable vs. static.  In general,
+files that differ in either of these respects should be located in
+different directories.  This makes it easy to store files with
+different usage characteristics on different filesystems.</para>
+
+<para>"Shareable" files are those that can be stored on one host
+and used on others.  "Unshareable" files are those that are not
+shareable.  For example, the files in user home directories are
+shareable whereas device lock files are not.</para>
+
+<para>"Static" files include binaries, libraries, documentation
+files and other files that do not change without system administrator
+intervention.  "Variable" files are files that are not static.</para>
+
+<tip><title>Rationale</title>
+
+<para>Shareable files can be stored on one host and used on several
+others.  Typically, however, not all files in the filesystem
+hierarchy are shareable and so each system has local storage
+containing at least its unshareable files.  It is convenient if all
+the files a system requires that are stored on a foreign host can be
+made available by mounting one or a few directories from the foreign
+host.</para>
+
+<para>Static and variable files should be segregated because static
+files, unlike variable files, can be stored on read-only media and
+do not need to be backed up on the same schedule as variable
+files.</para>
+
+<para>Historical UNIX-like filesystem hierarchies contained both
+static and variable files under both <filename>/usr</filename> and
+<filename>/etc</filename>.  In order to realize the advantages
+mentioned above, the <filename>/var</filename> hierarchy was
+created and all variable files were transferred from
+<filename>/usr</filename> to <filename>/var</filename>.
+Consequently <filename>/usr</filename> can now be mounted read-only
+(if it is a separate filesystem).  Variable files have been
+transferred from <filename>/etc</filename> to
+<filename>/var</filename> over a longer period as technology has
+permitted.</para>
+
+<para>Here is an example of a FHS-compliant system.
+(Other FHS-compliant layouts are possible.)</para>
+
+<informaltable frame='topbot'>
+  <tgroup cols='3' align='left'>
+    <thead>
+      <row rowsep='1'>
+        <entry><emphasis></emphasis></entry>
+        <entry>shareable</entry>
+        <entry>unshareable</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row rowsep='0'>
+        <entry>static</entry>
+        <entry>/usr</entry>
+        <entry>/etc</entry>
+      </row>
+      <row rowsep='1'>
+        <entry></entry>
+        <entry>/opt</entry>
+        <entry>/boot</entry>
+      </row>
+      <row rowsep='0'>
+        <entry>variable</entry>
+        <entry>/var/mail</entry>
+        <entry>/var/run</entry>
+      </row>
+      <row>
+        <entry></entry>
+        <entry>/var/spool/news</entry>
+        <entry>/var/lock</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+</tip>
+
+</chapter>

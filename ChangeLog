@@ -1,0 +1,70 @@
+Summary of changes from FHS 2.2 to FHS 2.3
+
+Add /media: 
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=27
+
+Add /srv: 
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=16
+
+Allow for /etc/opt/<provider> and /var/opt/<provider>
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=34
+
+User programs sockets can't go in /var/run
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=36
+
+Remove obsolete, misleading footnote text about location of C preprocessor
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=38
+
+Clarify some terms and the role of /etc/
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=29
+
+Default character set for en_GB shoudl not be ASCII (Updated from beta1)
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=9
+
+/srv/cvs
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=3
+
+/lib64 os-specific clarification:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=4
+
+Scope of FHS clarification:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=5
+
+Home directory dot file clarification:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=6
+
+Adding /usr/local/share and /usr/local/share/man:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=7
+
+Allow /usr/local/etc:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=8
+
+Add /usr/share/xml: don't use /usr/share/sgml for XML:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=13
+
+Note on crash dumps, clarification of config files in /boot:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=14
+
+Expressedly note that RATIONALE is non-normative:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=20
+
+Loosen /dev requirements, define only three:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=25
+
+Fix mailing list address:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=26
+
+Allow provider subdirs under opt:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=28
+
+Clarify /etc:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=29
+
+Weaken new root directory ban:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=30
+
+Weaken /usr/src to a place for reference source, not all source:
+	http://bugs.freestandards.org/cgi-bin/bugzilla/show_bug.cgi?id=31
+
+Clarifies placement of unix domain sockets in /var/run
+	

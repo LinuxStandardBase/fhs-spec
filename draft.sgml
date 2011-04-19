@@ -1,0 +1,125 @@
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+<!-- lifted from troff+mm by doclifter -->
+
+<book>
+<bookinfo>
+<title>Filesystem Hierarchy Standard</title>
+<authorgroup>
+<corpauthor>Filesystem Hierarchy Standard Group</corpauthor>
+<editor><firstname>Rusty</firstname><surname>Russell</surname></editor>
+<editor><firstname>Daniel</firstname><surname>Quinlan</surname></editor>
+</authorgroup>
+<copyright><year>1994-2001</year><holder>Daniel Quinlan</holder></copyright>
+<copyright><year>2001</year><holder>Paul 'Rusty' Russell</holder></copyright>
+
+<legalnotice>
+
+<para>All trademarks and copyrights are owned by their owners, unless
+specifically noted otherwise.  Use of a term in this document should not
+be regarded as affecting the validity of any trademark or service
+mark.</para>
+
+<para>Permission is granted to make and distribute verbatim copies of
+this standard provided the copyright and this permission notice are
+preserved on all copies.</para> 
+
+<para>Permission is granted to copy and distribute modified versions of this
+standard under the conditions for verbatim copying, provided also that
+the title page is labeled as modified including a reference to the
+original standard, provided that information on retrieving the original
+standard is included, and provided that the entire resulting derived
+work is distributed under the terms of a permission notice identical to
+this one.</para>
+
+<para>Permission is granted to copy and distribute translations of this
+standard into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the copyright holder.</para>
+
+</legalnotice>
+
+<abstract>
+<para>This standard consists of a set of requirements and guidelines for file
+and directory placement under UNIX-like operating systems.  The
+guidelines are intended to support interoperability of applications,
+system administration tools, development tools, and scripts as well as
+greater uniformity of documentation for these systems.</para>
+</abstract>
+
+
+</bookinfo>
+
+<chapter id='introduction'><title>Introduction</title>
+
+<sect1 id='purpose'><title>Purpose</title>
+
+<para>This standard enables</para>
+<itemizedlist>
+<listitem>
+<para>Software to predict the location of installed files and directories, and</para>
+</listitem>
+<listitem>
+<para>Users to predict the location of installed files and directories.</para>
+</listitem>
+</itemizedlist>
+
+<para>We do this by</para>
+<itemizedlist>
+<listitem>
+<para>Specifying guiding principles for each area of the filesystem,</para>
+</listitem>
+<listitem>
+<para>Specifying the minimum files and directories required,</para>
+</listitem>
+<listitem>
+<para>Enumerating exceptions to the principles, and</para>
+</listitem>
+<listitem>
+<para>Enumerating specific cases where there has been historical conflict.</para>
+</listitem>
+</itemizedlist>
+
+<para>The FHS document is used by</para>
+<itemizedlist>
+<listitem>
+<para>Independent software suppliers to create applications which are FHS
+compliant, and work with distributions which are FHS complaint,</para>
+</listitem>
+<listitem>
+<para>OS creators to provide systems which are FHS compliant, and</para>
+</listitem>
+<listitem>
+<para>Users to understand and maintain the FHS compliance of a system.</para>
+</listitem>
+</itemizedlist>
+</sect1>
+
+<sect1 id='conventions'><title>Conventions</title>
+
+<para>We recommend that you read a typeset version of this document rather
+than the plain text version.  In the typeset version, the names of files
+and directories are displayed in a constant-width font.</para>
+
+<para>Components of filenames that vary are represented by a description
+of the contents enclosed in "<emphasis remap='CW'>&lt;</emphasis>" and
+"<emphasis remap='CW'>&gt;</emphasis>" characters, <emphasis
+remap='CW'>&lt;thus&gt;</emphasis>.  Electronic mail addresses are also
+enclosed in "&lt;" and "&gt;" but are shown in the usual
+typeface.</para>
+
+<para>Optional components of filenames are enclosed in
+"<emphasis>[</emphasis>" and "<emphasis>]</emphasis>" characters and may
+be combined with the "<emphasis>&lt;</emphasis>" and
+"<emphasis>&gt;</emphasis>" convention.  For example, if a filename is
+allowed to occur either with or without an extension, it might be
+represented by
+<emphasis>&lt;filename&gt;[.&lt;extension&gt;]</emphasis>.</para>
+
+<para>Variable substrings of directory names and filenames are indicated
+by "<emphasis>*</emphasis>".</para>
+
+</sect1>
+
+</chapter>
+</book>
+

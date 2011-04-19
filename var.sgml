@@ -1,0 +1,951 @@
+<chapter id='theVarHierarchy'><title>The /var Hierarchy</title>
+
+<section id='purpose31'><title>Purpose</title>
+
+<para><filename>/var</filename> contains variable data files.  This
+includes spool directories and files, administrative and logging data,
+and transient and temporary files.</para>
+
+<para>Some portions of <filename>/var</filename> are not shareable
+between different systems.  For instance,
+<filename>/var/log</filename>, <filename >/var/lock</filename>, and
+<filename>/var/run</filename>.  Other portions may be shared, notably
+<filename>/var/mail</filename>, <filename >/var/cache/man</filename>,
+<filename>/var/cache/fonts</filename>, and
+<filename>/var/spool/news</filename>.</para>
+
+<para><filename>/var</filename> is specified here in order to make it
+possible to mount <filename>/usr</filename> read-only.  Everything
+that once went into <filename>/usr</filename> that is written to
+during system operation (as opposed to installation and software
+maintenance) must be in <filename>/var</filename>.</para>
+
+<para>If <filename>/var</filename> cannot be made a separate
+partition, it is often preferable to move <filename>/var</filename>
+out of the root partition and into the <filename>/usr</filename>
+partition.  (This is sometimes done to reduce the size of the root
+partition or when space runs low in the root partition.)  However,
+<filename>/var</filename> must not be linked to
+<filename>/usr</filename> because this makes separation of
+<filename>/usr</filename> and <filename>/var</filename> more difficult
+and is likely to create a naming conflict.  Instead, link
+<filename>/var</filename> to <filename>/usr/var</filename>.</para>
+
+<para>Applications must generally not add directories to the top level
+of <filename>/var</filename>.  Such directories should only be added
+if they have some system-wide implication, and in consultation with
+the FHS mailing list.</para> 
+</section>
+
+<section id='requirements12'><title>Requirements</title>
+
+<para>The following directories, or symbolic links to directories, are
+required in <filename>/var</filename>.</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>cache</filename></entry>
+       <entry>Application cache data</entry>
+     </row>
+
+     <row>
+       <entry><filename>lib</filename></entry>
+       <entry>Variable state information</entry>
+     </row>
+
+     <row>
+       <entry><filename>local</filename></entry>
+       <entry>Variable data for /usr/local</entry>
+     </row>
+
+     <row>
+       <entry><filename>lock</filename></entry>
+       <entry>Lock files</entry>
+     </row>
+
+     <row>
+       <entry><filename>log</filename></entry>
+       <entry>Log files and directories</entry>
+     </row>
+
+     <row>
+       <entry><filename>opt</filename></entry>
+       <entry>Variable data for /opt</entry>
+     </row>
+
+     <row>
+       <entry><filename>run</filename></entry>
+       <entry>Data relevant to running processes</entry>
+     </row>
+
+     <row>
+       <entry><filename>spool</filename></entry>
+       <entry>Application spool data</entry>
+     </row>
+
+     <row>
+       <entry><filename>tmp</filename></entry>
+       <entry>Temporary files preserved between system reboots</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+<para>Several directories are `reserved' in the sense that they must
+not be used arbitrarily by some new application, since they would
+conflict with historical and/or local practice.  They are:</para>
+
+<screen>
+    /var/backups
+    /var/cron
+    /var/msgs
+    /var/preserve
+</screen>
+
+</section>
+
+<section id='specificOptions20'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/var</filename>, if the corresponding subsystem
+is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>account</filename></entry>
+       <entry>Process accounting logs (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>crash</filename></entry>
+       <entry>System crash dumps (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>games</filename></entry>
+       <entry>Variable game data (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>mail</filename></entry>
+       <entry>User mailbox files (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>yp</filename></entry>
+       <entry>Network Information Service (NIS) database files (optional)
+       </entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+</section>
+
+<section id='varaccountProcessAccountingLogs'>
+<title>/var/account : Process accounting logs (optional)</title>
+
+<section id='purpose32'><title>Purpose</title>
+
+<para>This directory holds the current active process accounting log
+and the composite process usage data (as used in some UNIX-like
+systems by <command>lastcomm</command> and
+<command>sa</command>).</para>
+
+</section>
+</section>
+
+<section id='varcacheApplicationCacheData'>
+<title>/var/cache : Application cache data</title>
+
+<section id='purpose33'><title>Purpose</title>
+
+<para><filename>/var/cache</filename> is intended for cached data from
+applications.  Such data is locally generated as a result of
+time-consuming I/O or calculation.  The application must be able to
+regenerate or restore the data.  Unlike
+<filename>/var/spool</filename>, the cached files can be deleted
+without data loss.  The data must remain valid between invocations of
+the application and rebooting the system.</para>
+
+<para>Files located under <filename>/var/cache</filename> may be
+expired in an application specific manner, by the system
+administrator, or both.  The application must always be able to
+recover from manual deletion of these files (generally because of a
+disk space shortage).  No other requirements are made on the data
+format of the cache directories.</para>
+
+
+<tip><title>Rationale</title>
+
+<para>The existence of a separate directory for cached data allows
+system administrators to set different disk and backup policies from
+other directories in <filename>/var</filename>.
+
+</tip>
+
+</section>
+
+<section id='specificOptions21'><title>Specific Options</title>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>fonts</filename></entry>
+       <entry>Locally-generated fonts (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>man</filename></entry>
+       <entry>Locally-formatted manual pages (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>www</filename></entry>
+       <entry>WWW proxy or cache data (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>&lt;package&gt;</filename></entry>
+       <entry>Package specific cache data (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+</section>
+
+<section id='varcachefontsLocallygeneratedFonts'>
+<title>/var/cache/fonts : Locally-generated fonts (optional)</title>
+
+<section id='purpose34'><title>Purpose</title>
+
+<para>The directory <filename>/var/cache/fonts</filename> should be used to store any
+dynamically-created fonts.  In particular, all of the fonts which are
+automatically generated by <command>mktexpk</command> must be located in
+appropriately-named subdirectories of <filename>/var/cache/fonts</filename>.
+
+<footnote>
+<para>
+This standard does not currently incorporate the TeX Directory
+Structure (a document that describes the layout TeX files and
+directories), but it may be useful reading.  It is located at
+<ulink url="ftp://ctan.tug.org/tex/">ftp://ctan.tug.org/tex/</ulink></para>
+</footnote></para>
+
+</section>
+
+<section id='specificOptions22'><title>Specific Options</title>
+
+<para>Other dynamically created fonts may also be placed in this tree,
+under appropriately-named subdirectories of
+<filename>/var/cache/fonts</filename>.</para>
+
+</section>
+</section>
+
+<section id='varcachemanLocallyformattedManualPag'>
+<title>/var/cache/man : Locally-formatted manual pages (optional)</title>
+
+<section id='purpose35'><title>Purpose</title>
+
+<para>This directory provides a standard location for sites that provide a
+read-only <filename>/usr</filename> partition, but wish to allow caching of
+locally-formatted man pages.  Sites that mount <filename>/usr</filename> as writable
+(e.g., single-user installations) may choose not to use
+<filename>/var/cache/man</filename> and may write formatted man pages into the
+<filename>cat&lt;section&gt;</filename> directories in <filename>/usr/share/man</filename> directly.  We
+recommend that most sites use one of the following options instead:</para>
+<itemizedlist normal mark='bullet'>
+<listitem>
+<para>Preformat all manual pages alongside the unformatted versions.</para>
+</listitem>
+<listitem>
+<para>Allow no caching of formatted man pages, and require formatting to be
+done each time a man page is brought up.</para>
+</listitem>
+<listitem>
+<para>Allow local caching of formatted man pages in <filename>/var/cache/man</filename>.</para>
+</listitem>
+</itemizedlist>
+
+<para>The structure of <filename>/var/cache/man</filename> needs to
+reflect both the fact of multiple man page hierarchies and the
+possibility of multiple language support.</para>
+
+<para>Given an unformatted manual page that normally appears in
+<filename>&lt;path&gt;/man/&lt;locale&gt;/man&lt;section&gt;</filename>,
+the directory to place formatted man pages in is
+<filename>/var/cache/man/&lt;catpath&gt;/&lt;locale&gt;/cat&lt;section&gt;</filename>,
+where <filename>&lt;catpath&gt;</filename> is derived from
+<filename>&lt;path&gt;</filename> by removing any leading
+<filename>usr</filename> and/or trailing <filename>share</filename>
+pathname components.  (Note that the
+<filename>&lt;locale&gt;</filename> component may be missing.)
+
+<footnote><para>
+For example, <filename>/usr/share/man/man1/ls.1</filename> is
+formatted into <filename>/var/cache/man/cat1/ls.1</filename>, and
+<filename>/usr/X11R6/man/&lt;locale&gt;/man3/XtClass.3x</filename> into
+<filename>/var/cache/man/X11R6/&lt;locale&gt;/cat3/XtClass.3x</filename>.
+</para>
+</footnote></para>
+
+<para>Man pages written to <filename>/var/cache/man</filename> may
+eventually be transferred to the appropriate preformatted directories
+in the source <filename>man</filename> hierarchy or expired; likewise
+formatted man pages in the source <filename>man</filename> hierarchy
+may be expired if they are not accessed for a period of time.</para>
+
+<para>If preformatted manual pages come with a system on read-only
+media (a CD-ROM, for instance), they must be installed in the source
+<filename>man</filename> hierarchy
+(e.g. <filename>/usr/share/man/cat&lt;section&gt;</filename>).
+<filename>/var/cache/man</filename> is reserved as a writable cache
+for formatted manual pages.</para>
+
+
+<tip><title>Rationale</title>
+
+<para>Release 1.2 of the standard specified
+<filename>/var/catman</filename> for this hierarchy.  The path has
+been moved under <filename>/var/cache</filename> to better reflect the
+dynamic nature of the formatted man pages.  The directory name has
+been changed to <filename>man</filename> to allow for enhancing the
+hierarchy to include post-processed formats other than "cat", such as
+PostScript, HTML, or DVI.
+
+</tip>
+
+</section>
+</section>
+</section>
+
+<section id='varcrashSystemCrashDumps'>
+<title>/var/crash : System crash dumps (optional)</title>
+
+
+<section id='purpose36'><title>Purpose</title>
+
+<para>This directory holds system crash dumps.  As of the date of this
+release of the standard, system crash dumps were not supported under
+Linux but may be supported by other systems which may comply with the
+FHS.</para>
+
+</section>
+</section>
+
+<section id='vargamesVariableGameData'>
+
+<title>/var/games : Variable game data (optional)</title>
+
+
+<section id='purpose37'><title>Purpose</title>
+
+<para>Any variable data relating to games in <filename>/usr</filename>
+should be placed here.  <filename>/var/games</filename> should hold
+the variable data previously found in <filename>/usr</filename>;
+static data, such as help text, level descriptions, and so on, must
+remain elsewhere, such as
+<filename>/usr/share/games</filename>.</para>
+
+
+<tip><title>Rationale</title>
+
+<para><filename>/var/games</filename> has been given a hierarchy of
+its own, rather than leaving it merged in with the old
+<filename>/var/lib</filename> as in release 1.2.  The separation
+allows local control of backup strategies, permissions, and disk
+usage, as well as allowing inter-host sharing and reducing clutter in
+<filename>/var/lib</filename>.  Additionally,
+<filename>/var/games</filename> is the path traditionally used by BSD.
+
+</tip>
+</section>
+</section>
+
+<section id='varlibVariableStateInformation'>
+<title>/var/lib : Variable state information</title>
+
+<section id='purpose38'><title>Purpose</title>
+
+<para>This hierarchy holds state information pertaining to an
+application or the system.  State information is data that programs
+modify while they run, and that pertains to one specific host.  Users
+must never need to modify files in <filename>/var/lib</filename> to
+configure a package's operation.</para>
+
+<para>State information is generally used to preserve the condition of
+an application (or a group of inter-related applications) between
+invocations and between different instances of the same application.
+State information should generally remain valid after a reboot, should
+not be logging output, and should not be spooled data.</para>
+
+<para>An application (or a group of inter-related applications) must
+use a subdirectory of <filename>/var/lib</filename> for its data.
+There is one required subdirectory,
+<filename>/var/lib/misc</filename>, which is intended for state files
+that don't need a subdirectory; the other subdirectories should only
+be present if the application in question is included in the
+distribution.
+
+<footnote>
+<para>
+An important difference between this version of this standard and
+previous ones is that applications are now required to use a
+subdirectory of <filename>/var/lib</filename>.  
+<para>
+</footnote></para>
+
+<para><filename>/var/lib/&lt;name&gt;</filename> is the location that
+must be used for all distribution packaging support.  Different
+distributions may use different names, of course.</para>
+
+</section>
+
+<section id='requirements13'><title>Requirements</title>
+
+<para>The following directories, or symbolic links to directories, are
+required in <filename>/var/lib</filename>:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>misc</filename></entry>
+       <entry>Miscellaneous state data</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+
+<section id='specificOptions23'><title>Specific Options</title>
+<para>The following directories, or symbolic links to directories, must be in <filename>/var/lib</filename>, if the
+corresponding subsystem is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+  <tbody>
+
+     <row>
+       <entry>&lt;editor&gt;</entry>
+       <entry>Editor backup files and state (optional)</entry>
+     </row>
+
+     <row>
+       <entry>&lt;pkgtool&gt;</entry>
+       <entry>Packaging support files (optional)</entry>
+     </row>
+
+     <row>
+       <entry>&lt;package&gt;</entry>
+       <entry>State data for packages and subsystems (optional)</entry>
+     </row>
+
+     <row>
+       <entry><command>hwclock</command></entry>
+       <entry>State directory for hwclock (optional)</entry>
+     </row>
+
+     <row>
+       <entry><command>xdm</command></entry>
+       <entry>X display manager variable data (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+</section>
+
+<section id='varliblteditorgtEditorBackupFilesAn'>
+<title>/var/lib/&lt;editor&gt; : Editor backup files and state (optional)</title>
+
+<section id='purpose39'><title>Purpose</title>
+
+<para>These directories contain saved files generated by any
+unexpected termination of an editor (e.g., <command>elvis</command>,
+<command>jove</command>, <command>nvi</command>).</para>
+
+<para>Other editors may not require a directory for crash-recovery
+files, but may require a well-defined place to store other information
+while the editor is running.  This information should be stored in a
+subdirectory under <filename>/var/lib</filename> (for example, GNU
+Emacs would place lock files in
+<filename>/var/lib/emacs/lock</filename>).</para>
+
+<para>Future editors may require additional state information beyond
+crash-recovery files and lock files &mdash; this information should
+also be placed under
+<filename>/var/lib/&lt;editor&gt;</filename>.</para>
+
+<tip><title>Rationale</title>
+
+<para>Previous Linux releases, as well as all commercial vendors, use
+<filename>/var/preserve</filename> for vi or its clones.  However,
+each editor uses its own format for these crash-recovery files, so a
+separate directory is needed for each editor.</para>
+
+<para>Editor-specific lock files are usually quite different from the
+device or resource lock files that are stored in
+<filename>/var/lock</filename> and, hence, are stored under
+<filename>/var/lib</filename>.
+
+</tip>
+</section>
+</section>
+
+
+<section id='varlibhwclockStateDirectoryForHwclo'>
+<title>/var/lib/hwclock : State directory for hwclock (optional)</title>
+
+<section id='purpose40'><title>Purpose</title>
+
+<para>This directory contains the file
+<filename>/var/lib/hwclock/adjtime</filename>.</para>
+
+
+<tip>
+<title>Rationale</title>
+
+<para>In FHS 2.1, this file was <filename>/etc/adjtime</filename>, but
+as <command>hwclock</command> updates it, that was obviously
+incorrect.
+
+</tip>
+</section>
+</section>
+
+<section id='varlibmiscMiscellaneousVariableData'>
+<title>/var/lib/misc : Miscellaneous variable data</title>
+
+<section id='purpose41'><title>Purpose</title>
+
+<para>This directory contains variable data not placed in a
+subdirectory in <filename>/var/lib</filename>.  An attempt should be
+made to use relatively unique names in this directory to avoid
+namespace conflicts.
+
+<footnote><para>This hierarchy should contain files stored in
+<filename>/var/db</filename> in current BSD releases.  These include
+<filename>locate.database</filename> and
+<filename>mountdtab</filename>, and the kernel symbol database(s).
+</para></footnote></para>
+
+</section>
+</section>
+</section>
+
+<section id='varlockLockFiles'>
+<title>/var/lock : Lock files</title>
+
+<section id='purpose42'><title>Purpose</title>
+
+<para>Lock files should be stored within the
+<filename>/var/lock</filename> directory structure.</para>
+
+<para>Lock files for devices and other resources shared by multiple
+applications, such as the serial device lock files that were
+originally found in either <filename>/usr/spool/locks</filename> or
+<filename>/usr/spool/uucp</filename>, must now be stored in
+<filename>/var/lock</filename>.  The naming convention which must be
+used is "LCK.." followed by the base name of the device.  For example,
+to lock /dev/ttyS0 the file "LCK..ttyS0" would be created.
+
+<footnote>
+<para>Then, anything wishing to use <filename>/dev/ttyS0</filename>
+can read the lock file and act accordingly (all locks in
+<filename>/var/lock</filename> should be world-readable).
+</para>
+</footnote></para>
+
+<para>The format used for the contents of such lock files must be the
+HDB UUCP lock file format.  The HDB format is to store the process
+identifier (PID) as a ten byte ASCII decimal number, with a trailing
+newline.  For example, if process 1230 holds a lock file, it would
+contain the eleven characters: space, space, space, space, space,
+space, one, two, three, zero, and newline.</para>
+
+</section>
+</section>
+
+<section id='varlogLogFilesAndDirectories'>
+<title>/var/log : Log files and directories</title>
+
+<section id='purpose43'><title>Purpose</title>
+
+<para>This directory contains miscellaneous log files.  Most logs must
+be written to this directory or an appropriate subdirectory.</para>
+
+</section>
+
+<section id='specificOptions24'><title>Specific Options</title>
+
+<para>The following files, or symbolic links to files, must be in
+<filename>/var/log</filename>, if the corresponding subsystem is
+installed:</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+     <row>
+       <entry>File</entry>
+       <entry>Description</entry>
+     </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>lastlog</filename></entry>
+        <entry>record of last login of each user</entry>
+      </row>
+      <row>
+        <entry><filename>messages</filename></entry>
+        <entry>system messages from <command>syslogd</command></entry>
+      </row>
+      <row>
+        <entry><filename>wtmp</filename></entry>
+        <entry>record of all logins and logouts</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+</section>
+</section>
+
+<section id='varmailUserMailboxFiles'>
+<title>/var/mail : User mailbox files (optional)</title>
+
+<section id='purpose44'><title>Purpose</title>
+
+<para>The mail spool must be accessible through
+<filename>/var/mail</filename> and the mail spool files must take the
+form <filename>&lt;username&gt;</filename>.
+<footnote>
+<para>Note that <filename>/var/mail</filename> may be a symbolic link to
+another directory.</para>
+</footnote></para>
+
+<para>User mailbox files in this location must be stored in the standard
+UNIX mailbox format.</para>
+
+<tip><title>Rationale</title>
+
+<para>The logical location for this directory was changed from
+<filename>/var/spool/mail</filename> in order to bring FHS in-line
+with nearly every UNIX implementation.  This change is important for
+inter-operability since a single <filename>/var/mail</filename> is
+often shared between multiple hosts and multiple UNIX implementations
+(despite NFS locking issues).</para>
+
+<para>It is important to note that there is no requirement to
+physically move the mail spool to this location.  However, programs
+and header files must be changed to use
+<filename>/var/mail</filename>.
+
+</tip>
+</section>
+</section>
+
+<section id='varoptVariableDataForOpt'>
+<title>/var/opt : Variable data for /opt</title>
+
+<section id='purpose45'><title>Purpose</title>
+
+<para>Variable data of the packages in <filename>/opt</filename> must
+be installed in <filename>/var/opt/&lt;subdir&gt;</filename>, where
+<filename>&lt;subdir&gt;</filename> is the name of the subtree in
+<filename>/opt</filename> where the static data from an add-on
+software package is stored, except where superseded by another file in
+<filename>/etc</filename>.  No structure is imposed on the internal
+arrangement of <filename>/var/opt/&lt;subdir&gt;</filename>.</para>
+
+<tip><title>Rationale</title>
+
+<para>Refer to the rationale for <filename>/opt</filename>.
+
+</tip>
+</section>
+</section>
+
+<section id='varrunRuntimeVariableData'>
+<title>/var/run : Run-time variable data</title>
+
+<section id='purpose46'><title>Purpose</title>
+
+<para>This directory contains system information data describing the
+system since it was booted.  Files under this directory must be
+cleared (removed or truncated as appropriate) at the beginning of the
+boot process.  Programs may have a subdirectory of
+<filename>/var/run</filename>; this is encouraged for programs that
+use more than one run-time file.
+
+<footnote>
+<para>
+<filename>/var/run</filename> should be unwritable for unprivileged
+users (root or users running daemons); it is a major security problem
+if any user can write in this directory.
+</para>
+</footnote>
+
+Process identifier (PID) files, which were originally placed in
+<filename>/etc</filename>, must be placed in
+<filename>/var/run</filename>.  The naming convention for PID files is
+<filename>&lt;program-name&gt;.pid</filename>.  For example, the
+<command>crond</command> PID file is named
+<filename>/var/run/crond.pid</filename>.</para>
+
+</section>
+
+<section id='requirements14'><title>Requirements</title>
+
+<para>The internal format of PID files remains unchanged.  The file
+must consist of the process identifier in ASCII-encoded decimal,
+followed by a newline character.  For example, if
+<command>crond</command> was process number 25,
+<filename>/var/run/crond.pid</filename> would contain three
+characters: two, five, and newline.</para>
+
+<para>Programs that read PID files should be somewhat flexible in what
+they accept; i.e., they should ignore extra whitespace, leading
+zeroes, absence of the trailing newline, or additional lines in the
+PID file.  Programs that create PID files should use the simple
+specification located in the above paragraph.</para>
+
+<para>The <filename>utmp</filename> file, which stores information
+about who is currently using the system, is located in this
+directory.</para>
+
+<para>System programs that maintain transient UNIX-domain sockets must place
+them in this directory.</para>
+
+</section>
+</section>
+
+<section id='varspoolApplicationSpoolData'>
+<title>/var/spool : Application spool data</title>
+
+<section id='purpose47'><title>Purpose</title>
+
+<para><filename>/var/spool</filename> contains data which is awaiting
+some kind of later processing.  Data in
+<filename>/var/spool</filename> represents work to be done in the
+future (by a program, user, or administrator); often data is deleted
+after it has been processed.
+
+<footnote>
+<para>
+UUCP lock files must be placed in <filename>/var/lock</filename>.  See
+the above section on <filename>/var/lock</filename>.  </para>
+</footnote></para>
+
+</section>
+
+<section id='specificOptions25'><title>Specific Options</title>
+
+<para>The following directories, or symbolic links to directories,
+must be in <filename>/var/spool</filename>, if the corresponding
+subsystem is installed:</para>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>lpd</filename></entry>
+       <entry>Printer spool directory (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>mqueue</filename></entry>
+       <entry>Outgoing mail queue (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>news</filename></entry>
+       <entry>News spool directory (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>rwho</filename></entry>
+       <entry>Rwhod files (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>uucp</filename></entry>
+       <entry>Spool directory for UUCP (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+
+</section>
+
+<section id='varspoollpdLineprinterDaemonPrintQu'>
+<title>/var/spool/lpd : Line-printer daemon print queues (optional)</title>
+
+<section id='purpose48'><title>Purpose</title>
+
+<para>The lock file for <command>lpd</command>,
+<filename>lpd.lock</filename>, must be placed in
+<filename>/var/spool/lpd</filename>.  It is suggested that the lock
+file for each printer be placed in the spool directory for that
+specific printer and named <filename>lock</filename>.</para>
+
+</section>
+
+<section id='specificOptions26'><title>Specific Options</title>
+
+<informaltable frame='none'>
+  <tgroup cols='2' align='left'>
+  <thead>
+     <row>
+       <entry>Directory</entry>
+       <entry>Description</entry>
+     </row>
+  </thead>
+
+  <tbody>
+
+     <row>
+       <entry><filename>printer</filename></entry>
+       <entry>Spools for a specific printer (optional)</entry>
+     </row>
+
+   </tbody>
+  </tgroup>
+</informaltable>
+
+</section>
+</section>
+
+<section id='varspoolrwhoRwhodFiles'>
+<title>/var/spool/rwho : Rwhod files (optional)</title>
+
+
+<section id='purpose49'><title>Purpose</title>
+
+<para>This directory holds the <command>rwhod</command> information
+for other systems on the local net.</para>
+
+<tip><title>Rationale</title>
+
+<para>Some BSD releases use <filename>/var/rwho</filename> for this
+data; given its historical location in <filename>/var/spool</filename>
+on other systems and its approximate fit to the definition of
+`spooled' data, this location was deemed more appropriate.</para>
+
+
+</tip>
+</section>
+</section>
+</section>
+
+<section id='vartmpTemporaryFilesPreservedBetwee'>
+<title>/var/tmp : Temporary files preserved between system reboots</title>
+
+<section id='purpose50'><title>Purpose</title>
+
+<para>The <filename>/var/tmp</filename> directory is made available
+for programs that require temporary files or directories that are
+preserved between system reboots.  Therefore, data stored in
+<filename>/var/tmp</filename> is more persistent than data in
+<filename>/tmp</filename>.</para>
+
+<para>Files and directories located in <filename>/var/tmp</filename>
+must not be deleted when the system is booted.  Although data stored
+in <filename>/var/tmp</filename> is typically deleted in a
+site-specific manner, it is recommended that deletions occur at a less
+frequent interval than <filename>/tmp</filename>.</para>
+
+</section>
+</section>
+
+<section id='varypNetworkInformationService'>
+<title>/var/yp : Network Information Service (NIS) database files (optional)</title>
+
+
+<section id='purpose51'><title>Purpose</title>
+
+<para>Variable data for the Network Information Service (NIS),
+formerly known as the Sun Yellow Pages (YP), must be placed in this
+directory.</para>
+
+<tip><title>Rationale</title>
+
+<para><filename>/var/yp</filename> is the standard directory for NIS
+(YP) data and is almost exclusively used in NIS documentation and
+systems.
+
+<footnote>
+<para>
+NIS should not be confused with Sun NIS+, which uses a different
+directory, <filename>/var/nis</filename>.
+</para>
+</footnote></para>
+</tip>
+
+</section>
+</section>
+</chapter>
+
