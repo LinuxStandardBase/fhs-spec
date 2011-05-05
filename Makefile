@@ -1,6 +1,6 @@
 XMLFILES=fhs.xml intro.xml filesystem.xml root-filesystem.xml usr.xml var.xml os.xml appendix.xml
 
-all: fhs.html fhs/book.html fhs.txt fhs.pdf fhs.ps 
+all: fhs.html fhs/book.html fhs.txt fhs.pdf #fhs.ps 
 
 fhs.ps: $(XMLFILES)
 	xmlto ps fhs.xml
@@ -19,3 +19,5 @@ fhs.html: $(XMLFILES)
 
 clean:
 	rm -f fhs.ps fhs.txt fhs.pdf fhs/*.html fhs.html
+
+distclean: clean

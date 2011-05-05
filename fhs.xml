@@ -10,9 +10,9 @@
 <!ENTITY chap-var SYSTEM "var.xml">
 <!ENTITY chap-os SYSTEM "os.xml">
 <!ENTITY app-appendix SYSTEM "appendix.xml">
-<!-- these should come from the dtd, but we're not pulling it in -->
-<!ENTITY mdash            "&#x02014;" ><!--EM DASH -->
-<!ENTITY shy              "&#x000AD;" ><!--SOFT HYPHEN -->
+<!-- for docbook 5, if no dtd  we don't have isonum.ent/isopub.end -->
+<!ENTITY mdash "&#x02014;" ><!--EM DASH -->
+<!ENTITY shy   "&#x000AD;" ><!--SOFT HYPHEN -->
 ]>
 
 <!-- use for docbook 5.0 -->
