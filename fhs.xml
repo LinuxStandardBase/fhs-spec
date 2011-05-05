@@ -1,21 +1,32 @@
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook V4.1//EN"[
-
-<!entity specversion "2.3-draft">
-<!entity INTRO SYSTEM "intro.sgml">
-<!entity FILESYSTEM SYSTEM "filesystem.sgml">
-<!entity ROOT-FILESYSTEM SYSTEM "root-filesystem.sgml">
-<!entity USR SYSTEM "usr.sgml">
-<!entity VAR SYSTEM "var.sgml">
-<!entity OS SYSTEM "os.sgml">
-<!entity APPENDIX SYSTEM "appendix.sgml">
-
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
+		 'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'
+[
+<!ENTITY specversion "3.0-draft">
+<!ENTITY chap-intro SYSTEM "intro.xml">
+<!ENTITY chap-filesystem SYSTEM "filesystem.xml">
+<!ENTITY chap-root-filesystem SYSTEM "root-filesystem.xml">
+<!ENTITY chap-usr SYSTEM "usr.xml">
+<!ENTITY chap-var SYSTEM "var.xml">
+<!ENTITY chap-os SYSTEM "os.xml">
+<!ENTITY app-appendix SYSTEM "appendix.xml">
+<!-- these should come from the dtd, but we're not pulling it in -->
+<!ENTITY mdash            "&#x02014;" ><!--EM DASH -->
+<!ENTITY shy              "&#x000AD;" ><!--SOFT HYPHEN -->
 ]>
 
+<!-- use for docbook 5.0 -->
+<!--book xmlns="http://docbook.org/ns/docbook" version="5.0" xml:lang="en"-->
+<!-- use for docbook <5.0 -->
 <book>
-<bookinfo>
+<!--info-->	<!-- use for docbook 5.0 -->
+<bookinfo>	<!-- use for docbook <5.0 -->
 <title>Filesystem Hierarchy Standard</title>
 <pubdate>January 28 2004</pubdate>
-<corpauthor>Filesystem Hierarchy Standard Group</corpauthor>
+<!-- use for docbook 5.0 -->
+<!-- orgname class="informal">Filesystem Hierarchy Standard Group</orgname -->
+<!-- use for docbook <5.0 -->
+<corpname>Filesystem Hierarchy Standard Group</corpname>
 <authorgroup>
 <editor><firstname>Rusty</firstname><surname>Russell</surname></editor>
 <editor><firstname>Daniel</firstname><surname>Quinlan</surname></editor>
@@ -59,14 +70,15 @@ system administration tools, development tools, and scripts as well as
 greater uniformity of documentation for these systems.</para>
 </abstract>
 
-</bookinfo>
+<!--/info-->	<!-- use for docbook 5.0 -->
+</bookinfo>	<!-- use for docbook <5.0 -->
 
-&INTRO;
-&FILESYSTEM;
-&ROOT-FILESYSTEM;
-&USR;
-&VAR;
-&OS;
-&APPENDIX;
+&chap-intro;
+&chap-filesystem;
+&chap-root-filesystem;
+&chap-usr;
+&chap-var;
+&chap-os;
+&app-appendix;
 
 </book>

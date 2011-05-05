@@ -43,7 +43,7 @@ consensus view of those and other contributors.</para>
 
 <para>Here are some of the guidelines that have been used in the development
 of this standard:</para>
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 <listitem>
 <para>Solve technical problems while limiting transitional difficulties.</para>
 </listitem>
@@ -132,8 +132,8 @@ never have evolved.</para>
 
 <informaltable pgwide='0' frame='none'>
   <tgroup cols='2' align='center'>
-    <colspec colname='c1'>
-    <colspec colname='c2'>
+    <colspec colname='c1'/>
+    <colspec colname='c2'/>
     <tbody>
       <row>
         <entry align='left'>Brandon S. Allbery</entry>

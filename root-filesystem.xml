@@ -7,7 +7,7 @@
 <para>The contents of the root filesystem must be adequate to boot,
 restore, recover, and/or repair the system.</para>
 
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 
 <listitem>
 <para>To boot a system, enough must be present on the root partition
@@ -83,7 +83,7 @@ hierarchy provide more than enough flexibility for any package.</para>
 <para>There are several reasons why creating a new subdirectory of
 the root filesystem is prohibited:</para>
 
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 
 <listitem>
 <para>It demands space on a root partition which the system
@@ -431,7 +431,7 @@ symbolic link also allows users to easily see that
 <para>The requirement for the <command>[</command> and
 <command>test</command> commands to be included as binaries (even if
 implemented internally by the shell) is shared with the POSIX.2
-standard.
+standard.</para>
 
 </tip>
 
@@ -505,7 +505,7 @@ expected, then these binaries might be omitted (e.g., a ROM chip root,
 mounting <filename>/usr</filename> through NFS).  If restoration of a
 system is planned through the network, then <command>ftp</command>
 or <command>tftp</command> (along with everything necessary to get
-an ftp connection) must be available on the root partition.
+an ftp connection) must be available on the root partition.</para>
 
 </tip>
 </section>
@@ -906,8 +906,8 @@ installed:</para>
 
 <informaltable frame='none'>
   <tgroup cols='2' align='left'>
-    <colspec colname='c1'>
-    <colspec colname='c2'>
+    <colspec colname='c1'/>
+    <colspec colname='c2'/>
     <thead>
      <row>
        <entry>File</entry>
@@ -1077,7 +1077,9 @@ run binaries in <filename>/bin</filename> and
 <filename>libm.so.*</filename> may also be placed in
 <filename>/usr/lib</filename> if it is not required by anything in
 <filename>/bin</filename> or <filename>/sbin</filename>.
-</footnote></para>
+</para>
+</footnote>
+</para>
 
 </section>
 
@@ -1458,13 +1460,17 @@ repairing the system in addition to the binaries in
 <footnote>
 <para>
 Originally, <filename>/sbin</filename> binaries were kept in
-<filename>/etc</filename>.  </footnote> Programs executed after
+<filename>/etc</filename>.  
+</para></footnote> 
+
+Programs executed after
 <filename>/usr</filename> is known to be mounted (when there are no
 problems) are generally placed into <filename>/usr/sbin</filename>.
 Locally-installed system administration programs should be placed into
 <filename>/usr/local/sbin</filename>.
 
-<footnote> <para>Deciding what things go into
+<footnote> 
+<para>Deciding what things go into
 <emphasis>"sbin"</emphasis> directories is simple: if a normal (not a
 system administrator) user will ever run it directly, then it must be
 placed in one of the <emphasis>"bin"</emphasis> directories.  Ordinary
@@ -1487,7 +1493,6 @@ operating system, but to provide a good partition between binaries
 that everyone uses and ones that are primarily used for administration
 tasks.  There is no inherent security advantage in making
 <filename>/sbin</filename> off-limits for users.
-
 </para>
 </footnote></para>
 
@@ -1527,8 +1532,8 @@ installed:</para>
 
 <informaltable pgwide='0' frame='none'>
   <tgroup cols='2' align='left'>
-    <colspec colname='c1'>
-    <colspec colname='c2'>
+    <colspec colname='c1'/>
+    <colspec colname='c2'/>
     <thead>
       <row><entry>Command</entry><entry>Description</entry></row>
     </thead>
@@ -1659,6 +1664,7 @@ administrator.
 </para>
 
 </tip>
+</para>
 
 </section>
 </section>
@@ -1688,7 +1694,7 @@ the system is booted.</para>
 <para>FHS added this recommendation on the basis of historical
 precedent and common practice, but did not make it a requirement
 because system administration is not within the scope of this
-standard.
+standard.</para>
 
 </tip>
 </section>

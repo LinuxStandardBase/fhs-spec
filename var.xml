@@ -203,7 +203,7 @@ format of the cache directories.</para>
 
 <para>The existence of a separate directory for cached data allows
 system administrators to set different disk and backup policies from
-other directories in <filename>/var</filename>.
+other directories in <filename>/var</filename>.</para>
 
 </tip>
 
@@ -289,7 +289,7 @@ locally-formatted man pages.  Sites that mount <filename>/usr</filename> as writ
 <filename>/var/cache/man</filename> and may write formatted man pages into the
 <filename>cat&lt;section&gt;</filename> directories in <filename>/usr/share/man</filename> directly.  We
 recommend that most sites use one of the following options instead:</para>
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 <listitem>
 <para>Preformat all manual pages alongside the unformatted versions.</para>
 </listitem>
@@ -346,7 +346,7 @@ been moved under <filename>/var/cache</filename> to better reflect the
 dynamic nature of the formatted man pages.  The directory name has
 been changed to <filename>man</filename> to allow for enhancing the
 hierarchy to include post-processed formats other than "cat", such as
-PostScript, HTML, or DVI.
+PostScript, HTML, or DVI.</para>
 
 </tip>
 
@@ -391,7 +391,7 @@ its own, rather than leaving it merged in with the old
 allows local control of backup strategies, permissions, and disk
 usage, as well as allowing inter-host sharing and reducing clutter in
 <filename>/var/lib</filename>.  Additionally,
-<filename>/var/games</filename> is the path traditionally used by BSD.
+<filename>/var/games</filename> is the path traditionally used by BSD.</para>
 
 </tip>
 </section>
@@ -427,7 +427,7 @@ distribution.
 An important difference between this version of this standard and
 previous ones is that applications are now required to use a
 subdirectory of <filename>/var/lib</filename>.  
-<para>
+</para>
 </footnote></para>
 
 <para><filename>/var/lib/&lt;name&gt;</filename> is the location that
@@ -540,7 +540,7 @@ separate directory is needed for each editor.</para>
 <para>Editor-specific lock files are usually quite different from the
 device or resource lock files that are stored in
 <filename>/var/lock</filename> and, hence, are stored under
-<filename>/var/lib</filename>.
+<filename>/var/lib</filename>.</para>
 
 </tip>
 </section>
@@ -561,7 +561,7 @@ device or resource lock files that are stored in
 
 <para>In FHS 2.1, this file was <filename>/etc/adjtime</filename>, but
 as <command>hwclock</command> updates it, that was obviously
-incorrect.
+incorrect.</para>
 
 </tip>
 </section>
@@ -692,7 +692,7 @@ often shared between multiple hosts and multiple UNIX implementations
 <para>It is important to note that there is no requirement to
 physically move the mail spool to this location.  However, programs
 and header files must be changed to use
-<filename>/var/mail</filename>.
+<filename>/var/mail</filename>.</para>
 
 </tip>
 </section>
@@ -713,7 +713,7 @@ arrangement of <filename>/var/opt/&lt;subdir&gt;</filename>.</para>
 
 <tip><title>Rationale</title>
 
-<para>Refer to the rationale for <filename>/opt</filename>.
+<para>Refer to the rationale for <filename>/opt</filename>.</para>
 
 </tip>
 </section>

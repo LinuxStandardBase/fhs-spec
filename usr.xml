@@ -251,7 +251,7 @@ script) cannot rely on a path, it is advantageous to standardize their
 locations.  The Bourne shell and C-shell interpreters are already
 fixed in <filename>/bin</filename>, but Perl, Python, and Tcl are
 often found in many different places.  They may be symlinks to the
-physical location of the shell interpreters.
+physical location of the shell interpreters.</para>
 
 </tip>
 </section>
@@ -382,6 +382,7 @@ per-application subdirectories will exist.
 </para>
 </footnote></para>
 
+</section>
 </section>
 
 <section id='usrlocalLocalHierarchy'>
@@ -518,15 +519,11 @@ in <filename>/usr</filename> should place configuration files in
 
 </tip>
 </section>
-</section>
-
-
-</section>
 
 <section id='usrlocalshare1'><title>/usr/local/share</title>
 
 <para>The requirements for the contents of this directory are the same
-as <filename>/usr/share</filename>.  The only additional constraint is
+as for <filename>/usr/share</filename>.  The only additional constraint is
 that <filename>/usr/local/share/man</filename> and
 <filename>/usr/local/man</filename> directories must be synonomous
 (usually this means that one of them must be a symbolic link).
@@ -539,6 +536,7 @@ sensible.
 </para>
 </footnote>
 </para>
+</section>
 
 </section>
 
@@ -557,7 +555,7 @@ be placed in <filename>/sbin</filename> instead.
 <para>
 Locally installed system administration programs should be placed in
 <filename>/usr/local/sbin</filename>.
-<para>
+</para>
 </footnote></para>
 </section>
 </section>
@@ -817,7 +815,7 @@ An explanation of <filename>&lt;mandir&gt;</filename>,
 <filename>&lt;arch&gt;</filename> is given below.</para>
 
 <para>A description of each section follows:</para>
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 <listitem>
 <para><filename>man1</filename>: User programs
 <!-- .br -->
@@ -1017,10 +1015,10 @@ for countries with several competing standards.</para>
 
 <informaltable pgwide='0' frame='none'>
   <tgroup cols='4' align='center'>
-    <colspec colname='c1'>
-    <colspec colname='c2'>
-    <colspec colname='c3'>
-    <colspec colname='c4'>
+    <colspec colname='c1'/>
+    <colspec colname='c2'/>
+    <colspec colname='c3'/>
+    <colspec colname='c4'/>
     <thead>
       <row rowsep='1'>
         <entry align='left'>Language</entry>
@@ -1166,8 +1164,8 @@ is installed:</para>
 
 <informaltable pgwide='0' frame='none'>
   <tgroup cols='2' align='left'>
-    <colspec colname='c1'>
-    <colspec colname='c2'>
+    <colspec colname='c1'/>
+    <colspec colname='c2'/>
     <thead>
      <row>
        <entry>File</entry>
@@ -1302,8 +1300,8 @@ sheets.</para>
 must be in <filename>/usr/share/xml</filename>, if the corresponding
 subsystem is installed:</para>
 
-<informaltable frame="NONE">
-  <tgroup align="LEFT" cols="2">
+<informaltable frame="none">
+  <tgroup align="left" cols="2">
   <thead>
      <row>
        <entry>Directory</entry>

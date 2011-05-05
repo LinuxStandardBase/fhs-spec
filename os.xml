@@ -79,6 +79,7 @@ as if the actual controlling terminal device had been opened.
 located in /dev or subdirectories of /dev. There is no requirement
 concerning major/minor number values.</para>
 </tip>
+</para>
 
 </section>
 
@@ -141,7 +142,7 @@ information as well as other kernel and memory information.</para>
 <title>/sbin : Essential system binaries</title>
 
 <para>Linux systems place these additional files into <filename>/sbin</filename>.</para>
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 <listitem>
 <para>Second extended filesystem commands (optional):</para>
 
@@ -184,7 +185,7 @@ information as well as other kernel and memory information.</para>
 
 
 <para>Optional files for /sbin:</para>
-<itemizedlist normal mark='bullet'>
+<itemizedlist spacing="normal" mark="bullet">
 <listitem>
 <para>Static binaries:</para>
 
@@ -315,7 +316,7 @@ may be a symbolic link to a kernel source code tree.</para></note>
 <para>It is important that the kernel include files be located in
 <filename>/usr/src/linux</filename> and not in
 <filename>/usr/include</filename> so there are no problems when system
-administrators upgrade their kernel version for the first time.
+administrators upgrade their kernel version for the first time.</para>
 
 </tip>
 </section>
