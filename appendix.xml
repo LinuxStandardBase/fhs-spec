@@ -3,16 +3,16 @@
 <section id='theFhsMailingList'><title>The FHS mailing list</title>
 
 <para>The FHS mailing list is located at
-&lt;freestandards-fhs-discuss@lists.sourceforge.net&gt;. You can
-subscribe to the mailing list at this page <ulink
-url="http://sourceforge.net/projects/freestandards/">http://sourceforge.net/projects/freestandards/</ulink>.</para>
-
-<para>Thanks to Network Operations at the University of California at
-San Diego who allowed us to use their excellent mailing list
-server.</para>
-
-<para>As noted in the introduction, please do not send mail to the mailing
-list without first contacting the FHS editor or a listed contributor.</para>
+<email>fhs-discuss@lists.linuxfoundation.org</email> 
+(subscription required as a spam limitation measure). Mailing
+list subscription information, archives, etc. are at
+<!-- use for docbook 5.0 -->
+<!--link xl:href="https://lists.linux-foundation.org/mailman/listinfo/fhs-discuss">
+https://lists.linux-foundation.org/mailman/listinfo/fhs-discuss</link-->
+<!-- use for docbook <5.0 -->
+<ulink url="https://lists.linux-foundation.org/mailman/listinfo/fhs-discuss">
+https://lists.linux-foundation.org/mailman/listinfo/fhs-discuss</ulink>
+</para>
 
 </section>
 
@@ -36,6 +36,11 @@ Hierarchy Standard or FHS for short.</para>
 <para>Volunteers who have contributed extensively to this standard are
 listed at the end of this document.  This standard represents a
 consensus view of those and other contributors.</para>
+
+<para>Thanks to Network Operations at the University of California at
+San Diego, and later to SourceForge, who allowed us to use their 
+excellent mailing list servers during earlier phases of development.</para>
+
 
 </section>
 
@@ -93,13 +98,19 @@ goal is backwards compatibility from one release of this document to
 the next.</para>
 
 <para>Comments related to this standard are welcome.  Any comments or
-suggestions for changes may be directed to the FHS editor (Daniel
-Quinlan &lt;quinlan@pathname.com&gt;) or the FHS mailing list.
-Typographical or grammatical comments should be directed to the FHS
-editor.</para>
+suggestions for changes may be directed to the 
+FHS mailing list, or filed as bugs, or both.  
+Typographical or grammatical comments should be filed as bugs.
+The bugtracker is at
+<!-- use for docbook 5.0 -->
+<!--link xl:href="http://bugs.linuxfoundation.org">http://bugs.linuxfoundation.org</link-->
+<!-- use for docbook <5.0 -->
+<ulink url="http://bugs.linuxfoundation.org">http://bugs.linuxfoundation.org</ulink>
+- use the category FHS.
+</para>
 
 <para>Before sending mail to the mailing list it is requested that you
-first contact the FHS editor in order to avoid excessive re-discussion
+first glance at the mailing list archives to avoid excessive re-discussion
 of old topics.</para>
 
 <para>Questions about how to interpret items in this document may

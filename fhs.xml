@@ -26,7 +26,7 @@
 <!-- use for docbook 5.0 -->
 <!-- orgname class="informal">Filesystem Hierarchy Standard Group</orgname -->
 <!-- use for docbook <5.0 -->
-<corpname>Filesystem Hierarchy Standard Group</corpname>
+<orgname>Filesystem Hierarchy Standard Group</orgname>
 <authorgroup>
 <editor><firstname>Rusty</firstname><surname>Russell</surname></editor>
 <editor><firstname>Daniel</firstname><surname>Quinlan</surname></editor>
