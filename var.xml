@@ -20,7 +20,7 @@ that once went into <filename>/usr</filename> that is written to
 during system operation (as opposed to installation and software
 maintenance) must be in <filename>/var</filename>.</para>
 
-<para>If <filename>/var</filename> cannot be made a separate
+<para>If <filename>/var</filename> can not be made a separate
 partition, it is often preferable to move <filename>/var</filename>
 out of the root partition and into the <filename>/usr</filename>
 partition.  (This is sometimes done to reduce the size of the root
@@ -40,7 +40,7 @@ the FHS mailing list.</para>
 <section id='requirements12'><title>Requirements</title>
 
 <para>The following directories, or symbolic links to directories, are
-required in <filename>/var</filename>.</para>
+required in <filename>/var</filename>:</para>
 
 <informaltable frame='none'>
   <tgroup cols='2' align='left'>

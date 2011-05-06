@@ -18,7 +18,7 @@ Remove obsolete, misleading footnote text about location of C preprocessor
 Clarify some terms and the role of /etc/
 	http://bugs.linux-foundation.org/show_bug.cgi?id=29
 
-Default character set for en_GB shoudl not be ASCII (Updated from beta1)
+Default character set for en_GB should not be ASCII (Updated from beta1)
 	http://bugs.linux-foundation.org/show_bug.cgi?id=9
 
 /srv/cvs
@@ -45,7 +45,7 @@ Add /usr/share/xml: don't use /usr/share/sgml for XML:
 Note on crash dumps, clarification of config files in /boot:
 	http://bugs.linux-foundation.org/show_bug.cgi?id=14
 
-Expressedly note that RATIONALE is non-normative:
+Add note that RATIONALE is non-normative:
 	http://bugs.linux-foundation.org/show_bug.cgi?id=20
 
 Loosen /dev requirements, define only three:

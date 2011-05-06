@@ -247,7 +247,7 @@ installed:</para>
 
 <para>Because shell script interpreters (invoked with
 <filename>#!&lt;path&gt;</filename> on the first line of a shell
-script) cannot rely on a path, it is advantageous to standardize their
+script) can not rely on a path, it is advantageous to standardize their
 locations.  The Bourne shell and C-shell interpreters are already
 fixed in <filename>/bin</filename>, but Perl, Python, and Tcl are
 often found in many different places.  They may be symlinks to the
@@ -509,7 +509,7 @@ beneficial to installers, and is already used in other systems.  As
 all of <filename>/usr/local</filename> needs to be backed up to
 reproduce a system, it introduces no additional maintenance overhead,
 but a symlink to <filename>/etc/local</filename> is suitable if
-systems want alltheir configuration under one hierarchy.
+systems want all their configuration under one hierarchy.
 </para>
 <para>
 Note that <filename>/usr/etc</filename> is still not allowed: programs
@@ -667,7 +667,7 @@ subsystem is installed:</para>
 
      <row>
        <entry><filename>info</filename></entry>
-       <entry>GNU Info system s primary directory (optional)</entry>
+       <entry>Primary directory for GNU Info system (optional)</entry>
      </row>
 
      <row>
@@ -1198,20 +1198,19 @@ may place them in <filename>/usr/lib</filename> at their discretion.
 <footnote><para>
 Some such files include:
 
-<filename>airport</filename>, <filename> birthtoken</filename>, <filename>
-eqnchar</filename>, <filename> getopt</filename>, <filename>
-gprof.callg</filename>, <filename> gprof.flat</filename>, <filename>
-inter.phone</filename>, <filename> ipfw.samp.filters</filename>,
-<filename> ipfw.samp.scripts</filename>, <filename>
-keycap.pcvt</filename>, <filename> mail.help</filename>, <filename>
-mail.tildehelp</filename>, <filename> man.template</filename>,
-<filename>map3270</filename>, <filename> mdoc.template</filename>,
-<filename>more.help</filename>, <filename> na.phone</filename>,
-<filename>nslookup.help</filename>, <filename> operator</filename>,
-<filename>scsi_modes</filename>, <filename> sendmail.hf</filename>,
-<filename>style</filename>, <filename> units.lib</filename>,
-<filename>vgrindefs</filename>, <filename> vgrindefs.db</filename>,
-<filename>zipcodes</filename>
+<filename>airport</filename>, <filename>birthtoken</filename>,
+<filename>eqnchar</filename>, <filename>getopt</filename>,
+<filename>gprof.callg</filename>, <filename>gprof.flat</filename>,
+<filename>inter.phone</filename>, <filename>ipfw.samp.filters</filename>,
+<filename>ipfw.samp.scripts</filename>, <filename>keycap.pcvt</filename>,
+<filename>mail.help</filename>, <filename>mail.tildehelp</filename>,
+<filename>man.template</filename>, <filename>map3270</filename>,
+<filename>mdoc.template</filename>, <filename>more.help</filename>,
+<filename>na.phone</filename>, <filename>nslookup.help</filename>,
+<filename>operator</filename>, <filename>scsi_modes</filename>,
+<filename>sendmail.hf</filename>, <filename>style</filename>,
+<filename>units.lib</filename>, <filename>vgrindefs</filename>,
+<filename>vgrindefs.db</filename>, <filename>zipcodes</filename>.
 
 </para>
 </footnote>
@@ -1340,7 +1339,7 @@ subsystem is installed:</para>
 
 <section id='purpose30'><title>Purpose</title>
 
-<para>Source code may be place placed in this
+<para>Source code may be placed in this
 subdirectory, only for reference purposes.
 
 <footnote><para>
