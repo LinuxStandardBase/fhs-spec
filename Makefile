@@ -38,6 +38,9 @@ fhs/book.html: $(XMLFILES)
 fhs.html: $(XMLFILES)
 	xmlto html-nochunks fhs.xml
 
+valid:
+	xmllint --valid --noout fhs.xml
+
 clean:
 	rm -f fhs.ps fhs.txt fhs.pdf fhs/*.html fhs.html
 
