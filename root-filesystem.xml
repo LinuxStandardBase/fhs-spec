@@ -148,7 +148,7 @@ required in <filename>/</filename>.</para>
 
      <row>
        <entry><filename>media</filename></entry>
-       <entry>Mount point for removeable media</entry>
+       <entry>Mount point for removable media</entry>
      </row>
 
      <row>
@@ -1185,20 +1185,20 @@ link to the other). </para> </footnote></para>
 </section>
 
 <section id='mediaMountPoint'>
-<title>/media : Mount point for removeable media</title>
+<title>/media : Mount point for removable media</title>
 
 <section id='purposeMediaMountPoint'><title>Purpose</title>
 
 <para>This directory contains subdirectories which are used as mount
-points for removeable media such as floppy disks, cdroms and zip
+points for removable media such as floppy disks, cdroms and zip
 disks.</para>
 
 <tip><title>Rationale</title> 
 
 <para>Historically there have been a number of other different places
-used to mount removeable media such as <filename>/cdrom</filename>,
+used to mount removable media such as <filename>/cdrom</filename>,
 <filename>/mnt</filename> or <filename>/mnt/cdrom</filename>. Placing
-the mount points for all removeable media directly in the root
+the mount points for all removable media directly in the root
 directory would potentially result in a large number of extra
 directories in <filename>/</filename>. Although the use of
 subdirectories in <filename>/mnt</filename> as a mount point has
