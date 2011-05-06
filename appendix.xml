@@ -148,95 +148,50 @@ never have evolved.</para>
     <tbody>
       <row>
         <entry align='left'>Brandon S. Allbery</entry>
-        <entry align='left'>&lt;bsa@kf8nh.wariat.org&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Keith Bostic</entry>
-        <entry align='left'>&lt;bostic@cs.berkeley.edu&gt;</entry>
       </row>
       <row>
         <entry align='left'>Drew Eckhardt</entry>
-        <entry align='left'>&lt;drew@colorado.edu&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Rik Faith</entry>
-        <entry align='left'>&lt;faith@cs.unc.edu&gt;</entry>
       </row>
       <row>
         <entry align='left'>Stephen Harris</entry>
-        <entry align='left'>&lt;sweh@spuddy.mew.co.uk&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Ian Jackson</entry>
-        <entry align='left'>&lt;ijackson@cus.cam.ac.uk&gt;</entry>
       </row>
       <row>
         <entry align='left'>Andreas Jaeger</entry>
-        <entry align='left'>&lt;aj@suse.de&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>John A. Martin</entry>
-        <entry align='left'>&lt;jmartin@acm.org&gt;</entry>
       </row>
       <row>
         <entry align='left'>Ian McCloghrie</entry>
-        <entry align='left'>&lt;ian@ucsd.edu&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Chris Metcalf</entry>
-        <entry align='left'>&lt;metcalf@lcs.mit.edu&gt;</entry>
       </row>
       <row>
         <entry align='left'>Ian Murdock</entry>
-        <entry align='left'>&lt;imurdock@debian.org&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>David C. Niemi</entry>
-        <entry align='left'>&lt;niemidc@clark.net&gt;</entry>
       </row>
       <row>
         <entry align='left'>Daniel Quinlan</entry>
-        <entry align='left'>&lt;quinlan@pathname.com&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Eric S. Raymond</entry>
-        <entry align='left'>&lt;esr@thyrsus.com&gt;</entry>
       </row>
       <row>
         <entry align='left'>Rusty Russell</entry>
-        <entry align='left'>&lt;rusty@rustcorp.com.au&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Mike Sangrey</entry>
-        <entry align='left'>&lt;mike@sojurn.lns.pa.us&gt;</entry>
       </row>
       <row>
         <entry align='left'>David H. Silber</entry>
-        <entry align='left'>&lt;dhs@glowworm.firefly.com&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Thomas Sippel-Dau</entry>
-        <entry align='left'>&lt;t.sippel-dau@ic.ac.uk&gt;</entry>
       </row>
       <row>
         <entry align='left'>Theodore Ts'o</entry>
-        <entry align='left'>&lt;tytso@athena.mit.edu&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Stephen Tweedie</entry>
-        <entry align='left'>&lt;sct@dcs.ed.ac.uk&gt;</entry>
       </row>
       <row>
         <entry align='left'>Fred N. van Kempen</entry>
-        <entry align='left'>&lt;waltje@infomagic.com&gt;</entry>
-      </row>
-      <row>
         <entry align='left'>Bernd Warken</entry>
-        <entry align='left'>&lt;bwarken@mayn.de&gt;</entry>
       </row>
       <row>
         <entry align='left'>Christopher Yeoh</entry>
-        <entry align='left'>&lt;cyeoh@samba.org&gt;</entry>
       </row>
     </tbody>
   </tgroup>
