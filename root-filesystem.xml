@@ -639,18 +639,6 @@ required in <filename>/etc</filename>:</para>
        <entry>opt</entry>
        <entry>Configuration for /opt</entry>
      </row>
-     <row>
-       <entry>X11</entry>
-       <entry>Configuration for the X Window system (optional)</entry>
-     </row>
-     <row>
-       <entry>sgml</entry>
-       <entry>Configuration for SGML (optional)</entry>
-     </row>
-     <row>
-       <entry>xml</entry>
-       <entry>Configuration for XML (optional)</entry>
-     </row>
 
    </tbody>
   </tgroup>
@@ -676,8 +664,16 @@ installed:</para>
   <tbody>
 
      <row>
-       <entry>opt</entry>
-       <entry>Configuration for /opt</entry>
+       <entry>X11</entry>
+       <entry>Configuration for the X Window system (optional)</entry>
+     </row>
+     <row>
+       <entry>sgml</entry>
+       <entry>Configuration for SGML (optional)</entry>
+     </row>
+     <row>
+       <entry>xml</entry>
+       <entry>Configuration for XML (optional)</entry>
      </row>
 
    </tbody>
