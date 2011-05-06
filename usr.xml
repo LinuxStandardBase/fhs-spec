@@ -520,7 +520,7 @@ in <filename>/usr</filename> should place configuration files in
 </tip>
 </section>
 
-<section id='usrlocalshare1'><title>/usr/local/share</title>
+<section id='usrlocalshare1'><title>/usr/local/share : Local architecture-independent hierarchy</title>
 
 <para>The requirements for the contents of this directory are the same
 as for <filename>/usr/share</filename>.  The only additional constraint is
