@@ -489,9 +489,7 @@ installed:</para>
   </tgroup>
 </informaltable>
 
-<para>If the <command>gunzip</command> and <command>zcat</command>
-programs exist, they must be symbolic or hard links to
-gzip. <command>/bin/csh</command> may be a symbolic link to
+<para><command>/bin/csh</command> may be a symbolic link to
 <command>/bin/tcsh</command> or
 <command>/usr/bin/tcsh</command>.</para>
 
