@@ -1409,7 +1409,7 @@ software.</para>
 of the software, though it is recommended that packages are installed
 in <filename>/opt/&lt;provider&gt;/&lt;package&gt;</filename> and
 follow a similar structure to the guidelines for
-<filename>/opt/package</filename>. A valid reason for diverging from
+<filename>/opt/&lt;package&gt;</filename>. A valid reason for diverging from
 this structure is for support packages which may have files installed
 in <filename>/opt/&lt;provider&gt;/lib</filename> or
 <filename>/opt/&lt;provider&gt;/bin</filename>.</para>
