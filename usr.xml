@@ -178,7 +178,7 @@ system.</para>
 
 </section>
 
-<section id='requirements10'><title>Requirements</title>
+<section id='requirements9a'><title>Requirements</title>
 
 	<para>There must be no subdirectories in <filename>/usr/bin</filename>.</para>
 
@@ -421,7 +421,7 @@ reason, local software must not be placed outside of
 
 </section>
 
-<section id='requirements11'><title>Requirements</title>
+<section id='requirements10'><title>Requirements</title>
 
 <para>The following directories, or symbolic links to directories,
 must be in <filename>/usr/local</filename></para>
@@ -565,7 +565,7 @@ Locally installed system administration programs should be placed in
 </footnote></para>
 </section>
 
-<section id='requirements12'><title>Requirements</title>
+<section id='requirements10a'><title>Requirements</title>
 
 	<para>There must be no subdirectories in <filename>/usr/sbin</filename>.</para>
 
@@ -614,7 +614,7 @@ game play logs, and so forth, should be placed in
 
 </section>
 
-<section id='requirements13'><title>Requirements</title>
+<section id='requirements11'><title>Requirements</title>
 
 <para>The following directories, or symbolic links to directories,
 must be in <filename>/usr/share</filename></para>
