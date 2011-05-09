@@ -264,8 +264,7 @@ partition.
 
 <section id='requirements2'><title>Requirements</title>
 
-<para>There must be no subdirectories in
-<filename>/bin</filename>.</para>
+<para>There must be no subdirectories in <filename>/bin</filename>.</para>
 
 <para>The following commands, or symbolic links to commands, are
 required in <filename>/bin</filename>:</para>
@@ -1493,6 +1492,8 @@ tasks.  There is no inherent security advantage in making
 </section>
 
 <section id='requirements8'><title>Requirements</title>
+
+<para>There must be no subdirectories in <filename>/sbin</filename>.</para>
 
 <para>The following commands, or symbolic links to commands, are
 required in <filename>/sbin</filename>:</para>
