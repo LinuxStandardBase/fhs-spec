@@ -2,18 +2,17 @@ For future FHS revisions, which people should be credited with
 contributions?  This file is a place to record some names.
 
 Accepted patch submissions:
-Sven Hoexter
 Neil Mayhew
 Paul Eggert
-Neil Mayhew
+Sven Hoexter
 
 Review comments that were applied:
-Randy Dunlop
-Jan Sarenik
-T. Hood
-Jim Habegger
 Bruce Dubbs
+Randy Dunlop
+Jim Habegger
+T. Hood
 Egmont Koblinger
+Jan Sarenik
 
 Editorial:
 Jeff Licquia

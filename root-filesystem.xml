@@ -191,7 +191,7 @@ required in <filename>/</filename>.</para>
 
 <para>Each directory listed above is specified in detail in separate
 subsections below.  <filename>/usr</filename> and
-<filename>/var</filename> each have a complete section in this
+<filename>/var</filename> each has a complete section in this
 document due to the complexity of those directories.</para>
 
 </section>
