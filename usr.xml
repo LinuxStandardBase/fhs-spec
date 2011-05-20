@@ -253,7 +253,7 @@ installed:</para>
 
 <para>Because shell script interpreters (invoked with
 <filename>#!&lt;path&gt;</filename> on the first line of a shell
-script) can not rely on a path, it is advantageous to standardize their
+script) cannot rely on a path, it is advantageous to standardize their
 locations.  The Bourne shell and C-shell interpreters are already
 fixed in <filename>/bin</filename>, but Perl, Python, and Tcl are
 often found in many different places.  They may be symlinks to the

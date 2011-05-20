@@ -592,7 +592,7 @@ those that a particular implementation installs.</para>
 
 <para>The <filename>/etc</filename> hierarchy contains configuration
 files.  A "configuration file" is a local file used to control the
-operation of a program; it must be static and can not be an executable
+operation of a program; it must be static and cannot be an executable
 binary.
 
 <footnote>
@@ -1422,7 +1422,7 @@ location.
 
 <footnote><para>If the home directory of the root account is not
 stored on the root partition it will be necessary to make certain it
-will default to <filename>/</filename> if it can not be
+will default to <filename>/</filename> if it cannot be
 located.</para>
 
 <para>We recommend against using the root account for tasks that can be
