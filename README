@@ -1,0 +1,56 @@
+This is the source code for the Filesystem Hierarchy Standard (FHS), a
+standard for laying out filesystems for UNIX-like systems.  It is the
+recognized standard for most Linux systems.
+
+BUILDING
+--------
+
+The standard is maintained in the DocBook format.  Up to version 2.3,
+it used the older DocBook SGML format, but for 3.0, it was upgraded to
+comply with DocBook XML.
+
+To build readable versions of the standard, you will need the
+following tools installed:
+
+ - make (tested with GNU make)
+ - xmlto
+ - xsltproc (required for PDF generation)
+ - docbook-xsl (required for PDF generation)
+ - fop (required for PDF generation)
+ - libxml2-utils (for xmllint)
+
+(Note: these are the package names as reported on Ubuntu 11.04; a
+search on those names should show the equivalent package names for
+your distribution, or an upstream download link for non-Linux
+systems.)
+
+To build one-page HTML, chunked HTML, PDF, and text versions of the
+FHS, just run "make".  Each of these targets can be selected
+individually via "make {target}" where "{target}" is "fhs.html",
+"fhs/book.html", "fhs.pdf", or "fhs.txt", respectively.  After
+changing the DocBook, "make valid" will check for XML validity (which
+everyone changing the DocBook should do frequently).
+
+STYLESHEET ISSUES
+-----------------
+
+Generating the PDF may fail with an error that looks something like this:
+
+  warning: failed to load external entity "/tmp/fo/docbook.xsl"
+  cannot parse /tmp/fo/docbook.xsl
+
+This indicates that we're looking in the wrong place for the XSL
+stylesheet.  During the build, we look for the stylesheet's full path
+in the file "stylesheet_path"; if this file doesn't exist, we create
+one with a guess based on where the file is installed on most Linux
+systems.  If this isn't the correct location for your system, save the
+proper full path to that file before building.  For example, if your
+stylesheet is stored in /opt/xml/docbook/fo/docbook-to-fo.xsl, this
+command should be sufficient to cause the build to work:
+
+  echo "/opt/xml/docbook/fo/docbook-to-fo.xml" > stylesheet_path
+
+Running "make clean" will remove this file, so for normal development,
+rely on make's dependency rules to rebuild what's necessary rather
+than using "make clean" if you need to override the stylesheet path,
+or keep a copy of the override around.

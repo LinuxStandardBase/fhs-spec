@@ -1,6 +1,6 @@
 XMLFILES=fhs.xml intro.xml filesystem.xml root-filesystem.xml usr.xml var.xml os.xml appendix.xml
 
-all: fhs.html fhs/book.html fhs.txt fhs.pdf #fhs.ps
+all: fhs.html fhs/book.html fhs.txt fhs.pdf
 
 fhs.ps: $(XMLFILES)
 	xmlto ps fhs.xml
@@ -17,16 +17,18 @@ fhs.ps: $(XMLFILES)
 #fhs.pdf: fhs.html
 #	htmldoc --continuous -f fhs.pdf fhs.html
 
-# alternative try, but this has a hardcoded path (and lots of error output)
-XSL_PREFIX = /usr/share/sgml/docbook/xsl-stylesheets-1.76.1
-FO_XSL = $(XSL_PREFIX)/fo/docbook.xsl   
+# alternative try
+# to override the default stylesheet, save its full path to stylesheet_path
 
-fhs.fo:
-	xsltproc $(FO_ARGS) $(FO_XSL) fhs.xml > fhs.fo
+stylesheet_path:
+	echo "/usr/share/xml/docbook/stylesheet/docbook-xsl/fo/docbook.xsl" > $@
+
+fhs.fo: stylesheet_path $(XMLFILES)
+	xsltproc $(FO_ARGS) -o $@ $(shell cat stylesheet_path) fhs.xml
 
 fhs.pdf: fhs.fo
 	fop fhs.fo -pdf fhs.pdf
-	rm -f fhs.fo
+
 # end alternative
 
 fhs.txt: $(XMLFILES)
@@ -42,6 +44,7 @@ valid:
 	xmllint --valid --noout fhs.xml
 
 clean:
-	rm -f fhs.ps fhs.txt fhs.pdf fhs/*.html fhs.html
+	rm -f fhs.ps fhs.txt fhs.pdf fhs/*.html fhs.html fhs.fo stylesheet_path
+	rm -rf fhs
 
 distclean: clean
