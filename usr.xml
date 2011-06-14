@@ -605,7 +605,8 @@ doesn't need to be modified should store that data in
 <filename>/usr/share</filename> (or
 <filename>/usr/local/share</filename>, if installed locally).  It is
 recommended that a subdirectory be used in
-<filename>/usr/share</filename> for this purpose.</para>
+<filename>/usr/share</filename> for this purpose. Applications using
+a single file may use <filename>/usr/share/misc</filename>.</para>
 
 <para>Game data stored in <filename>/usr/share/games</filename> must
 be purely static data.  Any modifiable files, such as score files,
@@ -1191,10 +1192,6 @@ is installed:</para>
         <entry>ASCII character set table (optional)</entry>
       </row>
       <row>
-        <entry><filename>magic</filename></entry>
-        <entry>Default list of magic numbers for the file command (optional)</entry>
-      </row>
-      <row>
         <entry><filename>termcap</filename></entry>
         <entry>Terminal capability database (optional)</entry>
       </row>
@@ -1225,6 +1222,16 @@ Some such files include:
 <filename>units.lib</filename>, <filename>vgrindefs</filename>,
 <filename>vgrindefs.db</filename>, <filename>zipcodes</filename>.
 
+</para>
+</footnote>
+<footnote><para>
+Historically, the <filename>magic</filename> file was placed in
+<filename>/usr/share/misc</filename>, but modern variants of the file
+command use several files and place them in
+<filename>/usr/share/file</filename>. For compatibility,
+implementations may create a symlink at
+<filename>/usr/share/misc/magic</filename>, pointing to
+<filename>/usr/share/file/magic</filename>.
 </para>
 </footnote>
 </para>
