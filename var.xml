@@ -406,7 +406,14 @@ usage, as well as allowing inter-host sharing and reducing clutter in
 application or the system.  State information is data that programs
 modify while they run, and that pertains to one specific host.  Users
 must never need to modify files in <filename>/var/lib</filename> to
-configure a package's operation.</para>
+configure a package's operation, and the specific file hierarchy
+used to store the data must not be exposed to regular users.
+
+<footnote><para>
+Data with exposed filesystem structure should be stored in
+<filename>/srv</filename>.
+</para></footnote>
+</para>
 
 <para>State information is generally used to preserve the condition of
 an application (or a group of inter-related applications) between

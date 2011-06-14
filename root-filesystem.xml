@@ -1621,11 +1621,12 @@ served by this system.
 <tip><title>Rationale</title>
 <para>
 This main purpose of specifying this is so that users may find the
-location of the data files for particular service, and so that
+location of the data files for a particular service, and so that
 services which require a single tree for readonly data, writable data
 and scripts (such as cgi scripts) can be reasonably placed. Data that
 is only of interest to a specific user should go in that users' home
-directory.
+directory.  If the directory and file structure of the data is not 
+exposed to consumers, it should go in <filename>/var/lib</filename>.
 </para>
 
 <para>
