@@ -141,48 +141,8 @@ information as well as other kernel and memory information.</para>
 <section id='sbinEssentialSystemBinaries'>
 <title>/sbin : Essential system binaries</title>
 
-<para>Linux systems place these additional files into <filename>/sbin</filename>.</para>
-<itemizedlist spacing="normal" mark="bullet">
-<listitem>
-<para>Second extended filesystem commands (optional):</para>
-
-<itemizedlist>
-
-<listitem><para><command>badblocks</command></para>
-</listitem>
-
-<listitem><para><command>dumpe2fs</command></para>
-</listitem>
-
-<listitem><para><command>e2fsck</command></para>
-</listitem>
-
-<listitem><para><command>mke2fs</command></para>
-</listitem>
-
-<listitem><para><command>mklost+found</command></para>
-</listitem>
-
-<listitem><para><command>tune2fs</command></para>
-</listitem>
-
-</itemizedlist>
-
-</listitem>
-
-<listitem>
-<para>Boot-loader map installer (optional):</para>
-
-<itemizedlist>
-
-<listitem><para><command>lilo</command></para>
-</listitem>
-
-</itemizedlist>
-
-</listitem>
-</itemizedlist>
-
+<para>Linux systems place commands relating to filesystem maintenance and
+boot loader management into <filename>/sbin</filename>.</para>
 
 <para>Optional files for /sbin:</para>
 <itemizedlist spacing="normal" mark="bullet">
