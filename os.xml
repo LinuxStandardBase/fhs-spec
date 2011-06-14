@@ -229,6 +229,17 @@ Ctrl-Alt-Del, but others may require the
 
 </section>
 
+<section id='sysKernelAndSystemInformation'>
+<title>/sys : Kernel and system information virtual filesystem</title>
+
+<para>The <filename>sys</filename> filesystem is the location where
+information about devices, drivers, and some kernel features is
+exposed.  Its underlying structure is determined by the particular
+Linux kernel being used at the moment, and is otherwise
+unspecified.</para>
+
+</section>
+
 <section id='usrincludeHeaderFilesIncludedByCP'>
 
 <title>/usr/include : Header files included by C programs</title>
