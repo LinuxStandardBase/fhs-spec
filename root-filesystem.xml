@@ -34,10 +34,10 @@ filesystem.</para>
 
 <tip><title>Rationale</title>
 
-<para>The primary concern used to balance these considerations, which
-favor placing many things on the root filesystem, is the goal of
-keeping root as small as reasonably possible.  For several reasons, it
-is desirable to keep the root filesystem small:</para>
+<para>The minimum requirements for the root filesystem should be as
+small as reasonably possible, but no smaller.  While many users may
+not want the extra complexity of a partitioned system, the option to
+keep the root small should be preserved for several reasons:</para>
 
 <itemizedlist>
 
@@ -72,6 +72,10 @@ crash.</para>
 </listitem>
 
 </itemizedlist>
+
+<para>These considerations must be balanced against the need for a
+minimally useful operating environment, for the sake of the boot
+process as well as in failure recovery situations.</para>
 </tip>
 
 <para>Applications must never create or require special files or
