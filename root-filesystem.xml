@@ -601,26 +601,28 @@ binary.
 
 <footnote>
 <para>
-The setup of command scripts invoked at boot time may resemble System
-V, BSD or other models.  Further specification in this area may be
-added to a future version of this standard.</para>
+To be clear, <filename>/etc</filename> may contain executable scripts,
+such as the command scripts commonly called by
+<filename>init</filename> to start and shut down the system and start
+daemon processes.  "Executable binary" in this context refers to
+direct machine code or pseudocode not in a human-readable format, such
+as native ELF executables.
+</para>
 </footnote>
+</para>
+
+<para>
+It is recommended that files be stored in subdirectories of
+<filename>/etc</filename> rather than directly in
+<filename>/etc</filename>.
 </para>
 
 </section>
 
 <section id='requirements3'><title>Requirements</title>
 
-<para>No binaries may be located under <filename>/etc</filename>.
-
-<footnote>
-<para>
-It is recommended that files be stored in subdirectories of
-<filename>/etc</filename> rather than directly in
-<filename>/etc</filename>.
-</para>
-</footnote>
-</para>
+<para>No binaries may be located under
+<filename>/etc</filename>.</para>
 
 <para>The following directories, or symbolic links to directories are
 required in <filename>/etc</filename>:</para>
