@@ -790,9 +790,8 @@ is installed:</para>
 name for that language, e.g.,
 <filename>/usr/share/dict/french</filename>,
 <filename>/usr/share/dict/danish</filename>, etc.  These should, if
-possible, use an ISO 8859 character set which is appropriate for the
-language in question; if possible the Latin1 (ISO 8859-1) character
-set should be used (this is often not possible).</para>
+possible, use a character set based on Unicode, with the UTF-8
+character set being the preferred option.</para>
 
 <para>Other word lists must be included here, if present.</para>
 
@@ -1051,8 +1050,8 @@ for countries with several competing standards.</para>
       <row>
         <entry align='left'>English</entry>
         <entry align='left'>United Kingdom</entry>
-        <entry align='left'>ISO 8859-15</entry>
-        <entry align='left'>/usr/share/man/en_GB</entry>
+        <entry align='left'>Unicode UTF-8</entry>
+        <entry align='left'>/usr/share/man/en_GB.10646</entry>
       </row>
       <row>
         <entry align='left'>English</entry>
@@ -1064,13 +1063,13 @@ for countries with several competing standards.</para>
         <entry align='left'>French</entry>
         <entry align='left'>Canada</entry>
         <entry align='left'>ISO 8859-1</entry>
-        <entry align='left'>/usr/share/man/fr_CA</entry>
+        <entry align='left'>/usr/share/man/fr_CA.88591</entry>
       </row>
       <row>
         <entry align='left'>French</entry>
         <entry align='left'>France</entry>
         <entry align='left'>ISO 8859-1</entry>
-        <entry align='left'>/usr/share/man/fr_FR</entry>
+        <entry align='left'>/usr/share/man/fr_FR.88591</entry>
       </row>
       <row>
         <entry align='left'>German</entry>
@@ -1113,6 +1112,12 @@ for countries with several competing standards.</para>
         <entry align='left'>Japan</entry>
         <entry align='left'>UJIS (or EUC-J)</entry>
         <entry align='left'>/usr/share/man/ja_JP.ujis</entry>
+      </row>
+      <row>
+        <entry align='left'>Japanese</entry>
+        <entry align='left'>Japan</entry>
+        <entry align='left'>Unicode UTF-16</entry>
+        <entry align='left'>/usr/share/man/ja_JP.10646</entry>
       </row>
     </tbody>
   </tgroup>
