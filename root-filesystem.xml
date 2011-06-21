@@ -915,12 +915,8 @@ installed:</para>
     </thead>
     <tbody>
       <row>
-        <entry><filename>Xconfig</filename></entry>
-        <entry>The configuration file for early versions of XFree86 (optional)</entry>
-      </row>
-      <row>
-        <entry><filename>XF86Config</filename></entry>
-        <entry>The configuration file for XFree86 versions 3 and 4 (optional)</entry>
+        <entry><filename>xorg.conf</filename></entry>
+        <entry>The configuration file for X.org versions 7 and later (optional)</entry>
       </row>
       <row>
         <entry><filename>Xmodmap</filename></entry>

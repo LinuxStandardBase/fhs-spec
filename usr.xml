@@ -298,8 +298,7 @@ appropriate executable. </para>
 <para>
 Host-specific data for the X Window System must not be stored in
 <filename>/usr/lib/X11</filename>.  Host-specific configuration files
-such as <filename>Xconfig</filename> or
-<filename>XF86Config</filename> must be stored in
+such as <filename>xorg.conf</filename> must be stored in
 <filename>/etc/X11</filename>.  This includes configuration data such
 as <filename>system.twmrc</filename> even if it is only made a
 symbolic link to a more global configuration file (probably in
