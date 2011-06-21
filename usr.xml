@@ -81,11 +81,6 @@ required in <filename>/usr</filename>.</para>
   <tbody>
 
      <row>
-       <entry><filename>X11R6</filename></entry>
-       <entry>XWindow System, version 11 release 6 (optional)</entry>
-     </row>
-
-     <row>
        <entry><filename>games</filename></entry>
        <entry>Games and educational binaries (optional)</entry>
      </row>
@@ -121,51 +116,6 @@ systems until all implementations can be assumed to use the
 <para>Once a system no longer requires any one of the above symbolic links,
 the link may be removed, if desired.</para>
 
-</section>
-
-<section id='usrx11r6XWindowSystemVersion11Rel'>
-<title>/usr/X11R6 : X Window System, Version 11 Release 6 (optional)</title>
-
-<section id='purpose19'><title>Purpose</title>
-
-<para>This hierarchy is reserved for the X Window System, version 11
-release 6, and related files.</para>
-
-<para>To simplify matters and make XFree86 more compatible with the X
-Window System on other systems, the following symbolic links must be
-present if <filename>/usr/X11R6</filename> exists:</para>
-
-<screen>
-    /usr/bin/X11 -&gt; /usr/X11R6/bin
-    /usr/lib/X11 -&gt; /usr/X11R6/lib/X11
-    /usr/include/X11 -&gt; /usr/X11R6/include/X11
-</screen>
-
-<para>In general, software must not be installed or managed via the above
-symbolic links.  They are intended for utilization by users only.  The
-difficulty is related to the release version of the X Window System &mdash;
-in transitional periods, it is impossible to know what release of X11 is
-in use.</para>
-
-</section>
-
-<section id='specificOptions10'><title>Specific Options</title>
-
-<para>Host-specific data in <filename>/usr/X11R6/lib/X11</filename> should be interpreted
-as a demonstration file.  Applications requiring information about the
-current host must reference a configuration file in <filename>/etc/X11</filename>,
-which may be linked to a file in <filename>/usr/X11R6/lib</filename>.
-
-<footnote>
-<para>
-Examples of such configuration files include
-<filename>Xconfig</filename>, <filename>XF86Config</filename>, or
-<filename>system.twmrc</filename>)
-</para>
-</footnote>
-</para>
-
-</section>
 </section>
 
 <section id='usrbinMostUserCommands'>
@@ -210,9 +160,6 @@ subsystem is installed:</para>
   </tgroup>
 </informaltable>
 
-
-<para><filename>/usr/bin/X11</filename> must be a symlink to
-<filename>/usr/X11R6/bin</filename> if the latter exists.</para>
 
 <para>The following files, or symbolic links to files, must be in
 <filename>/usr/bin</filename>, if the corresponding subsystem is
@@ -299,10 +246,6 @@ subsystem is installed:</para>
   </tgroup>
 </informaltable>
 
-<para>The symbolic link <filename>/usr/include/X11</filename> must
-link to <filename>/usr/X11R6/include/X11</filename> if the latter
-exists.</para>
-
 </section>
 </section>
 
@@ -351,11 +294,6 @@ mail transfer agent must provide
 appropriate executable. </para>
 </footnote></para>
 
-<para>If <filename>/lib/X11</filename> exists,
-<filename>/usr/lib/X11</filename> must be a symbolic link to
-<filename>/lib/X11</filename>, or to whatever
-<filename>/lib/X11</filename> is a symbolic link to.
-
 <footnote>
 <para>
 Host-specific data for the X Window System must not be stored in
@@ -365,7 +303,7 @@ such as <filename>Xconfig</filename> or
 <filename>/etc/X11</filename>.  This includes configuration data such
 as <filename>system.twmrc</filename> even if it is only made a
 symbolic link to a more global configuration file (probably in
-<filename>/usr/X11R6/lib/X11</filename>).
+<filename>/usr/lib/X11</filename>).
 </para>
 </footnote></para>
 </section>
@@ -1135,8 +1073,7 @@ page for the i386 ctrlaltdel(8) command might be placed in
 
 <para>Manual pages for commands and data under
 <filename>/usr/local</filename> are stored in
-<filename>/usr/local/man</filename>.  Manual pages for X11R6 are
-stored in <filename>/usr/X11R6/man</filename>.  It follows that all
+<filename>/usr/local/man</filename>.  It follows that all
 manual page hierarchies in the system must have the same structure as
 <filename>/usr/share/man</filename>.</para>
 
@@ -1160,8 +1097,7 @@ the filename.</para>
 <para>The practice of placing various language manual pages in
 appropriate subdirectories of <filename>/usr/share/man</filename> also
 applies to the other manual page hierarchies, such as
-<filename>/usr/local/man</filename> and
-<filename>/usr/X11R6/man</filename>.  (This portion of the standard
+<filename>/usr/local/man</filename>.  (This portion of the standard
 also applies later in the section on the optional
 <filename>/var/cache/man</filename> structure.)</para>
 
