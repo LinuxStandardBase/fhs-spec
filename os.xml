@@ -98,35 +98,6 @@ concerning major/minor number values.</para>
 
 </section>
 
-<section id='lib64'>
-<title>/lib64 and /lib32 : 64/32-bit libraries (architecture dependent)</title>
-
-<para>
-
-The 64-bit architectures PPC64, s390x, sparc64 and AMD64 must place
-64-bit libraries in <filename>/lib64</filename>, and 32-bit
-(or 31-bit on s390) libraries in <filename>/lib</filename>.
-</para>
-<para>
-The 64-bit architecture IA64 must place 64-bit libraries in
-<filename>/lib</filename>. 
-
-<tip><title>Rationale</title>
-<para>
-This is a refinement of the general rules for
-<filename>/lib&lt;qual&gt;</filename> and
-<filename>/usr/lib&lt;qual&gt;</filename>.  The architectures PPC64,
-s390x, sparc64 and AMD64 support support both 32-bit (for s390 more
-precise 31-bit) and 64-bit programs.  Using <filename>lib</filename>
-for 32-bit binaries allows existing binaries from the 32-bit systems
-to work without any changes: such binaries are expected to be numerous.
-IA-64 uses a different scheme, reflecting the deprecation of 32-bit
-binaries (and hence libraries) on that architecture.
-</para>
-</tip>
-</para>
-</section>
-
 <section id='procKernelAndProcessInformationVir'>
 <title>/proc : Kernel and process information virtual filesystem</title>
 
