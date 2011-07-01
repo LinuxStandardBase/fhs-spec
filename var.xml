@@ -731,51 +731,37 @@ arrangement of <filename>/var/opt/&lt;subdir&gt;</filename>.</para>
 
 <section id='purpose46'><title>Purpose</title>
 
-<para>This directory contains system information data describing the
-system since it was booted.  Files under this directory must be
-cleared (removed or truncated as appropriate) at the beginning of the
-boot process.  Programs may have a subdirectory of
-<filename>/var/run</filename>; this is encouraged for programs that
-use more than one run-time file.
-
-<footnote>
-<para>
-<filename>/var/run</filename> should be unwritable for unprivileged
-users (root or users running daemons); it is a major security problem
-if any user can write in this directory.
-</para>
-</footnote>
-
-Process identifier (PID) files, which were originally placed in
-<filename>/etc</filename>, must be placed in
-<filename>/var/run</filename>.  The naming convention for PID files is
-<filename>&lt;program-name&gt;.pid</filename>.  For example, the
-<command>crond</command> PID file is named
-<filename>/var/run/crond.pid</filename>.</para>
+<para>This directory was once intended for system information data
+describing the system since it was booted.  These functions have been
+moved to <filename>/run</filename>; this directory exists to ensure
+compatibility with systems and software using an older version of this
+specification.</para>
 
 </section>
 
 <section id='requirements14'><title>Requirements</title>
 
-<para>The internal format of PID files remains unchanged.  The file
-must consist of the process identifier in ASCII-encoded decimal,
-followed by a newline character.  For example, if
-<command>crond</command> was process number 25,
-<filename>/var/run/crond.pid</filename> would contain three
-characters: two, five, and newline.</para>
-
-<para>Programs that read PID files should be somewhat flexible in what
-they accept; i.e., they should ignore extra whitespace, leading
-zeroes, absence of the trailing newline, or additional lines in the
-PID file.  Programs that create PID files should use the simple
-specification located in the above paragraph.</para>
+<para>In general, the requirements for <filename>/run</filename> shall
+also apply to <filename>/var/run</filename>.  It is valid to implement
+<filename>/var/run</filename> as a symlink to
+<filename>/run</filename>.</para>
 
 <para>The <filename>utmp</filename> file, which stores information
 about who is currently using the system, is located in this
 directory.</para>
 
-<para>System programs that maintain transient UNIX-domain sockets must place
-them in this directory.</para>
+<para>Programs should not access both <filename>/var/run</filename>
+and <filename>/run</filename> directly, except to access
+<filename>/var/run/utmp</filename>.
+
+<footnote>
+<para>This is to prevent confusion about where transient files are
+located.  In general, a program should use either
+<filename>/var/run</filename> or <filename>/run</filename> to access
+these files, not both.</para>
+</footnote>
+
+</para>
 
 </section>
 </section>

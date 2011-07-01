@@ -166,6 +166,11 @@ required in <filename>/</filename>.</para>
      </row>
 
      <row>
+       <entry><filename>run</filename></entry>
+       <entry>Data relevant to running processes</entry>
+     </row>
+
+     <row>
        <entry><filename>sbin</filename></entry>
        <entry>Essential system binaries</entry>
      </row>
@@ -1460,6 +1465,73 @@ postmaster, and webmaster be forwarded to an appropriate user.
 </para>
 </footnote>
 </para>
+
+</section>
+</section>
+
+<section id='runRuntimeVariableData'>
+<title>/run : Run-time variable data</title>
+
+<section id='runPurpose'><title>Purpose</title>
+
+<para>This directory contains system information data describing the
+system since it was booted.  Files under this directory must be
+cleared (removed or truncated as appropriate) at the beginning of the
+boot process.</para>
+
+<para>The purposes of this directory were once served by
+<filename>/var/run</filename>.  In general, programs may continue to
+use <filename>/var/run</filename> to fulfill the requirements set out
+for <filename>/run</filename> for the purposes of backwards
+compatibility.  Programs which have migrated to use
+<filename>/run</filename> should cease their usage of
+<filename>/var/run</filename>, except as noted in the section on
+<filename>/var/run</filename>.</para>
+
+<para>Programs may have a subdirectory of
+<filename>/run</filename>; this is encouraged for programs that
+use more than one run-time file.  Users may also have a subdirectory
+of <filename>/run</filename>, although care must be taken to
+appropriately limit access rights to prevent unauthorized use of
+<filename>/run</filename> itself and other subdirectories.
+
+<footnote>
+<para>
+<filename>/run</filename> should be unwritable for unprivileged
+users (root or users running daemons); it is a major security problem
+if any user can write in this directory.  User-specific subdirectories
+should be writable only by each directory's owner.
+</para>
+</footnote>
+</para>
+
+</section>
+
+<section id='runRequirements'><title>Requirements</title>
+
+<para>
+Process identifier (PID) files, which were originally placed in
+<filename>/etc</filename>, must be placed in
+<filename>/run</filename>.  The naming convention for PID files is
+<filename>&lt;program-name&gt;.pid</filename>.  For example, the
+<command>crond</command> PID file is named
+<filename>/run/crond.pid</filename>.</para>
+
+<para>The internal format of PID files remains unchanged.  The file
+must consist of the process identifier in ASCII-encoded decimal,
+followed by a newline character.  For example, if
+<command>crond</command> was process number 25,
+<filename>/var/run/crond.pid</filename> would contain three
+characters: two, five, and newline.</para>
+
+<para>Programs that read PID files should be somewhat flexible in what
+they accept; i.e., they should ignore extra whitespace, leading
+zeroes, absence of the trailing newline, or additional lines in the
+PID file.  Programs that create PID files should use the simple
+specification located in the above paragraph.</para>
+
+<para>System programs that maintain transient UNIX-domain sockets must place
+them in this directory.</para>
 
 </section>
 </section>
