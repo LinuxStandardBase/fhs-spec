@@ -1497,10 +1497,10 @@ appropriately limit access rights to prevent unauthorized use of
 
 <footnote>
 <para>
-<filename>/run</filename> should be unwritable for unprivileged
-users (root or users running daemons); it is a major security problem
-if any user can write in this directory.  User-specific subdirectories
-should be writable only by each directory's owner.
+<filename>/run</filename> should not be writable for unprivileged
+users; it is a major security problem if any user can write in this
+directory.  User-specific subdirectories should be writable only by
+each directory's owner.
 </para>
 </footnote>
 </para>
@@ -1521,8 +1521,8 @@ Process identifier (PID) files, which were originally placed in
 must consist of the process identifier in ASCII-encoded decimal,
 followed by a newline character.  For example, if
 <command>crond</command> was process number 25,
-<filename>/var/run/crond.pid</filename> would contain three
-characters: two, five, and newline.</para>
+<filename>/run/crond.pid</filename> would contain three characters:
+two, five, and newline.</para>
 
 <para>Programs that read PID files should be somewhat flexible in what
 they accept; i.e., they should ignore extra whitespace, leading
@@ -1530,8 +1530,9 @@ zeroes, absence of the trailing newline, or additional lines in the
 PID file.  Programs that create PID files should use the simple
 specification located in the above paragraph.</para>
 
-<para>System programs that maintain transient UNIX-domain sockets must place
-them in this directory.</para>
+<para>System programs that maintain transient UNIX-domain sockets must
+place them in this directory or an appropriate subdirectory as
+outlined above.</para>
 
 </section>
 </section>
