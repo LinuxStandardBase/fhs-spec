@@ -390,7 +390,7 @@ required in <filename>/bin</filename>:</para>
       </row>
       <row>
         <entry><command>sh</command></entry>
-        <entry>A POSIX compatible command shell</entry>
+        <entry>POSIX compatible command shell</entry>
       </row>
       <row>
         <entry><command>stty</command></entry>
