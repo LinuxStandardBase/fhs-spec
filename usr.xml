@@ -277,8 +277,9 @@ Perl 5 modules and libraries.</para>  </footnote></para>
 <section id='specificOptions13'><title>Specific Options</title>
 
 <para>For historical reasons, <command>/usr/lib/sendmail</command>
-must be a symbolic link to <command>/usr/sbin/sendmail</command> if
-the latter exists.
+must be a symbolic link which ultimately resolves to the
+<emphasis>sendmail</emphasis>-compatible command provided by the
+system's mail transfer agent, if the latter exists.
 
 <footnote>
 <para>
@@ -289,9 +290,9 @@ internal binary and must be placed in a binary directory; users access
 only <command>catman</command>.  Newer <command>sendmail</command>
 binaries are now placed by default in <filename>/usr/sbin</filename>.
 Additionally, systems using a <emphasis>sendmail</emphasis>-compatible
-mail transfer agent must provide
-<command>/usr/sbin/sendmail</command> as a symbolic link to the
-appropriate executable. </para>
+mail transfer agent must provide <command>/usr/sbin/sendmail</command>
+as the <command>sendmail</command> command, either as the executable
+itself or as a symlink to the appropriate executable. </para>
 </footnote>
 
 <footnote>
