@@ -462,6 +462,18 @@ in <filename>/usr</filename> should place configuration files in
 </para>
 
 </tip>
+
+<para>If the directory <filename>/usr/share/color</filename> exists as
+specified in this document, then the directory
+<filename>/usr/local/share/color</filename> must also exist, governed
+by the same rules as <filename>/usr/share/color</filename>.</para>
+
+<tip><title>Rationale</title>
+
+<para>This usage allows the sysadmin a place to install color profiles
+manually when necessary.</para>
+
+</tip>
 </section>
 
 <section id='usrlocalshare1'><title>/usr/local/share : Local architecture-independent hierarchy</title>
@@ -603,6 +615,11 @@ subsystem is installed:</para>
   <tbody>
 
      <row>
+       <entry><filename>color</filename></entry>
+       <entry>Color management information (optional)</entry>
+     </row>
+
+     <row>
        <entry><filename>dict</filename></entry>
        <entry>Word lists (optional)</entry>
      </row>
@@ -671,6 +688,47 @@ Similarly, a <filename>/usr/lib/games</filename> hierarchy may be used
 in addition to the <filename>/usr/share/games</filename> hierarchy if
 the distributor wishes to place some game data there.</para>
 
+</section>
+
+<section id='usrsharecolorColorManagement'>
+<title>/usr/share/color : Color management information (optional)</title>
+
+<section id='colorManagementPurpose'><title>Purpose</title>
+
+<para>This directory is the home for ICC color management files
+installed by the system.</para>
+
+</section>
+
+<section id='colorManagementSpecificOptions'><title>Specific
+Options</title>
+
+<para>The following directories must be in
+<filename>/usr/share/color</filename>, if the corresponding subsystem
+is installed:</para>
+
+<informaltable pgwide='0' frame='none'>
+  <tgroup cols='2' align='left'>
+    <thead>
+      <row>
+        <entry><filename>Directory</filename></entry>
+        <entry>Description</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry><filename>icc</filename></entry>
+        <entry>ICC color profiles (optional)</entry>
+      </row>
+    </tbody>
+  </tgroup>
+</informaltable>
+
+<para>The top-level directory <filename>/usr/share/color</filename>
+must not contain any files; all files should be in subdirectories of
+<filename>/usr/share/color</filename>.</para>
+
+</section>
 </section>
 
 <section id='usrsharedictWordLists'>

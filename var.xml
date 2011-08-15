@@ -501,6 +501,11 @@ corresponding subsystem is installed:</para>
      </row>
 
      <row>
+       <entry><filename>color</filename></entry>
+       <entry>Color management information (optional)</entry>
+     </row>
+
+     <row>
        <entry><command>hwclock</command></entry>
        <entry>State directory for hwclock (optional)</entry>
      </row>
@@ -553,6 +558,20 @@ device or resource lock files that are stored in
 </section>
 </section>
 
+
+<section id='varlibcolor'>
+<title>/var/lib/color : Color management information (optional)</title>
+
+<section id='varlibcolorPurpose'><title>Purpose</title>
+
+<para>This directory is the home for ICC color management files
+installed dynamically.  This directory shall be laid out using the
+same rules as the <filename>/usr/share/color</filename>
+directory.</para>
+
+</section>
+
+</section>
 
 <section id='varlibhwclockStateDirectoryForHwclo'>
 <title>/var/lib/hwclock : State directory for hwclock (optional)</title>
