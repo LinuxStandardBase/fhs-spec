@@ -670,6 +670,11 @@ subsystem is installed:</para>
      </row>
 
      <row>
+       <entry><filename>ppd</filename></entry>
+       <entry>Printer definitions (optional)</entry>
+     </row>
+
+     <row>
        <entry><filename>sgml</filename></entry>
        <entry>SGML data (optional)</entry>
      </row>
@@ -1254,6 +1259,19 @@ implementations may create a symlink at
 </para>
 </footnote>
 </para>
+
+</section>
+</section>
+
+<section id='usrshareppd'>
+<title>/usr/share/ppd : Printer definitions (optional)</title>
+
+<section id='usrshareppdPurpose'><title>Purpose</title>
+
+<para><filename>/usr/share/ppd</filename> contains PostScript Printer
+Definition (PPD) files, which are used as descriptions of printer
+drivers by many print systems.  PPD files may be placed in this
+directory, or in a subdirectory.</para>
 
 </section>
 </section>
