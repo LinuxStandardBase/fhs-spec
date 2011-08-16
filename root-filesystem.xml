@@ -527,23 +527,12 @@ an ftp connection) must be available on the root partition.</para>
 except configuration files not needed at boot time and the map
 installer. Thus /boot stores data that is used before the kernel
 begins executing user-mode programs.  This may include saved master
-boot sectors and sector map files.
+boot sectors and sector map files.</para>
 
-<footnote>
-
-<para> Programs necessary to arrange for the boot loader to be
-able to boot a file must be placed in <filename>/sbin</filename>.
-Configuration files for boot loaders must be placed in
-<filename>/etc</filename>.</para>
-
-<para>The GRUB bootloader reads its configurations file before
-booting, so that must be placed in <filename>/boot</filename>.  However, it is a
-configuration file, so should be in <filename>/etc</filename>.  The answer here is a
-symbolic link such as <filename>/etc/grub/menu.lst</filename> -> <filename>/boot/menu.lst</filename>.</para>
-
-</footnote>
-
-</para>
+<para> Programs necessary to arrange for the boot loader to be able to
+boot a file must be placed in <filename>/sbin</filename>.
+Configuration files for boot loaders that are not required at boot
+time must be placed in <filename>/etc</filename>.</para>
 
 </section>
 
