@@ -86,6 +86,11 @@ required in <filename>/usr</filename>.</para>
      </row>
 
      <row>
+       <entry><filename>libexec</filename></entry>
+       <entry>Binaries run by other programs (optional)</entry>
+     </row>
+
+     <row>
        <entry><filename>lib&lt;qual&gt;</filename></entry>
        <entry>Alternate Format Libraries (optional)</entry>
      </row>
@@ -254,14 +259,18 @@ subsystem is installed:</para>
 
 <section id='purpose22'><title>Purpose</title>
 
-<para><filename>/usr/lib</filename> includes object files, libraries,
-and internal binaries that are not intended to be executed directly by
-users or shell scripts.
+<para><filename>/usr/lib</filename> includes object files and libraries.
 <footnote><para> Miscellaneous
 architecture-independent application-specific static files and
 subdirectories must be placed in <filename>/usr/share</filename>.
+</para></footnote>
+On some systems, it may also include internal binaries that are not
+intended to be executed directly by users or shell scripts.
+<footnote><para>See below, in the <filename>/usr/libexec</filename>
+section, for a discussion of <filename>/usr/lib</filename>
+vs. <filename>/usr/libexec</filename> for executable binaries.
+</para></footnote>
 </para>
-</footnote></para>
 
 <para>Applications may use a single subdirectory under
 <filename>/usr/lib</filename>.  If an application uses a subdirectory,
@@ -306,6 +315,41 @@ symbolic link to a more global configuration file (probably in
 <filename>/usr/lib/X11</filename>).
 </para>
 </footnote></para>
+
+</section>
+</section>
+
+<section id='usrlibexec'>
+<title>/usr/libexec : Binaries run by other programs (optional)</title>
+
+<section id='usrlibexecPurpose'><title>Purpose</title>
+
+<para><filename>/usr/libexec</filename> includes internal binaries
+that are not intended to be executed directly by users or shell
+scripts.  Applications may use a single subdirectory under
+<filename>/usr/libexec</filename>.</para>
+
+<para>Applications which use <filename>/usr/libexec</filename> in this
+way must not also use <filename>/usr/lib</filename> to store internal
+binaries, though they may use <filename>/usr/lib</filename> for the
+other purposes documented here.</para>
+
+<tip><title>Rationale</title>
+
+<para>Some previous versions of this document did not support
+<filename>/usr/libexec</filename>, despite it being standard practice
+in a number of environments.
+<footnote>
+<para>See, for example, the "GNU Coding Standards" from
+the Free Software Foundation.</para>
+</footnote>
+To accomodate this restriction, it became common practice to use
+<filename>/usr/lib</filename> instead.  Either practice is now
+acceptable, but each application must choose one way or the other to
+organize itself.
+</para>
+
+</tip>
 
 </section>
 </section>
