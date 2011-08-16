@@ -286,7 +286,7 @@ Perl 5 modules and libraries.</para>  </footnote></para>
 <section id='specificOptions13'><title>Specific Options</title>
 
 <para>For historical reasons, <command>/usr/lib/sendmail</command>
-must be a symbolic link which ultimately resolves to the
+must be a symbolic link which resolves to the
 <emphasis>sendmail</emphasis>-compatible command provided by the
 system's mail transfer agent, if the latter exists.
 
