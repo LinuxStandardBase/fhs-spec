@@ -944,13 +944,7 @@ data for <filename>xdm</filename> is stored in
 <filename>/var/lib/xdm</filename>.
 </para>
 </footnote>
-
-We recommend that window managers with only one configuration file
-which is a default <filename>.*wmrc</filename> file must name it
-<filename>system.*wmrc</filename> (unless there is a widely-accepted
-alternative name) and not use a subdirectory.  Any window manager
-subdirectories must be identically named to the actual window manager
-binary.</para>
+</para>
 
 </section>
 </section>
