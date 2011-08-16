@@ -141,31 +141,6 @@ system.</para>
 
 <section id='specificOptions11'><title>Specific Options</title>
 
-<para>The following directories, or symbolic links to directories,
-must be in <filename>/usr/bin</filename>, if the corresponding
-subsystem is installed:</para>
-
-<informaltable frame='none'>
-  <tgroup cols='2' align='left'>
-  <thead>
-     <row>
-       <entry>Directory</entry>
-       <entry>Description</entry>
-     </row>
-  </thead>
-
-  <tbody>
-
-     <row>
-       <entry><filename>mh</filename></entry>
-       <entry>Commands for the MH mail handling system (optional)</entry>
-     </row>
-
-   </tbody>
-  </tgroup>
-</informaltable>
-
-
 <para>The following files, or symbolic links to files, must be in
 <filename>/usr/bin</filename>, if the corresponding subsystem is
 installed:</para>
