@@ -1,7 +1,13 @@
 XMLFILES=fhs.xml intro.xml filesystem.xml root-filesystem.xml usr.xml var.xml os.xml appendix.xml
-XMLTOARGS=--xsltopts '--stringparam section.autolabel 1 --stringparam section.label.includes.component.label 1'
+XMLTOARGS_OLD=--xsltopts '--stringparam section.autolabel 1 --stringparam section.label.includes.component.label 1'
+XMLTOARGS_NEW=--stringparam  section.autolabel=1 --stringparam  section.label.includes.component.label=1
 XSLTPROCARGS=--stringparam  section.autolabel 1 --stringparam  section.label.includes.component.label 1
 
+ifeq ($(shell xmlto --help | grep stringparam | wc -l),0)
+XMLTOARGS=$(XMLTOARGS_OLD)
+else
+XMLTOARGS=$(XMLTOARGS_NEW)
+endif
 
 all: fhs.html fhs/index.html fhs.txt fhs.pdf
 
