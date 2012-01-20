@@ -1,5 +1,5 @@
 XMLFILES=fhs.xml intro.xml filesystem.xml root-filesystem.xml usr.xml var.xml os.xml appendix.xml
-XMLTOARGS=--stringparam  section.autolabel=1 --stringparam  section.label.includes.component.label=1
+XMLTOARGS=--xsltopts '--stringparam section.autolabel 1 --stringparam section.label.includes.component.label 1'
 XSLTPROCARGS=--stringparam  section.autolabel 1 --stringparam  section.label.includes.component.label 1
 
 
