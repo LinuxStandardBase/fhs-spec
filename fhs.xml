@@ -22,16 +22,14 @@
 <!--info-->	<!-- use for docbook 5.0 -->
 <bookinfo>	<!-- use for docbook <5.0 -->
 <title>Filesystem Hierarchy Standard</title>
-<pubdate>January 28 2004</pubdate>
+<releaseinfo>Version &specversion;</releaseinfo>
+<pubdate>March 19, 2015</pubdate>
 <!-- use for docbook 5.0 -->
 <!-- orgname class="informal">Filesystem Hierarchy Standard Group</orgname -->
 <!-- use for docbook <5.0 -->
-<orgname>Filesystem Hierarchy Standard Group</orgname>
-<authorgroup>
-<editor><firstname>Rusty</firstname><surname>Russell</surname></editor>
-<editor><firstname>Daniel</firstname><surname>Quinlan</surname></editor>
-<editor><firstname>Christopher</firstname><surname>Yeoh</surname></editor>
-</authorgroup>
+<orgname>LSB Workgroup, The Linux Foundation</orgname>
+<corpauthor>LSB Workgroup, The Linux Foundation</corpauthor>
+<copyright><year>2015</year><holder>The Linux Foundation</holder></copyright>
 <copyright><year>1994-2004</year><holder>Daniel Quinlan</holder></copyright>
 <copyright><year>2001-2004</year><holder>Paul 'Rusty' Russell</holder></copyright>
 <copyright><year>2003-2004</year><holder>Christopher Yeoh</holder></copyright>

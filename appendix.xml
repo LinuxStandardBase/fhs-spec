@@ -156,10 +156,14 @@ never have evolved.</para>
       </row>
       <row>
         <entry align='left'>Stephen Harris</entry>
-        <entry align='left'>Ian Jackson</entry>
+        <entry align='left'>Karl Goetz</entry>
       </row>
       <row>
+        <entry align='left'>Ian Jackson</entry>
         <entry align='left'>Andreas Jaeger</entry>
+      </row>
+      <row>
+        <entry align='left'>Jeff Licquia</entry>
         <entry align='left'>John A. Martin</entry>
       </row>
       <row>
@@ -171,24 +175,28 @@ never have evolved.</para>
         <entry align='left'>David C. Niemi</entry>
       </row>
       <row>
+        <entry align='left'>Lennart Poettering</entry>
         <entry align='left'>Daniel Quinlan</entry>
+      </row>
+      <row>
         <entry align='left'>Eric S. Raymond</entry>
-      </row>
-      <row>
         <entry align='left'>Rusty Russell</entry>
+      </row>
+      <row>
         <entry align='left'>Mike Sangrey</entry>
-      </row>
-      <row>
         <entry align='left'>David H. Silber</entry>
+      </row>
+      <row>
         <entry align='left'>Thomas Sippel-Dau</entry>
-      </row>
-      <row>
         <entry align='left'>Theodore Ts'o</entry>
-        <entry align='left'>Stephen Tweedie</entry>
       </row>
       <row>
+        <entry align='left'>Stephen Tweedie</entry>
         <entry align='left'>Fred N. van Kempen</entry>
+      </row>
+      <row>
         <entry align='left'>Bernd Warken</entry>
+        <entry align='left'>Mats Wichmann</entry>
       </row>
       <row>
         <entry align='left'>Christopher Yeoh</entry>
