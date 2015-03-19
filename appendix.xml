@@ -139,67 +139,62 @@ never have evolved.</para>
 
 <section id='contributors'><title>Contributors</title>
 
-
+<!-- docbook markup would suggest this form for names:
+        <personname>
+          <firstname>Jeff</firstname><surname>Licquia</surname>
+        </personname>
+-->
 
 <informaltable pgwide='0' frame='none'>
-  <tgroup cols='2' align='center'>
+  <tgroup cols='3' align='center'>
     <colspec colname='c1'/>
     <colspec colname='c2'/>
+    <colspec colname='c3'/>
     <tbody>
       <row>
         <entry align='left'>Brandon S. Allbery</entry>
-        <entry align='left'>Keith Bostic</entry>
-      </row>
-      <row>
-        <entry align='left'>Drew Eckhardt</entry>
-        <entry align='left'>Rik Faith</entry>
-      </row>
-      <row>
-        <entry align='left'>Stephen Harris</entry>
-        <entry align='left'>Karl Goetz</entry>
-      </row>
-      <row>
-        <entry align='left'>Ian Jackson</entry>
-        <entry align='left'>Andreas Jaeger</entry>
-      </row>
-      <row>
-        <entry align='left'>Jeff Licquia</entry>
         <entry align='left'>John A. Martin</entry>
-      </row>
-      <row>
-        <entry align='left'>Ian McCloghrie</entry>
-        <entry align='left'>Chris Metcalf</entry>
-      </row>
-      <row>
-        <entry align='left'>Ian Murdock</entry>
-        <entry align='left'>David C. Niemi</entry>
-      </row>
-      <row>
-        <entry align='left'>Lennart Poettering</entry>
-        <entry align='left'>Daniel Quinlan</entry>
-      </row>
-      <row>
-        <entry align='left'>Eric S. Raymond</entry>
-        <entry align='left'>Rusty Russell</entry>
-      </row>
-      <row>
         <entry align='left'>Mike Sangrey</entry>
+      </row>
+      <row>
+        <entry align='left'>Keith Bostic</entry>
+        <entry align='left'>Ian McCloghrie</entry>
         <entry align='left'>David H. Silber</entry>
       </row>
       <row>
+        <entry align='left'>Drew Eckhardt</entry>
+        <entry align='left'>Chris Metcalf</entry>
         <entry align='left'>Thomas Sippel-Dau</entry>
+      </row>
+      <row>
+        <entry align='left'>Rik Faith</entry>
+        <entry align='left'>Ian Murdock</entry>
         <entry align='left'>Theodore Ts'o</entry>
       </row>
       <row>
+        <entry align='left'>Karl Goetz</entry>
+        <entry align='left'>David C. Niemi</entry>
         <entry align='left'>Stephen Tweedie</entry>
+      </row>
+      <row>
+        <entry align='left'>Stephen Harris</entry>
+        <entry align='left'>Lennart Poettering</entry>
         <entry align='left'>Fred N. van Kempen</entry>
       </row>
       <row>
+        <entry align='left'>Ian Jackson</entry>
+        <entry align='left'>Daniel Quinlan</entry>
         <entry align='left'>Bernd Warken</entry>
+      </row>
+      <row>
+        <entry align='left'>Andreas Jaeger</entry>
+        <entry align='left'>Eric S. Raymond</entry>
         <entry align='left'>Mats Wichmann</entry>
       </row>
       <row>
-        <entry align='left'>Christopher Yeoh</entry>
+        <entry align='left'><personname><firstname>Jeff</firstname><surname>Licquia</surname></personname></entry>
+        <entry align='left'><personname><firstname>Rusty</firstname><surname>Russell</surname></personname></entry>
+        <entry align='left'><personname><firstname>Christopher</firstname><surname>Yeoh</surname></personname></entry>
       </row>
     </tbody>
   </tgroup>
