@@ -12,7 +12,7 @@ section should never conflict with the base standard.</para>
 <section id='rootDirectory'><title>/ : Root directory</title>
 
 <para>On Linux systems, if the kernel is located in
-<filename>/</filename>, we recommend using the names
+<filename class="directory">/</filename>, we recommend using the names
 <filename>vmlinux</filename> or <filename>vmlinuz</filename>, which
 have been used in recent Linux kernel source packages.</para>
 
@@ -23,7 +23,7 @@ have been used in recent Linux kernel source packages.</para>
 <title>/bin : Essential user command binaries (for use by all users)</title>
 
 <para>Linux systems which require them place these additional files into
-<filename>/bin</filename>:</para>
+<filename class="directory">/bin</filename>:</para>
 <itemizedlist>
 
 <listitem><para><command>setserial</command></para>
@@ -37,11 +37,12 @@ have been used in recent Linux kernel source packages.</para>
 <title>/dev : Devices and special files</title>
 
 
-<para>The following devices must exist under /dev. 
+<para>The following devices must exist under 
+<filename class="directory">/dev</filename>.
 
 <variablelist>
 
-<varlistentry><term><filename>/dev/null</filename></term>
+<varlistentry><term><filename class="devicefile">/dev/null</filename></term>
 <listitem>
 <para>
 All data written to this device is discarded. A read from this device
@@ -50,7 +51,7 @@ will return an EOF condition.
 </listitem>
 </varlistentry>
 
-<varlistentry><term><filename>/dev/zero</filename></term>
+<varlistentry><term><filename class="devicefile">/dev/zero</filename></term>
 <listitem>
 <para>
 This device is a source of zeroed out data. All data written to this
@@ -60,7 +61,7 @@ containing the value zero as was requested.
 </listitem>
 </varlistentry>
 
-<varlistentry><term><filename>/dev/tty</filename></term>
+<varlistentry><term><filename class="devicefile">/dev/tty</filename></term>
 <listitem>
 <para>
 This device is a synonym for the controlling terminal of a
@@ -74,9 +75,12 @@ as if the actual controlling terminal device had been opened.
 <tip><title>Rationale</title>
 
 <para>Previous versions of the FHS had stricter requirements for
-<filename>/dev</filename>. Other devices may also exist in
-/dev. Device names may exist as symbolic links to other device nodes
-located in /dev or subdirectories of /dev. There is no requirement
+<filename class="directory">/dev</filename>. 
+Other devices may also exist in <filename class="directory">/dev</filename>.
+Device names may exist as symbolic links to other device nodes
+located in <filename class="directory">/dev</filename> 
+or subdirectories of <filename class="directory">/dev</filename>. 
+There is no requirement
 concerning major/minor number values.</para>
 </tip>
 </para>
@@ -87,7 +91,7 @@ concerning major/minor number values.</para>
 <title>/etc : Host-specific system configuration</title>
 
 <para>Linux systems which require them place these additional files into
-<filename>/etc</filename>.</para>
+<filename class="directory">/etc</filename>.</para>
 
 <itemizedlist>
 
@@ -101,9 +105,11 @@ concerning major/minor number values.</para>
 <section id='procKernelAndProcessInformationVir'>
 <title>/proc : Kernel and process information virtual filesystem</title>
 
-<para>The <filename>proc</filename> filesystem is the de-facto
+<para>The <systemitem class="filesystem">proc</systemitem> filesystem 
+is the de-facto
 standard Linux method for handling process and system information,
-rather than <filename>/dev/kmem</filename> and other similar methods.
+rather than <filename class="devicefile">/dev/kmem</filename> 
+and other similar methods.
 We strongly encourage this for the storage and retrieval of process
 information as well as other kernel and memory information.</para>
 
@@ -113,9 +119,10 @@ information as well as other kernel and memory information.</para>
 <title>/sbin : Essential system binaries</title>
 
 <para>Linux systems place commands relating to filesystem maintenance and
-boot loader management into <filename>/sbin</filename>.</para>
+boot loader management into <filename class="directory">/sbin</filename>.
+</para>
 
-<para>Optional files for /sbin:</para>
+<para>Optional files for <filename class="directory">/sbin</filename>:</para>
 <itemizedlist spacing="normal" mark="bullet">
 <listitem>
 <para>Static binaries:</para>
@@ -139,7 +146,8 @@ useful when things go wrong.  The primary use of
 <command>sln</command> (to repair incorrect symlinks in
 <filename>/lib</filename> after a poorly orchestrated upgrade) is no
 longer a major concern now that the <command>ldconfig</command>
-program (usually located in <filename>/usr/sbin</filename>) exists and
+program (usually located in <filename class="directory">/usr/sbin</filename>) 
+exists and
 can act as a guiding hand in upgrading the dynamic libraries.  Static
 <command>sync</command> is useful in some emergency situations.
 Note that these need not be statically linked versions of the standard
@@ -147,7 +155,7 @@ Note that these need not be statically linked versions of the standard
 be.</para>
 
 <para>The <command>ldconfig</command> binary is optional for
-<filename>/sbin</filename> since a site may choose to run
+<filename class="directory">/sbin</filename> since a site may choose to run
 <command>ldconfig</command> at boot time, rather than only when
 upgrading the shared libraries.  (It's not clear whether or not it is
 advantageous to run <command>ldconfig</command> on each boot.)  Even
@@ -185,7 +193,7 @@ replacement.</para>
 <para>So as to cope with the fact that some keyboards come up with
 such a high repeat rate as to be unusable,
 <command>kbdrate</command> may be installed in
-<filename>/sbin</filename> on some systems.</para>
+<filename class="directory">/sbin</filename> on some systems.</para>
 
 <para>Since the default action in the kernel for the Ctrl-Alt-Del key
 combination is an instant hard reboot, it is generally advisable to
@@ -193,7 +201,7 @@ disable the behavior before mounting the root filesystem in read-write
 mode.  Some <command>init</command> suites are able to disable
 Ctrl-Alt-Del, but others may require the
 <command>ctrlaltdel</command> program, which may be installed in
-<filename>/sbin</filename> on those systems.</para>
+<filename class="directory">/sbin</filename> on those systems.</para>
 
 </listitem>
 </itemizedlist>
@@ -203,7 +211,8 @@ Ctrl-Alt-Del, but others may require the
 <section id='sysKernelAndSystemInformation'>
 <title>/sys : Kernel and system information virtual filesystem</title>
 
-<para>The <filename>sys</filename> filesystem is the location where
+<para>The <systemitem class="filesystem">sys</systemitem> filesystem 
+is the location where
 information about devices, drivers, and some kernel features is
 exposed.  Its underlying structure is determined by the particular
 Linux kernel being used at the moment, and is otherwise
@@ -229,13 +238,17 @@ installed and only for systems not based on glibc.</para>
 
 <title>/usr/src : Source code</title>
 
-<para>For systems based on glibc, there are no specific guidelines for
-this directory.  For systems based on Linux libc revisions prior to
-glibc, the following guidelines and rationale apply:</para>
+<para>For systems based on 
+<systemitem class="library">glibc</systemitem>, 
+there are no specific guidelines for
+this directory.  For systems based on Linux 
+<systemitem class="library">libc</systemitem> revisions prior to
+<systemitem class="library">glibc</systemitem>, 
+the following guidelines and rationale apply:</para>
 
 <para>The only source code that should be placed in a specific
 location is the Linux kernel source code.  It is located in
-<filename>/usr/src/linux</filename>.</para>
+<filename class="directory">/usr/src/linux</filename>.</para>
 
 <para>If a C or C++ compiler is installed, but the complete Linux
 kernel source code is not installed, then the include files from the
@@ -249,15 +262,17 @@ kernel source code must be located in these directories:</para>
 <para><filename>&lt;arch&gt;</filename> is the name of the system
 architecture.</para>
 
-<note><title>Note</title><para> <filename>/usr/src/linux</filename>
+<note><title>Note</title>
+<para><filename class="directory">/usr/src/linux</filename>
 may be a symbolic link to a kernel source code tree.</para></note>
 
 <tip><title>Rationale</title>
 
 
 <para>It is important that the kernel include files be located in
-<filename>/usr/src/linux</filename> and not in
-<filename>/usr/include</filename> so there are no problems when system
+<filename class="directory">/usr/src/linux</filename> and not in
+<filename class="directory">/usr/include</filename> 
+so there are no problems when system
 administrators upgrade their kernel version for the first time.</para>
 
 </tip>
