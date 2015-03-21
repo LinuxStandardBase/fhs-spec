@@ -438,7 +438,7 @@ allowing changes or extensions to POSIX when desired.</para>
 
 <para>The requirement for the <command>[</command> and
 <command>test</command> commands to be included as binaries (even if
-implemented internally by the shell) is shared with the POSIX.2
+implemented internally by the shell) is shared with the POSIX.1-2008
 standard.</para>
 
 </tip>
@@ -1760,8 +1760,8 @@ program.</para>
 
 <tip><title>Rationale</title>
 
-<para>IEEE standard P1003.2 (POSIX, part 2) makes requirements that
-are similar to the above section.</para>
+<para>IEEE standard POSIX.1-2008 lists requirements 
+similar to the above section.</para>
 
 <para>Although data stored in <filename>/tmp</filename> may be deleted
 in a site-specific manner, it is recommended that files and
