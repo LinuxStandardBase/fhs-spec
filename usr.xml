@@ -178,13 +178,18 @@ installed:</para>
 
 <tip><title>Rationale</title>
 
-<para>Because shell script interpreters (invoked with
-<filename>#!&lt;path&gt;</filename> on the first line of a shell
-script) cannot rely on a path, it is advantageous to standardize their
-locations.  The POSIX shell and C-shell interpreters are already
-fixed in <filename>/bin</filename>, but Perl, Python, and Tcl are
-often found in many different places.  They may be symlinks to the
-physical location of the shell interpreters.</para>
+<para>In many executable scripts, the interpreter to be invoked to
+execute the script is specified using 
+<filename>#!<replaceable>path_to_interpreter</replaceable></filename> 
+on the first line of a script. 
+To make such scripts portable among different systems,
+it is advantageous to standardize the interpreter locations.
+The shell interpreter is already
+fixed in <filename>/bin</filename> by this specification, 
+but interpreters for Perl, Python, Tcl and expect may be installed
+in various places.  The locations specified here may be implemented
+as symbolic links to the physical location of the interpreters.
+</para>
 
 </tip>
 </section>
