@@ -503,7 +503,9 @@ installed:</para>
 
 <tip><title>Rationale</title>
 
-<para>The tar, gzip and cpio commands have been added to make restoration of a
+<para>The <command>tar</command>, <command>gzip </command>
+and <command>cpio</command>
+commands have been added to make restoration of a
 system possible (provided that <filename>/</filename> is intact).</para>
 
 <para>Conversely, if no restoration from the root partition is ever
