@@ -710,9 +710,9 @@ UNIX mailbox format.</para>
 
 <para>The logical location for this directory was changed from
 <filename>/var/spool/mail</filename> in order to bring FHS in-line
-with nearly every UNIX implementation.  This change is important for
+with nearly every UNIX distribution.  This change is important for
 inter-operability since a single <filename>/var/mail</filename> is
-often shared between multiple hosts and multiple UNIX implementations
+often shared between multiple hosts and multiple UNIX distribution
 (despite NFS locking issues).</para>
 
 <para>It is important to note that there is no requirement to

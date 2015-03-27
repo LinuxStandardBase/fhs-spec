@@ -109,7 +109,7 @@ considerable precedent and widely-accepted practice.</para>
 
 <para>The following symbolic links to directories may be present. This
 possibility is based on the need to preserve compatibility with older
-systems until all implementations can be assumed to use the
+systems until all distribution can be assumed to use the
 <filename>/var</filename> hierarchy.</para>
 
 <screen>
@@ -1258,7 +1258,7 @@ Historically, the <filename>magic</filename> file was placed in
 <filename>/usr/share/misc</filename>, but modern variants of the file
 command use several files and place them in
 <filename>/usr/share/file</filename>. For compatibility,
-implementations may create a symlink at
+distribution may create a symlink at
 <filename>/usr/share/misc/magic</filename>, pointing to
 <filename>/usr/share/file/magic</filename>.
 </para>

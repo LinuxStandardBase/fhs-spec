@@ -577,7 +577,7 @@ for any local devices.</para>
 
 <para>If required, <filename>MAKEDEV</filename> must have provisions
 for creating any device that may be found on the system, not just
-those that a particular implementation installs.</para>
+those that a particular distribution installs.</para>
 
 </section>
 </section>
@@ -1275,7 +1275,7 @@ unqualified name must also exist.
 
 <footnote>
 <para>
-A compliant implementation with two CDROM drives might have
+A compliant distribution with two CDROM drives might have
 <filename>/media/cdrom0</filename> and
 <filename>/media/cdrom1</filename> with
 <filename>/media/cdrom</filename> a symlink to either of these.
