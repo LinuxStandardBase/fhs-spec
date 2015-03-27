@@ -988,11 +988,12 @@ is clearly a site-specific filesystem.
 Different people prefer to place user accounts in a variety of places.
 This section describes only a suggested placement for user home
 directories; nevertheless we recommend that all FHS-compliant
-distributions use this as the default location for home
-directories.</para>
+distributions use this as the default location for user home
+directories. Non-login accounts created for administrative
+purposes often have their home directories elsewhere.</para>
 
-<para>On small systems, each user's directory is typically one of the
-many subdirectories of <filename>/home</filename> such as
+<para>On smaller systems, each user's home directory is typically implemented
+as a subdirectory directly under <filename>/home</filename>, for example
 <filename>/home/smith</filename>, <filename>/home/torvalds</filename>,
 <filename>/home/operator</filename>, etc.  On large systems
 (especially when the <filename>/home</filename> directories are shared
@@ -1003,14 +1004,15 @@ such as <filename>/home/staff</filename>,
 <filename>/home/students</filename>, etc.
 </para>
 </footnote>
-
 The setup will differ from host to host.  Therefore, no program should
-rely on this location.
-
+assume any specific location for a home directory, rather it
+should query for it.
 <footnote>
 <para>
-If you want to find out a user's home directory, you should use the
-<filename>getpwent(3)</filename> library function rather than relying
+To find a user's home directory, use a library function such
+as <function>getpwent</function>,
+<function>getpwent_r</function> of
+<function>fgetpwent</function> rather than relying
 on <filename>/etc/passwd</filename> because user information may be
 stored remotely using systems such as NIS.
 </para>
@@ -1030,9 +1032,9 @@ a '.' character, (a "dot directory").  In this case the configuration
 files should not start with the '.' character.
 <footnote>
 <para>
-It is recommended that apart from autosave and lock files programs
+It is recommended that, apart from autosave and lock files, programs
 should refrain from creating non dot files or directories in a home
-directory without user intervention.
+directory without user consent.
 </para>
 </footnote>
 </para>
@@ -1041,8 +1043,9 @@ directory without user intervention.
 
 <section id='homeReferences'><title>References</title>
 <para>
-A number of efforts have been made to standardize the layout of home
-directories, including the XDG Base Directories specification
+A number of efforts have been made in the past to standardize 
+the layout of home directories, 
+including the XDG Base Directories specification
 <footnote>
 <para>Found at
 <ulink url="http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html" />
@@ -1057,9 +1060,11 @@ documentation for GUserDirectory, at
 <ulink url="http://developer.gnome.org/glib/unstable/glib-Miscellaneous-Utility-Functions.html#GUserDirectory" />.
 </para>
 </footnote>
+Additional efforts in this direction are possible in the future.
 To accomodate software which makes use of these conventions,
-distributions may create directory hierarchies underneath home
-directories which conform to them.  
+distributions may create directory hierarchies which follow
+the conventions. Those directory hierarchies may be located
+underneath home directories.
 </para>
 </section>
 </section>
