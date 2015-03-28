@@ -91,7 +91,7 @@ required in <filename>/usr</filename>.</para>
      </row>
 
      <row>
-       <entry><filename>lib&lt;qual&gt;</filename></entry>
+       <entry><filename>lib<replaceable>&lt;qual&gt;</replaceable></filename></entry>
        <entry>Alternate Format Libraries (optional)</entry>
      </row>
 
@@ -335,17 +335,17 @@ organize itself.
 </section>
 
 <section id='usrlibltqualgtAlternateFormatLibrari'>
-<title>/usr/lib&lt;qual&gt; : Alternate format libraries (optional)</title>
+<title>/usr/lib<replaceable>&lt;qual&gt;</replaceable> : Alternate format libraries (optional)</title>
 
 <section id='purpose23'><title>Purpose</title>
 
-<para><filename>/usr/lib&lt;qual&gt;</filename> performs the same role as <filename>/usr/lib</filename> for an
+<para><filename>/usr/lib<replaceable>&lt;qual&gt;</replaceable></filename> performs the same role as <filename>/usr/lib</filename> for an
 alternate binary format, except that the symbolic links
-<filename>/usr/lib&lt;qual&gt;/sendmail</filename> and <filename>/usr/lib&lt;qual&gt;/X11</filename> are not required.
+<filename>/usr/lib<replaceable>&lt;qual&gt;</replaceable>/sendmail</filename> and <filename>/usr/lib<replaceable>&lt;qual&gt;</replaceable>/X11</filename> are not required.
 
 <footnote>
 <para>
-The case where <filename>/usr/lib</filename> and <filename>/usr/lib&lt;qual&gt;</filename> are the
+The case where <filename>/usr/lib</filename> and <filename>/usr/lib<replaceable>&lt;qual&gt;</replaceable></filename> are the
 same (one is a symbolic link to the other) these files and the
 per-application subdirectories will exist.
 </para>
@@ -464,8 +464,8 @@ system.</para>
 
 <section id='specificOptions14'><title>Specific Options</title>
 
-<para>If directories <filename>/lib&lt;qual&gt;</filename> or
-<filename>/usr/lib&lt;qual&gt;</filename> exist, the equivalent
+<para>If directories <filename>/lib<replaceable>&lt;qual&gt;</replaceable></filename> or
+<filename>/usr/lib<replaceable>&lt;qual&gt;</replaceable></filename> exist, the equivalent
 directories must also exist in <filename>/usr/local</filename>.</para>
 
 <para><filename>/usr/local/etc</filename> may be a symbolic link to

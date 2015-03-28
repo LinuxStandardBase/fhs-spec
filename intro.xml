@@ -65,22 +65,22 @@ than the plain text version.  In the typeset version, the names of files
 and directories are displayed in a constant-width font.</para>
 
 <para>Components of filenames that vary are represented by a description
-of the contents enclosed in "<emphasis remap='CW'>&lt;</emphasis>" and
-"<emphasis remap='CW'>&gt;</emphasis>" characters, <emphasis
-remap='CW'>&lt;thus&gt;</emphasis>.  Electronic mail addresses are also
+of the contents enclosed in "<replaceable>&lt;</replaceable>" and
+"<replaceable>&gt;</replaceable>" characters, 
+<replaceable>&lt;thus&gt;</replaceable>.  Electronic mail addresses are also
 enclosed in "&lt;" and "&gt;" but are shown in the usual
 typeface.</para>
 
 <para>Optional components of filenames are enclosed in
-"<emphasis>[</emphasis>" and "<emphasis>]</emphasis>" characters and may
-be combined with the "<emphasis>&lt;</emphasis>" and
-"<emphasis>&gt;</emphasis>" convention.  For example, if a filename is
+"<replaceable>[</replaceable>" and "<replaceable>]</replaceable>" characters and may
+be combined with the "<replaceable>&lt;</replaceable>" and
+"<replaceable>&gt;</replaceable>" convention.  For example, if a filename is
 allowed to occur either with or without an extension, it might be
 represented by
-<emphasis>&lt;filename&gt;[.&lt;extension&gt;]</emphasis>.</para>
+<replaceable>&lt;filename&gt;[.&lt;extension&gt;]</replaceable>.</para>
 
 <para>Variable substrings of directory names and filenames are indicated
-by "<emphasis>*</emphasis>".</para>
+by "<replaceable>*</replaceable>".</para>
 
 <para>The sections of the text marked as
 <emphasis>Rationale</emphasis> are explanatory and are

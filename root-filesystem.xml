@@ -229,7 +229,7 @@ installed:</para>
      </row>
 
      <row>
-       <entry><filename>lib&lt;qual&gt;</filename></entry>
+       <entry><filename>lib<replaceable>&lt;qual&gt;</replaceable></filename></entry>
        <entry>Alternate format essential shared libraries (optional)</entry>
      </row>
 
@@ -1166,7 +1166,7 @@ is installed:</para>
 </section>
 
 <section id='libltqualgtAlternateFormatEssential'>
-<title>/lib&lt;qual&gt; : Alternate format essential shared libraries (optional)</title>
+<title>/lib<replaceable>&lt;qual&gt;</replaceable> : Alternate format essential shared libraries (optional)</title>
 
 <section id='purpose12'><title>Purpose</title>
 
@@ -1191,14 +1191,14 @@ of the same name.  In this case, <filename>/lib32</filename> and
 
 <para>If one or more of these directories exist, the requirements for
 their contents are the same as the normal <filename>/lib</filename>
-directory, except that <filename>/lib&lt;qual&gt;/cpp</filename> is
+directory, except that <filename>/lib<replaceable>&lt;qual&gt;</replaceable>/cpp</filename> is
 not required.
 
 <footnote>
 <para>
-<filename>/lib&lt;qual&gt;/cpp</filename> is still permitted: this
+<filename>/lib<replaceable>&lt;qual&gt;</replaceable>/cpp</filename> is still permitted: this
 allows the case where <filename>/lib</filename> and
-<filename>/lib&lt;qual&gt;</filename> are the same (one is a symbolic
+<filename>/lib<replaceable>&lt;qual&gt;</replaceable></filename> are the same (one is a symbolic
 link to the other). </para> </footnote></para>
 
 </section>
