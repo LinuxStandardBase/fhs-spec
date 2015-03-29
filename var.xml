@@ -340,7 +340,7 @@ for formatted manual pages.</para>
 
 <tip><title>Rationale</title>
 
-<para>Release 1.2 of the standard specified
+<para>Release 1.2 of this standard specified
 <filename>/var/catman</filename> for this hierarchy.  The path has
 been moved under <filename>/var/cache</filename> to better reflect the
 dynamic nature of the formatted man pages.  The directory name has
@@ -386,8 +386,9 @@ remain elsewhere, such as
 <tip><title>Rationale</title>
 
 <para><filename>/var/games</filename> has been given a hierarchy of
-its own, rather than leaving it merged in with the old
-<filename>/var/lib</filename> as in release 1.2.  The separation
+its own, rather than leaving it underneath
+<filename>/var/lib</filename> as in release 1.2 of this standard.
+The separation
 allows local control of backup strategies, permissions, and disk
 usage, as well as allowing inter-host sharing and reducing clutter in
 <filename>/var/lib</filename>.  Additionally,
