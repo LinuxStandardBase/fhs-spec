@@ -1043,7 +1043,7 @@ directory without user consent.
 
 </section>
 
-<section id='homeReferences'><title>References</title>
+<section id='homeReferences'><title>Home Directory Specifications and Conventions</title>
 <para>
 A number of efforts have been made in the past to standardize 
 the layout of home directories, 
@@ -1063,9 +1063,9 @@ documentation for GUserDirectory, at
 </para>
 </footnote>
 Additional efforts in this direction are possible in the future.
-To accomodate software which makes use of these conventions,
+To accomodate software which makes use of these specifications and conventions,
 distributions may create directory hierarchies which follow
-the conventions. Those directory hierarchies may be located
+the specifications and conventions. Those directory hierarchies may be located
 underneath home directories.
 </para>
 </section>
