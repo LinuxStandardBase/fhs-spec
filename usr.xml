@@ -37,11 +37,6 @@ required in <filename>/usr</filename>.</para>
      </row>
 
      <row>
-       <entry><filename>include</filename></entry>
-       <entry>Header files included by C programs</entry>
-     </row>
-
-     <row>
        <entry><filename>lib</filename></entry>
        <entry>Libraries</entry>
      </row>
@@ -83,6 +78,11 @@ required in <filename>/usr</filename>.</para>
      <row>
        <entry><filename>games</filename></entry>
        <entry>Games and educational binaries (optional)</entry>
+     </row>
+
+     <row>
+       <entry><filename>include</filename></entry>
+       <entry>Header files included by C programs</entry>
      </row>
 
      <row>
