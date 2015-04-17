@@ -70,6 +70,12 @@ greater uniformity of documentation for these systems.</para>
 
 <!--/info-->	<!-- use for docbook 5.0 -->
 </bookinfo>	<!-- use for docbook <5.0 -->
+<dedication>
+<para>This release is dedicated to the memory of Christopher Yeoh,
+a long-time friend and colleague, and one of the original editors
+of the FHS. Without his dedication this work would not have been possible.
+</para>
+</dedication>
 
 &chap-intro;
 &chap-filesystem;
