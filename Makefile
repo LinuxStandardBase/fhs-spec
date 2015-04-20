@@ -4,7 +4,7 @@ XMLTOARGS_NEW=--stringparam  section.autolabel=1 --stringparam  section.label.in
 XSLTPROCARGS=--stringparam  section.autolabel 1 --stringparam  section.label.includes.component.label 1 --stringparam  chunker.output.encoding UTF-8
 
 # Location of DocBook upstream docbook.xsl for html-nochunks on the system.
-HTML_NOCHUNK_XSL=/usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl
+HTML_NOCHUNK_XSL=/usr/share/xml/docbook/stylesheet/nwalsh/html/docbook.xsl
 
 ifeq ($(shell xmlto --help | grep stringparam | wc -l),0)
 XMLTOARGS=$(XMLTOARGS_OLD)
