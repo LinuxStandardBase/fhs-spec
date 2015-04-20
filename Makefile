@@ -3,8 +3,11 @@ XMLTOARGS_OLD=--xsltopts '--stringparam section.autolabel 1 --stringparam sectio
 XMLTOARGS_NEW=--stringparam  section.autolabel=1 --stringparam  section.label.includes.component.label=1 --stringparam  chunker.output.encoding=UTF-8
 XSLTPROCARGS=--stringparam  section.autolabel 1 --stringparam  section.label.includes.component.label 1 --stringparam  chunker.output.encoding UTF-8
 
-# Location of DocBook upstream docbook.xsl for html-nochunks on the system.
-HTML_NOCHUNK_XSL=/usr/share/xml/docbook/stylesheet/nwalsh/html/docbook.xsl
+# Possible locations of DocBook upstream docbook.xsl for html-nochunks
+# on the system.
+HTML_NOCHUNK_XSL_LOCATIONS=/usr/share/xml/docbook/stylesheet/nwalsh/html/docbook.xsl \
+                           /usr/share/xml/docbook/stylesheet/nwalsh/current/html/docbook.xsl \
+                           /usr/share/sgml/docbook/xsl-stylesheets/html/docbook.xsl
 
 ifeq ($(shell xmlto --help | grep stringparam | wc -l),0)
 XMLTOARGS=$(XMLTOARGS_OLD)
@@ -15,7 +18,12 @@ endif
 all: fhs.html fhs/index.html fhs.txt fhs.pdf
 
 docbook-utf8.xsl: docbook-utf8.xsl.in
-	sed s,@HTML_NOCHUNK_XSL@,$(HTML_NOCHUNK_XSL),g < $< > $@
+	for f in $(HTML_NOCHUNK_XSL_LOCATIONS); do \
+	  if [ -e $$f ]; then \
+	    sed s,@HTML_NOCHUNK_XSL@,$$f,g < $< > $@; \
+	    break; \
+	  fi; \
+	done
 
 fhs.ps: $(XMLFILES)
 	xmlto $(XMLTOARGS) ps fhs.xml
