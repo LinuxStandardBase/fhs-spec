@@ -504,11 +504,15 @@ manually when necessary.</para>
 <section id='usrlocalshare1'><title>/usr/local/share : Local architecture-independent hierarchy</title>
 
 <para>The requirements for the contents of this directory are the same
-as for <filename>/usr/share</filename>.  The only additional constraint is
+as for <filename>/usr/share</filename>.  
+<!-- dropped per bug 798
+The only additional constraint is
 that <filename>/usr/local/share/man</filename> and
 <filename>/usr/local/man</filename> directories must be synonomous
 (usually this means that one of them must be a symbolic link).
+-->
 
+<!-- bug 798: this note removed; deprecation note added for /usr/local/man
 <footnote>
 <para>
 <filename>/usr/local/man</filename> may be deprecated in future FHS
@@ -516,6 +520,7 @@ releases, so if all else is equal, making that one a symlink seems
 sensible.
 </para>
 </footnote>
+-->
 </para>
 </section>
 
@@ -921,9 +926,9 @@ must be in
 <filename>/usr/share/&lt;mandir&gt;/&lt;locale&gt;</filename>, unless
 they are empty:
 
-<footnote><para>For example, if <filename>/usr/local/man</filename>
+<footnote><para>For example, if <filename>/usr/share/man</filename>
 has no manual pages in section 4 (Devices), then
-<filename>/usr/local/man/man4</filename> may be omitted.</para>
+<filename>/usr/share/man/man4</filename> may be omitted.</para>
 </footnote></para>
 
 <informaltable frame='none'>
@@ -1161,9 +1166,18 @@ page for the i386 ctrlaltdel(8) command might be placed in
 
 <para>Manual pages for commands and data under
 <filename>/usr/local</filename> are stored in
-<filename>/usr/local/man</filename>.  It follows that all
-manual page hierarchies in the system must have the same structure as
-<filename>/usr/share/man</filename>.</para>
+<filename>/usr/local/man</filename> or
+<filename>/usr/local/share/man</filename>.
+All manual page hierarchies in the system must have the same structure as
+<filename>/usr/share/man</filename>, as this structure is expected
+by commands which consume manual page content.
+<footnote>
+<para>
+<filename>/usr/local/man</filename> is deprecated and may be
+dropped in a future version of this specification.
+</para>
+</footnote>
+</para>
 
 <para>The cat page sections (<filename>cat&lt;section&gt;</filename>)
 containing formatted manual page entries are also found within
