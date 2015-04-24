@@ -1388,10 +1388,8 @@ tree in order to function properly.  For example, device lock files
 must be placed in <filename>/var/lock</filename> and devices must be
 located in <filename>/dev</filename>.</para>
 
-<para>Distributions may install software in <filename>/opt</filename>,
-but must not modify or delete software installed by the local system
-administrator without the assent of the local system
-administrator.</para>
+<para>Distributions may install software in <filename>/opt</filename>
+under an appropriately registered subdirectory.</para>
 
 <tip><title>Rationale</title>
 
