@@ -527,9 +527,9 @@ an ftp connection) must be available on the root partition.</para>
 
 <para>This directory contains everything required for the boot process
 except configuration files not needed at boot time and the map
-installer. Thus /boot stores data that is used before the kernel
-begins executing user-mode programs.  This may include saved master
-boot sectors and sector map files.</para>
+installer. Thus <filename>/boot</filename> stores data that is used
+before the kernel begins executing user-mode programs.  This may
+include saved master boot sectors and sector map files.</para>
 
 <para> Programs necessary to arrange for the boot loader to be able to
 boot a file must be placed in <filename>/sbin</filename>.
@@ -541,21 +541,13 @@ time must be placed in <filename>/etc</filename>.</para>
 <section id='specificOptions3'><title>Specific Options</title>
 
 <para>The operating system kernel must be located in either
-<filename>/</filename> or <filename>/boot</filename>.
+<filename>/</filename> or <filename>/boot</filename>.</para>
 
-<footnote><para>On some i386 machines, it may be necessary for
-<filename>/boot</filename> to be located on a separate partition
-located completely below cylinder 1024 of the boot device due to
-hardware constraints.</para>
-
-<para>Certain MIPS systems require a <filename>/boot</filename>
-partition that is a mounted MS-DOS filesystem or whatever other
-filesystem type is accessible for the firmware.  This may result in
-restrictions with respect to usable filenames within
-<filename>/boot</filename> (only for affected systems).
-</para>
-</footnote>
-</para>
+<para>Certain architectures may have other requirements for
+<filename>/boot</filename> related to limitations or expectations
+specific to that architecture.  These requirements are not enumerated
+here; distributions are allowed to add requirements as needed to
+enable system startup on these architectures.</para>
 
 </section>
 </section>
