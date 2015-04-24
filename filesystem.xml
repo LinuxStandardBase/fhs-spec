@@ -61,23 +61,23 @@ permitted.</para>
     <tbody>
       <row rowsep='0'>
         <entry>static</entry>
-        <entry>/usr</entry>
-        <entry>/etc</entry>
+        <entry><filename>/usr</filename></entry>
+        <entry><filename>/etc</filename></entry>
       </row>
       <row rowsep='1'>
         <entry></entry>
-        <entry>/opt</entry>
-        <entry>/boot</entry>
+        <entry><filename>/opt</filename></entry>
+        <entry><filename>/boot</filename></entry>
       </row>
       <row rowsep='0'>
         <entry>variable</entry>
-        <entry>/var/mail</entry>
-        <entry>/var/run</entry>
+        <entry><filename>/var/mail</filename></entry>
+        <entry><filename>/var/run</filename></entry>
       </row>
       <row>
         <entry></entry>
-        <entry>/var/spool/news</entry>
-        <entry>/var/lock</entry>
+        <entry><filename>/var/spool/news</filename></entry>
+        <entry><filename>/var/lock</filename></entry>
       </row>
     </tbody>
   </tgroup>
