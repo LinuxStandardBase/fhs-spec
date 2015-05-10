@@ -2,7 +2,7 @@
 <!DOCTYPE book PUBLIC '-//OASIS//DTD DocBook XML V4.5//EN'
 		 'http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd'
 [
-<!ENTITY specversion "3.0-rc2">
+<!ENTITY specversion "3.0">
 <!ENTITY chap-intro SYSTEM "intro.xml">
 <!ENTITY chap-filesystem SYSTEM "filesystem.xml">
 <!ENTITY chap-root-filesystem SYSTEM "root-filesystem.xml">
