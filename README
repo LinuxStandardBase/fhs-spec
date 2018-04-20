@@ -14,8 +14,8 @@ following tools installed:
 
  - make (tested with GNU make)
  - xmlto
- - xsltproc (required for PDF generation)
  - fop (required for PDF generation)
+ - xsltproc (required for PDF generation)
  - libxml2-utils (for xmllint)
 
 (Note: these are the package names as reported on Ubuntu 11.04; a
@@ -23,9 +23,14 @@ search on those names should show the equivalent package names for
 your distribution, or an upstream download link for non-Linux
 systems.)
 
+For CentOS 7, substitute for the last two:
+
+ - libxslt
+ - libxml2
+
 To build one-page HTML, chunked HTML, PDF, and text versions of the
 FHS, just run "make".  Each of these targets can be selected
 individually via "make {target}" where "{target}" is "fhs.html",
-"fhs/book.html", "fhs.pdf", or "fhs.txt", respectively.  After
+"fhs/index.html", "fhs.pdf", or "fhs.txt", respectively.  After
 changing the DocBook, "make valid" will check for XML validity (which
 everyone changing the DocBook should do frequently).
